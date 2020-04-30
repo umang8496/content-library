@@ -1,0 +1,663 @@
+
+===================================
+SUSE Linux Enterprise Server (SLES)
+===================================
+Suse, one of the longest-running commercial Linux distributors and, these days, a major player in the open-source infrastructure and management space, has been through a few ownership changes in recent years.
+Micro Focus acquired Suse from The Attachmate Group back in 2014, which itself had acquired Novell, the then-owner of Suse, in 2010.
+Today, Micro Focus announced that Suse is changing owners yet again, as private equity firm and venture capital fund EQT is acquiring Suse.
+
+SuSE is a German Linux distribution provider and business unit of Novell, Inc.
+Like Red Hat and Caldera, SuSE assembles open source components for the Linux operating system and related programs into a selection of distribution packages that can be purchased.
+The advantage of buying the Linux kernel and support programs from a distributor rather than assembling it at no cost yourself from various sources is that you save time by purchasing a convenient package that comes with extensive documentation and tech support.
+SuSE, which also has a Braille edition, has targeted users new to the Linux operating system and hopes to attract Windows expatriots by promoting the Personal Edition of SuSE as an easy way for the average desktop user to migrate to Linux.
+Both the Personal Edition and the Professional Edition come with a large number of applications.
+
+What does distribution mean?
+It contains the Linux open-source OS, bundled software applications and an installer to install all of that together so it works seemlessly.
+
+Now there's a spectrum of flavors of SUSE, ranging from a community-driven open-source cutting edge flavor to a commercially supported flavor that are meant to be more stable, reliable.
+It could be tuned for capabilities like high availability computing and real-time computing.
+
+
+================
+HOTFIX v/s PATCH
+================
+A hotfix or quick-fix engineering update (QFE update) is a single, cumulative package that includes information (often in the form of one or more files) that is used to address a particular major problem in a software product (a software bug).
+Typically, hotfixes are made to address a specific customer situation.
+
+The term "hotfix" originally referred to software patches that were applied to "hot" systems; that is, systems which are live, currently running, and in production status rather than development status.
+For the developer, a hotfix implies that the change may have been made quickly and outside normal development and testing processes. This could increase the cost of the fix by requiring rapid development, overtime or other urgent measures.
+
+For the user, the hotfix could be considered riskier or less likely to resolve the problem.
+This could cause an immediate loss of services, so depending on the severity of the bug, it may be desirable to delay a hotfix.
+The risk of applying the hotfix must be weighed against the risk of not applying it, because the problem to be fixed might be so critical that it could be considered more important than a potential loss of service.
+
+A hotfix package might contain several "encompassed" bug fixes, raising the risk of possible regression. An encompassed bug fix is a software bug fix that is not the main objective of a software patch, but rather the side effect of it.
+Because of this, some libraries for automatic updates like StableUpdate also offer features to uninstall the applied fixes if necessary.
+
+A patch is a software update comprised code inserted (or patched) into the code of an executable program.
+It patch is installed into an existing software program.
+Patches are often temporary fixes between full releases of a software package.
+
+Patches may do any of the following:
+	Fix a software bug
+	Install new drivers
+	Address new security vulnerabilities
+	Address software stability issues
+	Upgrade the software
+
+Patches have become extremely important as a methodology for updating programs or new system security threats which appear regularly, especially in online environments. Formerly patches were installed manually.
+Today automatic updates are very popular and are available as self-installing packages from the software vendors support pages at their website.
+
+
+==============
+Linux Overview
+==============
+Linux is a general purpose computer operating system, originally released in 1991 by Linus Torvalds.
+Linux is defined by its kernel, which is the core component of the system.
+The kernel interacts with the computer hardware to allow software and other hardware to exchange information.
+
+And Linux is based on a philosophy that software and operating systems should be free. Both, free of cost and freely modifiable. The software license which allows this, in the case of the Linux kernel, is called the GNU General Public License.
+
+This emphasis of freedom, both, of cost and modification has helped Linux to become popular for many different applications and purposes. And Linux has popped up everywhere from the majority of the servers that run web services we all use, to super computers, to your wifi router, in cars, mobile phones, and everywhere in between.
+
+While the Linux kernel is more or less the same across nearly all of these installations of Linux, the software that surrounds the kernel that provides capabilities like software package management, control of services, and the location of configuration files differs between them.
+
+Different groups of software and configuration choices that are maintained by individuals or groups of people are called distributions, or distro's. Most major distributions of Linux fall into four categories based on the original distribution from which they were derived. There's Arch, Debian, Red Hat, and Slackware, and any number of other smaller distributions.
+
+Linux Mint, Ubuntu, Elementary OS, and Kali Linux are all derived from Debian. CentOS, Fedora, and Red Hat Enterprise Linux are derived from Red Hat. 
+
+The command-line is a text-based interface where we type commands and direct text-based input and output to the screen, to files, and to other programs.
+The environment we use is called a shell, or command-line interpreter, and there are many shells out there. The command-line interpreter was one of the earliest ways of interacting with the general-purpose computer.
+
+Bash, or the Bourne-again shell is one of the most widely-used shells and it's the one you're likely to need to become familiar with as you begin your command-line journey. Bash is the shell that comes enabled by default with most of the popular Linux distributions. It's also available on macOS and in Windows with the Windows subsystem for Linux. 
+
+Basic structure of a script --> [command]  [options]  [arguments]
+
+~ represents the home in the linux system.
+
+Basic Linux Commands
+====================
+>>>ls <target folder path> --> lists the contents of the current working directory.
+>>>ls -l --> more details are shown using this.
+>>>clear --> to clear the entire screen.
+>>>ls -lh /usr/bin
+>>>sort -u users.txt
+>>>grep -i "needle" haystack
+>>>ls -l -a -h /var/log
+>>>ls -lah /var/log
+
+>>>man <command> --> manual command which gives the usage direction for the command.
+>>>f --> for moving up the information console.
+>>>b --> for moving down the information console.
+>>>q --> to quit the current operation.
+>>>[command] --help --> provides the help regarding the stated command.
+>>>apropos "[and message]" -->  lists the meaningful commands based on the message.
+
+>>>file myfile.txt --> determines the file type.
+>>>stat myfile.txt --> displays ownership, modification information etc.
+>>>pwd --> prints working directory.
+>>>ls -R department --> prints the recursive file hierarchy.
+>>>cd - --> takes us back to the previous directory.
+
+>>>mkdir <folder name> --> makes a folder or file.
+>>>mkdir -p docs/legal/contract
+>>>rmdir docs/legal/contract/ --> removes the folder.
+
+>>>cp <source file> <target file path>
+>>>mv <source file> <target folder path> --> mv is used for both moving a file and renaming it.
+>>>mv *.txt <target folder path>
+>>>mv <target folder path>/* . --> moves everything from the specified target to the current directory.
+>>>rm <source file path> --> removes or deletes the file forever.
+>>>rm poems?.txt --> deletes poems3.txt and poems4.txt files.
+
+By default, it does not remove directories.
+>>>rm -r <directory path> --> removes or deletes the directory.
+>>>rm -rf <directory path or file name>
+
+-i (interactive deletion)  ==> makes the command ask the user for confirmation before removing each file.
+-r (recursive deletion)	   ==> performs the tree-walk and will delete all files and sub-directories recursively of the parent directory.
+-f (force deletion)		   ==> rm prompts for confirmation removal of the file if it is write protected;
+						   	   -f option overrides this minor protection and removes the file forcefully.
+
+>>>.. represents parent context
+>>>. represents current context
+
+>>>find . -name "poe*"
+>>>find . -name "do*"
+>>>find ~/Documents/ -name "*d*"
+
+>>>find /<directory>/ -name <filename>.<extention>
+>>>find /opt/ -name ccsapp-8.1.0.1-SNAPSHOT.jar
+
+User Roles in Linux
+===================
+Normal User --> can modify their own files but cannot make system changes. Also cannot see root user's HOME directory.
+SuperUser(root) --> can modify any file and make system changes.
+>>>ls /root --> Permission denied
+>>>sudo ls /root --> then enter password.
+>>>sudo -k --> to giveup the root access.
+>>>sudo -s --> to take the root access for a while.
+
+File Permissions
+================
+We've seen them before when listing files in a directory but it's not immediately clear what they mean.
+RWXR-XR-X might not make any sense right now. The sequence of letters breaks down into three groups.
+The first represents the user, or the owner of the file.
+The second group of three represents the group that owns the file.
+The third group represents all other users not in the group that owns the file.
+
+R = read mode
+W = write mode
+X = execute mode
+
+We can change the permissions of a file using the chmod command.
+chmod changes the file mode bits on a file, and we can do that in two ways.
+The first is to use an octal notation, which uses three values to represent read, write, and execute.
+The second is called symbolic notation, which uses a shorthand for user, group, others, and all, an operator, and a list of permissions to change.
+
+The symbolic way of representing permissions is a little bit more approachable, because instead of setting numbers for each value, we can add or remove a permission by letter.
+
+User is represented by u.
+Group is represented by g. and
+Others is represented by o.
+
+If you leave off a prefix, chmod applies your change to all values.
+There are three operators here, too.
+Plus(+) adds whichever permission we specify to what's already there.
+Minus(-) removes whatever's there, and 
+Equals(=) sign resets the permissions to only whatever value we specify. 
+
+In octal notations, r = 4, w = 2 and x = 1.
+
+Octal Values		Mode Permission
+	0					---
+	1					--x
+	2					-w-
+	3					-wx
+	4					r--
+	5					r-x
+	6					rw-
+	7					rwx
+
+For Example
+to set my user permissions to read, write and execute, we use >>>chmod u+rwx
+to set my group permissions to only read, we use >>>chmod g=r, and
+to remove read, write and execute from others, we write >>>chmod o-wrx
+
+777   <--->   a+rwx   			<--->	rwxrwxrwx
+755   <--->   u+rwx,g=rx,o=rx   <--->   rwxr-xr-x
+644   <--->   u=rw-,g=r,o=r     <--->	rw-r--r--
+700   <--->	  u=rwx,g-rwx,o-rwx <--->	rwx------
+
+The dot slash (./) before the file name is one way of running executable files at the command line.
+Executable means that the file can run on its own, without having to be loaded by another program first.
+
+>>>ls -l test.sh
+-rwxr-xr-x 1 scott scott 64 <date> test.sh
+here the octal value is 755.
+
+Let's take away the executable bit for all users.
+>>>chmod 644 test.sh
+>>>chmod a-x test.sh
+
+>>>cat test.sh 		---> cat print outs the contents of the file.
+
+Let's take away the read permission for just the user.
+>>>chmod u-r test.sh
+>>>chmod 344 test.sh
+
+When a user creates a file in their home directory, it starts out with a permission mode of 644.
+>>>touch newfile
+>>>ls -l newfile
+
+>>>nano test.sh 	---> opens the file in an editor to modify.
+Ctrl + o   ---> saves the file.
+Ctrl + x   ---> closes the editor.
+
+To change the ownership of the file we can use the following.
+>>>sudo chown root test.sh
+
+Links in Linux
+==============
+Links are files that are references to other files, and they're used to avoid having multiple copies of the same file in different places.
+We keep one file in a well-known location and add a little pointer or a link to other places we want that file to appear to be.
+There are two kinds of links, hard links and soft or symbolic links.
+Hard links point to data on the disk and symbolic links point to a file on the disk.
+It's kind of a subtle difference but it changes how the resulting links work.
+
+for soft links
+>>>ln -s poems.txt writing.txt
+>>>ls -l 	writing.txt -> poems.txt
+
+If I take a look at the contents of writing.txt I see the original file, and if I were to edit the writing.txt file, I'd be editing the original as well.
+Writing.txt is a file, but it's just a pointer to the original one.
+It's important to know that this kind of link is relative, that is if you move the link somewhere else on the file system the system won't be able to reference the original file anymore.
+And if you move the original file, the link will break as well, because the system will be told to look at a particular path for the linked file and it won't be there anymore.
+
+for hard links
+>>>ln poems.txt words.txt
+>>>ls -l
+
+A hard link appears to be a regular file in a file listing but it's also just a pointer to the original file or more specifically it's a pointer to the data that the original file references.
+Hard links can be moved around the file system and it doesn't matter if the original file is moved, because a hard link points to the underlying data for a file instead of the file itself.
+In fact, every file on your system is a hard link to its underlying data.
+
+
+UNIX Philosophy
+===============
+A tool or program should do one thing and should do it well.
+It recommends that programs use text interfaces, which means not that what you see when you're using the tool is a text-based environment, but that the tool should expect to take in text from a file or stream and output text once it's done processing.
+Many modular tools rather than one big tool.
+
+Pipes to connect commands
+=========================
+At the command line, we use pipes(|) to take the output of one command and send it to another.
+>>>echo "hello" ---> it prints out whatever is given to it.
+>>>echo "hello" | wc ---> prints number of lines, number of words and numbers of characters. [1 1 6]
+>>>echo "hello world from the command line" | wc ---> [1 6 34]
+
+Tools for Text
+==============
+>>>cat <file_name>.<extension>
+>>>head -n5 <file_name>.<extension>
+>>>tail -n3 <file_name>.<extension>
+
+>>>cat poems.txt | cat -n | tail -n5
+>>>cat poems.txt | tail -n5 | cat -n
+>>>less poems.txt ---> presents an editor in read mode.
+>>>q for quit
+>>>h for help
+
+Searching for Text
+==================
+grep prints the lines of text that match a pattern.
+>>>grep "the" poems.txt
+it prints all those lines from the file that have "the" in them.
+>>>grep -n "the" poems.txt
+it prints the line number also.
+
+>>>grep -i "the" poems.txt
+grep is case-sensitive by default, so to enable case-insensitivity, we use -i
+
+>>>grep -vi "the" poems.txt
+this will print only those lines which donot have "the" pattern.
+
+>>>grep -E "[hijk]" poems.txt
+-E enables the regular expressions.
+
+>>>grep -E "\w{6,}" poems.txt
+this is for six or more of any character words.
+
+Manipulating Text
+=================
+The awk and sed commands can both be used to programmatically manipulate test in streams of files.
+sort is used to sort the files.
+>>>cat sample_data.txt
+Name   ID   Color
+...	   ...   ...
+...	   ...	 ...
+>>>sort sample_data.txt
+>>>sort -k2 sample_data.txt
+>>>sort -k2 -n sample_data.txt
+
+>>>sed -n <line_number>p <file_name> : prints the specific line from the file
+
+
+Editing Text
+============
+The vim or vi software is a powerful and flexible command-line editor in linux.
+>>>sudo apt install vim
+
+Instead of having a toolbar, vim has two modes. Insertion mode, where we type, and make manual changes to text, and command mode where we issue commands like save, search, and many other things.
+Press "i" to go in insertion mode.
+Press esc to switch to the command mode.
+Press :w <file_name>.<file extension> to save the file.
+Press :wq to save and quit the editor.
+
+>>>vim poems.txt ---> it opens the file into vim editor.
+>>>:q! ---> to quit without saving.
+
+NANO editor is a lightweight text modification tool.
+>>>nano
+>>>nano poems.txt
+
+Ctrl + a ---> brings the cursor at the start.
+Ctrl + e ---> brings the cursor at the end.
+
+Working with TAR and ZIP archives
+=================================
+In the early days of computer systems and still to a very large extent today, data that needs to be archived for safekeeping is recorded to backup tapes and stored in a more secure and suitable location.
+Tapes need files to be put together sequentially, one after the other in a linear fashion in order to be recorded onto the tape.
+The output of putting files together like this can be written to a tape drive or it can be written to a single file on the disk. 
+These single files that contain a whole bunch of files turn out to be very handy for distributing software over the internet, where we want your downloader to have only one thing to go get, rather than a whole handful of individual files.
+
+.tar files are a common way to package and distribute software and data.
+TAR files, unlike ZIP files, don't offer compression themselves, but there are ways to incorporate compression into a TAR file.
+Compression tries to reduce the size of a file using some mathematical tricks.
+
+As far as compressed archives go there's tar.gz or .tgz, which is a TAR file with gzip compression.
+There's also tar.bz2, which is a TAR file with bzip compression. And there are others. 
+
+>>>tar cvf <tar file name> <target folder>
+>>>tar cvf myfiles.tar docs/
+The C option says to create an archive.
+The V tells the TAR tool to be verbose, that is to list out each file that gets added to the archive.
+The F option tells the TAR command to output the archive to a file.
+
+Without that f option, the data that makes up the TAR file will be sent to the screen to the standard output, unless we pipe it somewhere else. 
+
+For compressed version
+>>>tar caf myfiles.tar.gz docs/
+>>>tar caf myfiles.tar.bz2 docs/
+
+Bzip can offer a little bit more compression for some files, but it takes a little bit longer to run.
+The A option tells TAR to figure out what kind of compression to use based on the file extension.
+
+A .tar.gz file is nothing, but an archive. It is a file that acts as a container for other files.
+The tar program provides the ability to create tar archives, as well as various other kinds of manipulation.
+For example, we can use tar on previously created archives to extract files, to store additional files, or to update, or list files which were already stored.
+An archive can contain many files, folders, and subfolders, in compressed form using gzip or bzip2 program on Unix.
+Initially, tar archives were used to store files conveniently on magnetic tape.
+We need to use the tar command which can create and manipulate archive files in .tar.gz under Unix like operating systems.
+It is very useful for archiving multiple files together into a single archive file.
+tar.gz file is actually the product of two different things.
+Tar basically just packages a group of files into a single file bundle, but doesn’t offer compression on it’s own.
+To compress tar we’ll want to add the highly effective gzip compression.
+
+>>>tar -xvzf <file_name>.tar.gz
+x: This option tells tar to extract the files.
+v: The “v” stands for “verbose.” This option will list all of the files one by one in the archive.
+z: The z option is very important and tells the tar command to uncompress the file (gzip).
+f: This options tells tar that you are going to give it a file name to work with.
+
+>>>tar -xvzf <file_name>.tar.gz -C /path/to/somedirectory
+>>>tar -xvzf <file_name>.tar.gz test.doc ---> to extract a file from the .tar.gz
+>>>tar -tvf <file_name>.tar.gz ---> to view a detailed table of content by listing all files in archive
+
+>>>tar -xvjf <file_name>.tar.bz2 ---> to extract the bZip2 compressed file.
+
+The zip and unzip commands can create and open compressed data archive files.
+The ZIP format is somewhat more cross-platform friendly.
+
+
+>>>zip -r <file_name>.zip <target_folder>
+>>>unzip <file_name>.zip
+
+
+Output Redirection
+==================
+Working at the command line, we mostly have been using output that comes back to the screen, showing us what's been done by a program.
+But before we move on, it's important to understand how to get that information into a file that we can use later or send to someone else.
+In the Bash shell, and in other shells as well, there are three general areas or streams, that we work with text through.
+
+Standard Input (stdin) --> 0	[which is keyboard input]
+Standard Output (stdout) --> 1	[which is the result of commands that comes back to our screen when commands execute correctly]
+Standard Error (stderr)	--> 2	[which is the result from commands when they don't execute correctly, and return an error message]
+
+>>>ls 1>filelist1.txt 	[the greater than symbol is what's doing the redirection to a file instead of to the screen]
+>>>ls > filelist2.txt
+>>>ls notreal > filelist3.txt 	[gives stderr and hence cannot be redirectedto files]
+>>>ls notreal 2>filename4.txt
+
+The single greater than sign truncates or empties out the file it's redirecting to before writing data there.
+We can use two greater than signs to append or stick the data onto the end of the existing file.
+>>>ls > filelist5.txt
+>>>echo "some text message" >> filelist5.txt
+
+Environment Variables and PATH
+==============================
+The shell environment that we're using has a few variables, or parameters, setting different information and options that often go unnoticed. We can take a look at these environment variables with the env command.
+>>>env
+
+We can find out where a command is really located using the which command followed by a command name.
+>>>which ls
+
+Gives all the system informations with the kernel version too.
+>>>uname -a
+
+Package Manager
+===============
+Debian, UBUNTU etc 			--->		APT
+Red Hat, CentOS				--->		YUM
+Fedora						--->		DNF
+SUSE 						---> 		YaST
+Arch 						--->   		Pacman
+
+
+Hardware Informations
+=====================
+>>>free -h 				---> prints the RAM data
+>>>cat /proc/cpuinfo	---> prints the CPU data
+>>>df -h
+>>>sudo du / -hd1
+>>>sudo lshw | less
+>>>ip a
+
+We can find out how much available disk space a system has with >>>df -h
+
+Helpful Keyboard Shortcuts
+==========================
+--> Tab Completion
+>>>ls -l Do --> prints the content names having 'Do' as initials.
+>>>ls -l Documents/ --> prints the details of the specified folder.
+
+Ctrl + A (^A) --> move to the beginning of the line.
+Ctrl + E (^E) --> move to the end of the line.
+Ctrl + Left Arrow --> move left one word
+Ctrl + Right Arrow --> move right one word
+
+Ctrl + U --> delete from the cursor position to start.
+Ctrl + K --> delete from thr cursor position to end.
+Ctrl + Shift + C --> copy tp clipboard.
+Ctrl + Shift + V --> paste from clipboard.
+
+Up Arrow --> recall previous commands.
+Down Arrow --> scroll previous commands.
+Ctrl + R --> search command history.
+Ctrl + C --> cancels the command.
+
+=================================================================================================================================
+Windows uses backslashes for paths, while everything else seems to use forward slashes.
+
+Modern software tries to automatically correct you when you type the wrong type of slash, so it doesn’t matter which type of slash you use most of the time. But, sometimes, the difference still matters.
+
+So why is Windows the odd operating system out? It’s all down to a few accidents of history that happened decades ago.
+
+Unix introduced the forward slash character — that’s the / character — as its directory separator around 1970.
+
+It’s hard to imagine today, but the original version of Microsoft DOS — that’s MS-DOS 1.0 — didn’t support directories at all when it was released in 1981.
+Most of the utilities included with DOS were written by IBM, and they used the / character as a “switch” character.
+You can still see this today in the command prompt — running the command dir /w tells the dir command to run with the wide list format option, while running the command dir c:\ tells the dir command to list the contents of drive C:\.
+>>>dir /w
+>>>dir /w C:\
+
+The different types of slashes here indicate whether you’re specifying an option or a directory path.
+(On Unix, the – character is used instead of the / character to indicate switches.)
+
+MS-DOS 2.0 introduced support for directories, but IBM wanted to keep compatibility with the original DOS utilities and other programs that expected the / character to be used for switches.
+Microsoft had already used the / character for something, so they couldn’t just re-use it. They ultimately chose the \ character instead, as it was the most similar-looking character visually.
+
+This all wouldn’t really matter today, but web browsers follow the Unix convention and use / characters for web page addresses.
+A typical Windows user sees a forward slash when they type a web address and a backslash when they type the location of a local folder, so this can be confusing. Websites follow the Unix convention, as do other protocols like FTP.
+Even if you’re running a web server or FTP server on a Windows machine, they’ll use forward slashes because that’s what the protocol calls for.
+
+
+=================================================================================================================================
+[touch command in linux]
+------------------------
+The touch command is the easiest way to create new, empty files. It is also used to change the timestamps (i.e., dates and times of the most recent access and modification) on existing files and directories.
+
+>>>touch [option] file_name(s)
+
+When used without any options, touch creates new files for any file names that are provided as arguments if files with such names do not already exist.
+Touch can create any number of files simultaneously.
+
+For example, the following command would create three new, empty files named file1, file2 and file3
+>>>touch file1 file2 file3
+
+A nice feature of touch is that, in contrast to some commands such as cp and mv, it does not automatically overwrite existing files with the same name.
+Rather, it merely changes the last access times for such files to the current time.
+
+Several of touch's options are specifically designed to allow the user to change the timestamps for files.
+For example, the -a option changes only the access time, while the -m option changes only the modification time.
+The use of both of these options together changes both the access and modification times to the current time, for example:
+>>>touch -am file3
+=================================================================================================================================
+[wget command in linux]
+-----------------------
+Wget command is a Linux command line utility that helps us to download the files from the web.
+We can download the files from web servers using HTTP, HTTPS and FTP protocols. We can use wget in scripts and cronjobs.
+Wget is a non-interactive program so that it will run in the background.
+One of the good feature of wget command is mirriong using this we can download the complete website from the web.
+
+The basic format to download a  file from the web using Wget command.
+>>>wget http://example.com/sample.php
+
+Wget uses the anonymous FTP to download the files from the web. It does't require FTP logins to download the files. 
+>>>wget ftp://ftp.example.com/file.tar.gz
+
+By using this option "--no-check-certificate", We can ignore checking the validity of the certificate.
+>>>wget https://example.com/file.tar.gz –no-check-certificate
+
+​-m option stands for turn on mirroring. We can download all the website files using.
+>>>wget -m https://example.com/
+
+For a huge download, We can put the download in background using Wget option -b as shown below.
+>>>wget -b http://www.example.com/samplepage.php
+
+Wget can be used to resume an interrupted download file using the -c option as below
+>>>wget -c http://example.com/samplefile.tar.gz
+=================================================================================================================================
+
+RedHat Credentials
+------------------
+username:   umang8496
+email   :   umang8496@gmail.com
+password:   7bz4c1r5e6@K
+
+>>>ifconfig -a
+>>>hostname -i  or hostname --ip-address
+
+
+How to change the linux machine name ?
+--------------------------------------
+>>>sudo vi /etc/hosts  		(then modify the file with the new name for the machine)
+>>>sudo vi /etc/hostname	(then modify the file with the new name for the machine)
+>>>hostnamectl
+>>>hostname
+
+
+Maven command for building projects
+-----------------------------------
+self signed for non-release builds:
+>>>mvn -DskipTests -Dmaven.test.skip=true -T 2 -Dgwt-quick=true -Dselfsigned=true clean install
+
+official sign for release builds:
+>>>mvn -DskipTests -Dmaven.test.skip=true -T 2 -Dgwt-quick=true -Dofficiallysigned=true clean install
+
+
+Creating SHA-256 for a file in Linux
+------------------------------------
+>>>sha256sum <filename> > <sha256-filename>.sha256
+>>>sha256sum -c <sha256-filename>.sha256
+
+
+grep command and its uses
+-------------------------
+Stands for Global Regular Expression Print.
+>>>grep -Eo '[+-]?[0-9]+([.][0-9]+)?'
+
+One of the renowned search tool on Unix-like systems which can be used to search for anything whether it be a file, or a line or multiple lines in file is grep utility.
+It is very vast in functionality which can be attributed to the large number of options it supports like: searching using string pattern, or reg-ex pattern or perl based reg-ex etc.
+
+Due its varying functionalities, it has many variants including grep, egrep (Extended GREP), fgrep (Fixed GREP), pgrep (Process GREP), rgrep (Recursive GREP) etc.
+But these variants have minor differences to original grep which has made them popular and to be used by various Linux programmers for specific tasks.
+
+It uses Basic Regular Expressions apart from normal strings as a search pattern.
+In Basic Regular Expressions (BRE), meta-characters like: '{','}','(',')','|','+','?' loose their meaning and are treated as normal characters of string and need to be escaped if they are to be treated as special characters.
+
++ – Equivalent to one or more occurrences of previous character.
+? – This denotes almost 1 repetition of previous character. Like: a? Would match ‘a’ or ‘aa’.
+( – Start of alternation expression.
+) – End of alternation expression.
+| – Matching either of the expression separated by '|'. Like: “(a|b)cde” would match either ‘abcde’ or ‘bbcde’.
+{ – This meta-character indicates start of range specifier. Like: “a{2}” matches “aa” in file i.e. a 2 times.
+} – This meta-character indicates end of range specifier.
+
+-i : ignore-case, as grep is case-sensitive
+-v : tells grep to invert its output
+-n : displays the line number of the file
+-w : searches for the entire pattern that is in the string
+
+>>>ls /proc/ | grep mem
+>>>egrep --color 'Mem|Cace|Swap' /proc/meminfo
+
+
+rpm commands
+------------
+>>> rpm -qip <package_name>.rpm : to know information of RPM package without installing
+>>> rpm -ivh <package_name>.rpm : to install RPM package
+>>> rpm -q <package_name>.rpm : to check an installed RPM package
+>>> rpm -ql <package_name>.rpm : to list all files for particular installed RPM package
+>>> rpm -qa --last <package_name>.rpm : to list recently installed RPM packages
+>>> rpm -ivh --nodeps <package_name>.rpm : to install RPM package without dependencies
+>>> rpm -e --nodeps <package_name>.rpm : to uninstall RPM package
+>>> rpm -Uvh <package_name>.rpm : to upgrade RPM package installed
+>>> rpm -qa : to query all installed package
+>>> rpm -qi <package_name> : to get information for a particular package
+>>> rpm -Vp <package_name>.rpm : to verify a RPM package
+>>> rpm -Va : to verify all RPM packages
+
+
+cut command
+-----------
+When using the cut command you must use one and only one of the following options:
+
+-f (--fields=LIST):			Select by specifying a field, a set of fields, or a range of fields.
+-b (--bytes=LIST):			Select by specifying a byte, a set of bytes, or a range of bytes.
+-c (--characters=LIST):		Select by specifying a character, a set of characters, or a range of characters.
+-d (--delimiter):			Specify a delimiter that will be used instead of the default “TAB” delimiter.
+--complement:				Complements the selection.
+-s (--only-delimited):		By default cut will print any line that contains no delimiter character. 
+--output-delimiter:			The default is to use the input delimiter as the output delimiter.
+
+The cut command can accept zero or more input FILE names.
+If no FILE is specified, or when FILE is -, cut will read the standard input.
+
+Cut command is mostly used to display selected fields from each line of files or the standard input.
+When not specified the default delimiter is “TAB”.
+
+>>> cat test.txt
+245:789 4567    M:4540  Admin   01:10:1980
+535:763 4987    M:3476  Sales   11:04:1978
+
+>>> cut test.txt -f 1,3 : prints 1st and 3rd columns
+245:789  M:4540
+535:763  M:3476
+
+>>> cut test.txt -f -4  : prints till 4th columns
+245:789  4567  M:4540   Admin
+535:763  4987  M:3476   Sales
+
+To cut based on a delimiter use the -d option followed by the delimiter you want to use.
+>>> cut test.txt -d ':' -f 1,3
+245:4540 Admin 01
+535:3476 Sales 11
+
+>>> echo "Lorem ipsum dolor sit amet" | cut -d ' ' -f 2
+ipsum
+
+To complement the selection field list use --complement option.
+This will print only those fields that are not selected with the -f option.
+The following command will print all field except the 1st and 3rd:
+>>> cut test.txt -f 1,3 --complement
+
+
+Boolean values with && operator
+-------------------------------
+>>> false && echo true : no output
+>>> true && echo true  : true
+>>> false || echo true : no output
+>>> false || echo true : true
+
