@@ -1,0 +1,469 @@
+
+===============================
+Red Hat Enterprise Linux (RHEL)
+===============================
+Red Hat is a leading software company in the business of assembling open source components for the Linux operating system and related programs into a distribution package that can easily be ordered and implemented.
+Red Hat Enterprise Linux (RHEL) is a distribution of the Linux operating system developed for the business market. RHEL was formerly known as Red Hat Linux Advanced Server.
+RHEL is based on free, open source code. Although Red Hat makes its source code available for download, verbatim copying of the distribution is forbidden.
+The RHEL operating system (OS) supports diverse workloads in physical, virtualized and cloud environments. RHEL editions are available for servers, mainframe, SAP applications, desktops and OpenStack.
+
+
+Linux is a software that handles communication between the hardware elements of our device.
+Linus Torvalds, from University of Helsinki, created Linux based on Unix, and released it in the 1990s.
+Torvalds wanted to allow for the development community to be able to add programs and crowd source applications.
+
+One way that Linus is different from other popular operating systems is that it is open source.
+
+Linux comes in various distributions, or distros, for short.
+Each distro is a kernel packaged with a specific collection of applications and software utilities.
+
+Generally, Linux distributions can be downloaded for free, burned onto portable storage, and installed on any device.
+A typical Linux distro comes with a Linux kernel, tools and libraries, applications, additional software, documentation, and a desktop environment.
+
+The kernel is the very core of the system. It interacts directly with the underlying hardware. It manages processes, as well as assigns memory, handles networking and accesses the file system. The kernel prevents anyone from accessing the hardware directly, forcing everyone to use the tools it provides.
+
+System programs use the kernel to implement services required from an operating system. Application programs include software like a text editor. 
+System application programs run on top of the kernel, in user mode. User mode has no access to system hardware or kernel code.
+Since programs run in user mode, they need to use system libraries to access kernel functions for the system's low level tasks.
+The kernel hides low level hardware details from system and application programs for safety.
+
+Red Hat Enterprise Linux has a boot loader. This is a program that loads the operating system when the computer is turned on.
+
+>>>cat /etc/redhat-release
+
+Red Hat seven now uses the XFS file system, which can scale up to 500 terabytes.
+Since this operating system is intended for a large enterprise, scalability is bound to be a top priority.
+
+Let's look at some Red Hat Enterprise Linux 7 improvements.
+First, RHEL has a new tool for performance management. This is the performance co-pilot.
+It handles system-wide performance monitoring, recording, and analysis.
+Tools are included to then process and collect data. It also offers an API for importing and exporting data.
+Red Hat Enterprise Linux version seven includes MariaDB as the default database.
+
+What makes the Linux operating system attractive and continuously relevant?
+The Linux kernel and application program support their installation on any kind of hardware platform.
+Another reason developers like it is because most of the included software is free and open source, made available both as compiled binaries and in source code form allowing for changes to the original software.
+That means that multiple users can access system resources and multiple applications can run at the same time.
+
+=================
+RHEL Installation
+=================
+In order to change so that the operating system will boot to the command line, we need to type the following command.
+>>>systemctl set-default multi-user.target
+>>>exit
+Now REBOOT the machine.
+
+To return to the desktop run the command "startx".
+To power off the system from the command line.
+>>>systemctl poweroff
+
+In order to get updates, patches, and have access to the Red Hat Package Manager, we'll need to register our system.
+>>>subscription-manager-gui
+
+>>>subscription-manager register --username <username for the portal> --password <password>
+>>>subscription-manager list
+
+===============
+RHEL Essentials
+===============
+There are actually lots of shells included in your Red Hat Enterprise Linux System, but bash is the default.
+Bash is a common shell used across several of the Linux versions.
+
+bash --> Bourne Again SHell
+dash --> less complicated and faster than bash
+tcsh --> incorporated C programming
+zch  --> incorporated from korn, bash and tcsh
+
+To see what machine we are on.
+>>>hostname
+>>>whoami
+>>>id -un  similar to >>>whoami
+>>>pwd
+
+>>>history --> [it shows the list of all commands issued recently]
+To execute a specific command from the history output, type an (!), or bang, followed by the number of the command as listed in the output.
+>>>!<some number>
+
+We can also refer to a command by how long ago it was run.
+>>>!-<some number>
+
+>>!! --> [shows the recently issued commands]
+
+
+The command line interface also allows you to combine commands, to create super commands. These include input and output redirectors and pipes.
+The results of a command are usually executed to standard output, which by default is the display monitor.
+Let's try to redirect the standard input to a file instead of the monitor.
+>>>ls > dir_contents.txt
+>>>cat dir_contents.txt
+>>>cat > sentence.txt This message goes to the output redirection.
+
+Much like the monitor is the default output, the default input is your keyboard. The default input can also be redirected.
+
+So why would you want to redirect the input from the keyboard to something else?
+We might want a file to be the input for a command that normally wouldn't accept a file as an option.
+This redirecting of input is done using the less symbol.
+Input redirection is not used as often as output redirection, but it's still valuable when we have some kind of file and we need to use some kind of command on that file. 
+>>>mail receiver < my message to the receiver
+
+The pipe takes the output from the command on the left and directs it to the command on the right.
+>>>ls -al | less
+Less allows for page-by-page text viewing, so it's a little easier to run through.
+The results of the command were used by the ls command to then display a list of what's in the directory in an easy page-by-page text viewing format.
+
+>>>cat contactlist.txt | sort | uniq | lpr
+First, the command cat. Then we've got our text file, a contact list.txt.
+There's a pipe followed by the sort command, another pipe, followed by the uniq command and another pipe followed by the lpr. 
+First, the output of the cat command on the contact list file gets sorted.
+Then, the output of that sorted list goes to the uniq command, where all the duplicates are removed.
+Finally, the lpr command sends the output to the printer.
+
+VIM is a text editor
+>>>vim sentence.txt  --> [this will present the file content in the editor mode]
+
+VIM has two modes, command mode (default) and insert mode.
+In the command mode, everything that is typed in this mode (normal mode), is interpreted as commands.
+We need to remember that when we're in command mode, we can't insert text without first issuing an insert or a pen command.
+In order to switch to the insert mode, press i or I.
+In order to switch back to the command mode press ESC.
+
+press :w to come out of the vim after saving the modified contents.
+press :q to quit the vim without saving anything.
+press :wq or :wq!to quit the vim after saving the modified contents.
+
+wget is a command line utility that downloads files over a network.
+>>>wget -help
+>>>wget -help | less
+
+>>>cat /etc/passwd
+>>>tail /home/sentence  --> [it will display only the last 10 lines of the content of the file]
+>>>head -n5 /home/sentence --> [it will display only the first 5 lines only the content of the file]
+>>>cat /etc/passwd | sort
+
+>>>head -n5 /etc/passwd | sort
+
+GREP (General Regular Expression Parser) searches for the specific patterns or expressions.
+>>>grep msg /home/sentence
+>>>grep -w message /home/sentence	--> [this will only show the lines that have message as a word not as a pattern]
+>>>grep -v "operator" /etc/passwd 	--> [this will not look for the specified pattern]
+
+=========================
+User and Group Management
+=========================
+>>> cd /etc/passwd
+This file contains one line for each user account.
+There's one line for each user account, and each line has seven fields delimited by colons. 
+
+Each file and directory on linux system is assigned access rights. Permissions are written for the user, group, and for world.
+World is like a global permission. The syntax is in that order, first user, then group, then world, [user, group and world].
+
+Linux System is much secured than any of its counterpart. One of the way to implement security in Linux is the user management policy and user permission and normal users are not authorized to perform any system operations.
+
+If a normal user needs to perform any system wide changes he needs to use either ‘su‘ or ‘sudo‘ command.
+
+‘su‘ forces you to share your root password to other users whereas ‘sudo‘ makes it possible to execute system commands without root password.
+‘sudo‘ lets you use your own password to execute system commands i.e., delegates system responsibility without root password.
+
+‘sudo‘ is a root binary setuid, which executes root commands on behalf of authorized users and the users need to enter their own password to execute system command followed by ‘sudo‘.
+
+The su command is used to switch to another user, in other words change user ID during a normal login session (that is why it is sometimes referred to as switch (-) user by a number of Linux users).
+
+>>>su root   or   >>>su -
+>>>su <username>
+>>>su -l <username>
+>>>su --login <username>
+
+Users have to be listed in the "/etc/sudoers" configuration file in order to use the sudo command.
+Another thing that makes this different is that the commands are run in the user shell, not in a root shell.
+The sudo command requires that users authenticate with their own password and not the root password itself.
+
+>>>sudo ls /root
+
+Typically the user can use sudo without retyping a password for a short period of time.
+By default, that's about five minutes, but it is a configurable variable in the sudoers file.
+To be able to continue using sudo commands without entering a password you can add the dash v option. The v is for validate.
+By running sudo with the dash v option, a user can update the cache credentials without running a command. 
+
+Each successful authentication using the sudo command is logged in the file /var/log/messages
+
+>>>id [it represents user id and group id values]
+The number rage for user ID or UID was 1 through 499.
+The default rage for system users is now 1 to 999.
+
+>>>useradd -m daboss
+>>>passwd daboss
+>>>userdel daboss
+>>>usermod -U daboss
+
+>>>groupadd notcool
+>>>cat /etc/group
+>>>grep notcool /etc/group
+>>>groupmod -n <target_name> <current_name>
+
+An admin will often be asked to create a group for each major project in an organization.
+Then, assign people to the group when they need access to that project's files.
+>>>mkdir /opt/itproject
+>>>groupadd itp
+>>>chown root:itp /opt/itproject
+>>>chmod 2775 /opt/itproject
+
+To add user to the group, we need to run the following command. -a stands for append and -G stands for group.
+>>>usermod -a-G <group_name> <user_name>
+
+====================
+RHEL File Management
+====================
+Linux is a file-oriented operating system.
+Most files are just files, like text files, executable files or programs.
+They are referred to as regular files and they contain normal data.
+
+File Types
+----------
+Directories
+Special files (for input and output)
+Links (make a file or directory visible in file tree)
+Sockets (process interprocess networking)
+Named Pipes (a way for processes to communicate with each other)
+
+"touch" command creates an empty file.
+>>>touch myfile.txt
+>>>touch .newfile.txt   -->  [hidden file]
+>>cp myfile.txt /home/docs
+
+Linux file system consists of a single hierarchy starting from the root directory.
+
+Every single file or directory dtarts with the root directory. Only the root user has right privileges under thid directory.
+Note that '/root' is the root users home directory which is not the same as just '/'.
+
+/root 
+  |
+  |-->/bin (user binaries such as ls, cat, ping and grep)
+  |
+  |-->/sbin (system binaries such as IP tables and f disc)
+  |
+  |-->/etc (contains config files that are required by all programs)
+  |
+  |-->/dev (device files, terminal services, USB or any other device attached to the system)
+  |
+  |-->/proc (contains information about system processes)
+  |
+  |-->/var (variable files like system logs)
+  |
+  |-->/tmp (temporary files created by system or users; files under this gets deleted when the system is rebooted)
+  |
+  |-->/usr (user programs, contains binaries, libraries, src codes and documentations for the second level programs)
+  |
+  |-->/home (home directory for all users to store their personal files)
+  |
+  |-->/boot (bootloader files)
+  |
+  |-->/lib (system libraries, contain library files that support the binaries located under /bin and /sbin)
+  |
+  |-->/opt (optional addon applications)
+  |
+  |-->/mnt (mount directory where sys admins can moount file system)
+  |
+  |-->/media (for removable media devices)
+  |
+  |-->/srv (service data)
+  |
+
+For more information on file system use "man 7 hier". This will give us a description of the system file hierarchy.
+
+A disk can be used either as a simple entity or be broken up into one or more partitions.
+In Red HEL version seven, there are two partition schemes you can use. Either MBR or GPT.
+
+MBR partitions are managed by the F disk command. These days, physical disks grow in size pretty quickly, so MBR has certain limitations that can be a problem.
+The two main issues are that MBR can't create more than four primary partitions from one disk. Even though you can extend the partitions up to 15. 
+Even more important than that, is that you can't partition the disk with more than two terabytes.
+
+GPT which stands for GUID partitioning table. The GPT is part of the unified extensible firmware interface, or UEFI specification.
+Using GPT eliminates the limitations on number of partitions and it also ensures support for larger partitions, all the way up to nine zetabytes, which you can imagine is pretty valuable in an enterprise environment.
+Unlike MBR, it's a list of partitions with no boot loader logic. We're gonna use the parted utility to manipulate hard disk partitions. 
+
+>>>parted
+>>>print  --> [to view the harddisk properties]
+>>>print all
+>>>select <disk_name>  --> enables to work on thr disk
+
+Make part, or mkpart, is a command used to create partitions with a start and end disk location.
+>>>mkpart
+>>>swap   --> partition name
+>>>ext4   --> RHEL default file system type
+
+In order to remove the partition, we need to know the partition number, which we can get using the print command.
+>>>rm  <partitipn number>
+>>quit
+
+The fdisk file management tool is an interface that lets us divide a master boot record disk into regions of space on which we can mount file systems.
+At the command prompt, type fdisk command M. This will show you all of your different options to use with fdisk.
+>>>fdisk command m
+>>>fdisk -l   -->  [to view existing disk parttions]
+>>>fdisk /dev/sda
+>>>fdisk -p   -->  [this prints the partition table]
+
+gdisk is a similar disk management tool that's used with the GPT partitioning tables.
+>>>gdisk -l /dev/sda
+
+As a System Admin, our first priority will be to protect and secure data from unauthorized access.
+We all are aware of the permissions that we set using some helpful Linux commands like chmod, chown, chgrp… etc.
+However, these default permission sets have some limitation and sometimes may not work as per our needs.
+For example, we cannot set up different permission sets for different users on same directory or file.
+Thus, Access Control Lists (ACLs) were implemented.
+
+Access ACL  --> for a specific file or directory
+Default ACL --> associated with a directory
+If a file within the directory does not have its own access ACL it uses the rules of the parent default ACL for that directory. 
+
+ACLs can be configured either per user or per group. The set FACL utility sets ACLs for files and directories.
+To set a permission for a file use by user use the set FACL command.
+>>>setfacl -m u:stoner:rwx /var/log/dmesg.old
+>>>ls -l /var/log/dmesg.old
+When an ACL has been set for a file, the file string is followed by a plus sign.
+
+>>>touch anotherfile.txt
+>>>ls -l anotherfile.txt
+>>>setfacl -m g:users:rwx anotherfile.txt
+
+========================
+RHEL Configuration Files
+========================
+YUM is the primary tool for managing Red Hat Enterprise Linux RPM Software Packages.
+YUM (Yellowdog Updater Modified) is an open source command-line as well as graphical based package management tool for RPM (RedHat Package Manager) based Linux systems. It allows users and system administrator to easily install, update, remove or search software packages on a systems.
+YUM uses numerous third party repositories to install packages automatically by resolving their dependencies issues.
+
+To install a package called Firefox 14, just run the below command it will automatically find and install all required dependencies for Firefox.
+>>>yum install firefox
+
+To remove a package completely with their all dependencies, just run the following command as shown below.
+>>>yum remove firefox
+
+To update MySQL to the latest stable version.
+>>>yum update mysql
+
+To list a package (openssh) using yum.
+>>>yum list openssh
+
+If we don’t remember the exact name of the package, then use search function to search all the available packages to match the package you specified.
+>>>yum search vsftpd
+
+To get Information of a Package using YUM
+>>>yum info firefox
+
+To list all the available packages in the Yum database, use the below command.
+>>>yum list | less
+
+Check for Available Updates using Yum
+>>>yum check-update
+>>>yum update
+
+Increasingly, Linux distributions are adopting or planning to adopt the systemd init system.
+This powerful suite of software can manage many aspects of your server, from services to mounted devices and system states.
+
+In systemd, a unit refers to any resource that the system knows how to operate on and manage.
+This is the primary object that the systemd tools know how to deal with. These resources are defined using configuration files called unit files.
+>>>systemctl list-units
+>>>systemctl status <service_name>
+
+Units are the objects that systemd knows how to manage. These are basically a standardized representation of system resources that can be managed by the suite of daemons and manipulated by the provided utilities.
+
+Ping or Packet INternet Groper is a network administration utility used to check the connectivity status between a source and a destination computer/device over an IP network. It also helps you assess the time it takes to send and receive a response from the network.
+
+Ping uses the ICMP(Internet Control Message Protocol) to send and receive echo messages from and to the host and destination computers respectively to tell us about the performance of the network.
+An ICMP request message is sent to the destination computer; if the destination IP address is available, it sends an ICMP message response to the host computer.
+This tells us about the connectivity status of the network such as round-trip time-the time taken to send and receive a packet of information.
+
+>>>ping 8.8.8.8   -->  (Google's public DNS server)
+>>>host www.google.com
+
+The traceroute command is a network diagnostic tool that shows the route packets take to a network host or destination. 
+traceroute prints the route that packets take to a network host. The only mandatory parameter is the destination host name or IP number.
+>>>traceroute www.google.com
+
+The traceroute command is used in Linux to map the journey that a packet of information undertakes from its source to its destination.
+One use for traceroute is to locate when data loss occurs throughout a network, which could signify a node that's down.
+
+==================
+RHEL Configuration
+==================
+There are three Command Line tools that can be used to configure system date and time.
+>>>timedatectl   -->  [prints the local and universal time, and the currently used time zone]
+>>>date --utc  or  >>>date -u
+>>>date -s 18:45   -->  [sets the system time]
+
+"hwclock" utility accesses the hardware clock, also called the realtime clock, or RTC.
+The hardware clock is independent of the operating system you use, and it'll work even when the machine is shut down.
+>>>hwclock
+>>>hwclock -c   -->  [shows the difference between the hardware time and system time]
+
+Let's synchronize the hardware clock and the current system time.
+>>>htclock --systohc
+>>>hwclock --hctosys
+
+Log files are important for a systems administrator because they contain event information about the system, like messages about services and applications.
+You even get messages from the kernel. Log files can be very useful when trying to troubleshoot a problem.
+They can indicate what's going wrong in a system or how the system is reacting to input.
+Some log files are controlled by a daemon called rsyslogd. The rsyslogd daemon is a replacement for sysklogd.
+It provides more filtering, quite a bit more encryption protection for the relaying of messages, and a lot more configuration options.
+
+>>> cat /etc/rsyslog.conf | less
+
+The cron daemon is a long-running process that executes commands at specific dates and times.
+We can use this to schedule activities, either as one-time events or as recurring tasks.
+We use this to schedule and run automated jobs, or tasks, in the background.
+>>>systemctl status crond.service   -->  [just checks whether the service is installed or not]
+>>>yum install crond.service   -->  [to install the service if it is not installed]
+>>>systemctl start crond.service   -->  [just to make the service]
+
+Each entry in a crontab file consists of six fields, specifying in the following order:
+>>>minute(s) hour(s) day(s) month(s) weekday(s) command(s)
+
+For commands that need to be executed repeatedly (e.g., hourly, daily, or weekly), we can use the crontab command.
+The crontab command creates a crontab file containing commands and instructions for the cron daemon to execute.
+
+Install filename as our crontab file. On many systems, this command is executed simply as crontab filename.
+>>>crontab -a <filename>
+
+Edit your crontab file, or create one if it doesn't already exist.
+>>>crontab -e
+
+>>>crontab -l   -->  Display your crontab file.
+>>>crontab -r   -->  Remove your crontab file.
+>>>crontab -v   -->  Display the last time you edited your crontab file. (This option is available on only a few systems.)
+
+minute   -->   0-59
+hour     -->   0-23
+day      -->   1-31
+month    -->   1-12
+weekday	 -->   0-6	
+
+>>>cat /etc/anacrontab | less
+>>>crontab -u <user_name> -l   -->  [to view the contents of another user's crontab]
+>>>crontab -e   -->  [for editing the crontab file]
+>>>0  13  26  *  *  /home/<user_name>/full-back-up
+
+ATD service
+>>>systemctl status atd.service
+>>>yum install atd
+>>>systemctl start atd.service
+
+======================
+RHEL System Management
+======================
+RPM file also known as a package is a way of distributing software so that it can be easily installed updated and deleted.
+RPM files have information about the package name, the version and other dependency information.
+Yum is the most used sysadmin tool for managing software packages from the official Red Hat software repositories, sometimes referred to as Repos. 
+We can also get 3rd party repositories using yum but we'll need to have some of the vendor information and we'll have to have set up a local repo.
+A systems administrator will regularly use the yum command to install security updates and binary packages.
+
+For installing an RPM package, we use the following command.
+>>>rpm -ivh <rpm_file.rpm>
+
+Red Hat Enterprise Linux 7 comes with the GNU Grand Unified Boot Loader, GRUB version two.
+GRUB2 lets you select an operating system, or kernel, to be loaded at system boot.
+
+To open the boot loader configuration file.
+>>>cat /etc/default/grub
+>>>vim /etc/default/grub
+>>grub2-mkconfig > /boot/grub2/grub.cfg
+>>>reboot
+
