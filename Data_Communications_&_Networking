@@ -1,0 +1,193 @@
++-------------------------------------------------------------------------------------------------+
+Data Communications and Networking
+5th Edition
+BEHROUZ A. FOROUZAN
++-------------------------------------------------------------------------------------------------+
+
+When we communicate, we are sharing information. This sharing can be local or remote.
+The term telecommunication, which includes telephony, telegraphy, and television, means communication at a distance.
+The word data refers to information presented in whatever form is agreed upon by the parties creating and using the data. 
+
+Data communications are the exchange of data between two devices via some form of transmission medium such as a wire cable.
+For data communications to occur, the communicating devices must be part of a communication system made up of a combination of hardware (physical equipment) and software (programs). 
+
+The effectiveness of a data communications system depends on four fundamental characteristics.
+--> Delivery
+	The system must deliver data to the correct destination.
+	Data must be received by the intended device or user and only by that device or user.
+
+--> Accuracy
+	The system must deliver the data accurately.
+	Data that have been altered in transmission and left uncorrected are unusable.
+
+--> Timeliness
+	The system must deliver data in a timely manner. Data delivered late are useless.
+	In the case of video and audio, timely delivery means delivering data as they are produced, and without significant delay. ]
+	This kind of delivery is called real-time transmission.
+
+--> Jitter
+	Jitter refers to the variation in the packet arrival time. It is the uneven delay in the delivery of audio or video packets. For example, let us assume that video packets are sent every 30 ms.
+	If some of the packets arrive with 30-ms delay and others with 40-ms delay, an uneven quality in the video is the result.
+
+A data communications system has five components.
+Message : piece of information or data to be communicated
+Sender : device that sends the data message
+Receiver : device that receives the data message
+Transmission Medium : physical path by which data message travels from sender to receiver
+Protocol : set of rules that govern the data communications
+			 
+Protocol represents an agreement between the communicating devices.
+Without a protocol, two devices may be connected but not communicating, just as a person speaking French cannot be understood by a person who speaks only Japanese.
+
++-------------------------------------------------------------------------------------------------+
+
+Communication between two devices can be simplex, half-duplex, or full-duplex.
+
+In simplex mode, the communication is unidirectional, as on a one-way street.
+Only one of the two devices on a link can transmit; the other can only receive.
+Keyboards and traditional monitors are examples of simplex devices.
+The keyboard can only introduce input; the monitor can only accept output.
+The simplex mode can use the entire capacity of the channel to send data in one direction.
+
+In half-duplex mode, each station can both transmit and receive, but not at the same time.
+When one device is sending, the other can only receive, and vice versa.
+In a half-duplex transmission, the entire capacity of a channel is taken over by whichever of the two devices is transmitting at the time. Walkie-talkies and CB (citizens band) radios are both half-duplex systems.
+The half-duplex mode is used in cases where there is no need for communication in both directions at the same time; the entire capacity of the channel can be utilized for each direction. 
+
+In full-duplex mode (duplex), both stations can transmit and receive simultaneously.
+In full-duplex mode, signals going in one direction share the capacity of the link with signals going in the other direction.
+This sharing can occur in two ways:
+	Either the link must contain two physically separate transmission paths, one for sending and the other for receiving; 
+	or the capacity of the channel is divided between signals traveling in both directions.
+
+One common example of full-duplex communication is the telephone network.
+When two people are communicating by a telephone line, both can talk and listen at the same time.
+The full-duplex mode is used when communication in both directions is required all the time.
+The capacity of the channel, however, must be divided between the two directions.
+
++-------------------------------------------------------------------------------------------------+
+
+A network is the interconnection of a set of devices capable of communication.
+
+Here a device can be a host such as a large computer, desktop, laptop, workstation, cellular phone, or security system.
+A device can also be a connecting device such as a router, which connects the network to other networks, a switch, which connects devices together, a modem, which changes the form of data, and so on.
+These devices in a network are connected using wired or wireless transmission media such as cable or air.
+
+A network must be able to meet a certain number of criteria.
+
+(1) Performance
+Performance can be measured in many ways, including transit time and response time.
+Transit time is the amount of time required for a message to travel from one device to another.
+Response time is the elapsed time between an inquiry and a response.
+The performance of a network depends on a number of factors, including the number of users, the type of transmission medium, the capabilities of the connected hardware, and the efficiency of the software.
+
+Performance is often evaluated by two networking metrics: throughput and delay.
+We often need more throughput and less delay. However, these two criteria are often contradictory.
+If we try to send more data to the network, we may increase throughput
+but we increase the delay because of traffic congestion in the network.
+
+(2) Reliability
+In addition to accuracy of delivery, network reliability is measured by the frequency of failure, the time it takes a link to recover from a failure, and the network’s robustness in a catastrophe.
+
+(3) Security
+Network security issues include protecting data from unauthorized access, protecting data from damage and development, and implementing policies and procedures for recovery from breaches and data losses.
+
+A network is two or more devices connected through links.
+A link is a communications pathway that transfers data from one device to another
+For communication to occur, two devices must be connected in some way to the same link at the same time.
+There are two possible types of connections: point-to-point and multipoint.
+
+A point-to-point connection provides a dedicated link between two devices.
+The entire capacity of the link is reserved for transmission between those two devices.
+Most point-to-point connections use an actual length of wire or cable to connect the two ends, but other options, such as microwave or satellite links, are also possible.
+When we change television channels by infrared remote control, we are establishing a point-to-point connection between the remote control and the television’s control system.
+
+A multipoint or multidrop connection is one in which more than two specific devices share a single link.
+In a multipoint environment, the capacity of the channel is shared, either spatially or temporally.
+If several devices can use the link simultaneously, it is a spatially shared connection.
+If users must take turns, it is a timeshared connection.
+
++-------------------------------------------------------------------------------------------------+
+
+The criteria of distinguishing one type of network from another is difficult and sometimes confusing.
+We use a few criteria such as size, geographical coverage, and ownership to make this distinction.
+
+A local area network (LAN) is usually privately owned and connects some hosts in a single office, building, or campus.
+Depending on the needs of an organization, a LAN can be as simple as two PCs and a printer in someone’s home office, or it can extend throughout a company and include audio and video devices.
+Each host in a LAN has an identifier, an address, that uniquely defines the host in the LAN.
+A packet sent by a host to another host carries both the source host’s and the destination host’s addresses.
+
+In the past, all hosts in a network were connected through a common cable, which meant that a packet sent from one host to another was received by all hosts. The intended recipient kept the packet; the others dropped the packet.
+Today, most LANs use a smart connecting switch, which is able to recognize the destination address of the packet and
+guide the packet to its destination without sending it to all other hosts.
+The switch alleviates the traffic in the LAN and allows more than one pair to communicate with each other at the same time if there is no common source and destination among them.
+
+A wide area network (WAN) is also an interconnection of devices capable of communication.
+However, there are some differences between a LAN and a WAN.
+A LAN is normally limited in size, spanning an office, a building, or a campus; a WAN has a wider geographical span, spanning a town, a state, a country, or even the world.
+A LAN interconnects hosts whereas a WAN interconnects connecting devices such as switches, routers, or modems.
+A LAN is normally privately owned by the organization that uses it whereas a WAN is normally created and run by communication companies and leased by an organization that uses it.
+
+We see two distinct examples of WANs today: point-to-point WANs and switched WANs
+
+An internet is a switched network in which a switch connects at least two links together.
+A switch needs to forward data from a network to another network when required.
+The two most common types of switched networks are circuit-switched and packet-switched networks.
+
+Circuit-Switching establishes a physical path between the sender and receiver of the message before a message is delivered.
+When a connection is established between a sender and a receiver, the entire message travels through the established path from sender to the receiver.
+Once the message is delivered to the receiver, the source informs the network about the completion of transmission and all the switches released.
+Then the link and other connecting devices are used to set up another connection.
+Circuit switching is always implemented at the Physical Layer.
+
+The Circuit switching is not appropriate for data transmission because data is transmitted as stream and the line remains idle for most of the times and hence, the bandwidth is wasted.
+Circuit Switching can be implemented using two technologies either Space Division Switching or Time Division Switching.
+
+Packet Switching is connectionless as it doesn’t establish any physical connection before the transmission starts.
+In packet switching before the message is transmitted, it is divided into some manageable parts called packets.
+These packets are routed one by one from source to destination.
+In packet switching, each packet may follow a different route to reach the destination.
+Packets arrived at the destination are out of order but, they are assembled in order before the destination forward it to the upper layer.
+
+Packet Switching is always implemented at the Network Layer.
+Packet switching has two approaches Datagram Approach and Virtual Circuit Approach.
+In Datagram Approach each packet is independent of other though they belong to the same message and may also choose a different path to reach the destination.
+In Virtual Circuit Approach, the relationship between the packets that belong to the same message is preserved as the packet are not independent of each other, and all the packets that belong to a particular message follow the same route to travel to the destination.
+
+Space Division Switching or Time-Division Switching can be used to implement Circuit Switching; whereas
+Packet Switching can be implemented using two approaches Datagram Approach and Virtual Circuit Approach.
+Circuit Switching is always implemented at physical layer; whereas, Packet Switching is implemented on the network layer.
+
++-------------------------------------------------------------------------------------------------+
+
+Protocol layering is a common technique to simplify networking designs by dividing them into functional layers, and assigning protocols to perform each layer's task.
+Protocol layering enables us to divide a complex task into several smaller and simpler tasks.
+
+One of the advantages of protocol layering is that it allows us to separate the services from the implementation.
+A layer needs to be able to receive a set of services from the lower layer and to give the services to the upper layer;
+We don’t care about how the layer is implemented.
+
+Principles of Protocol Layering
+--> The first principle dictates that if we want bidirectional communication, we need to make each layer so that it is able to perform two opposite tasks, one in each direction.
+--> The second principle that we need to follow in protocol layering is that the two objects under each layer at both sites should be identical.
+
++-------------------------------------------------------------------------------------------------+
+
+TCP/IP PROTOCOL SUITE
+---------------------
+
+
+
+
++-------------------------------------------------------------------------------------------------+
++-------------------------------------------------------------------------------------------------+
++-------------------------------------------------------------------------------------------------+
++-------------------------------------------------------------------------------------------------+
++-------------------------------------------------------------------------------------------------+
++-------------------------------------------------------------------------------------------------+
++-------------------------------------------------------------------------------------------------+
++-------------------------------------------------------------------------------------------------+
++-------------------------------------------------------------------------------------------------+
++-------------------------------------------------------------------------------------------------+
++-------------------------------------------------------------------------------------------------+
++-------------------------------------------------------------------------------------------------+
