@@ -12,9 +12,9 @@ The advantage of buying the Linux kernel and support programs from a distributor
 SuSE, which also has a Braille edition, has targeted users new to the Linux operating system and hopes to attract Windows expatriots by promoting the Personal Edition of SuSE as an easy way for the average desktop user to migrate to Linux.
 Both the Personal Edition and the Professional Edition come with a large number of applications.
 
-What does distribution mean?
+What does distribution mean ?
+-----------------------------
 It contains the Linux open-source OS, bundled software applications and an installer to install all of that together so it works seemlessly.
-
 Now there's a spectrum of flavors of SUSE, ranging from a community-driven open-source cutting edge flavor to a commercially supported flavor that are meant to be more stable, reliable.
 It could be tuned for capabilities like high availability computing and real-time computing.
 
@@ -26,13 +26,15 @@ A hotfix or quick-fix engineering update (QFE update) is a single, cumulative pa
 Typically, hotfixes are made to address a specific customer situation.
 
 The term "hotfix" originally referred to software patches that were applied to "hot" systems; that is, systems which are live, currently running, and in production status rather than development status.
-For the developer, a hotfix implies that the change may have been made quickly and outside normal development and testing processes. This could increase the cost of the fix by requiring rapid development, overtime or other urgent measures.
+For the developer, a hotfix implies that the change may have been made quickly and outside normal development and testing processes.
+This could increase the cost of the fix by requiring rapid development, overtime or other urgent measures.
 
 For the user, the hotfix could be considered riskier or less likely to resolve the problem.
 This could cause an immediate loss of services, so depending on the severity of the bug, it may be desirable to delay a hotfix.
 The risk of applying the hotfix must be weighed against the risk of not applying it, because the problem to be fixed might be so critical that it could be considered more important than a potential loss of service.
 
-A hotfix package might contain several "encompassed" bug fixes, raising the risk of possible regression. An encompassed bug fix is a software bug fix that is not the main objective of a software patch, but rather the side effect of it.
+A hotfix package might contain several "encompassed" bug fixes, raising the risk of possible regression.
+An encompassed bug fix is a software bug fix that is not the main objective of a software patch, but rather the side effect of it.
 Because of this, some libraries for automatic updates like StableUpdate also offer features to uninstall the applied fixes if necessary.
 
 A patch is a software update comprised code inserted (or patched) into the code of an executable program.
@@ -57,24 +59,30 @@ Linux is a general purpose computer operating system, originally released in 199
 Linux is defined by its kernel, which is the core component of the system.
 The kernel interacts with the computer hardware to allow software and other hardware to exchange information.
 
-And Linux is based on a philosophy that software and operating systems should be free. Both, free of cost and freely modifiable. The software license which allows this, in the case of the Linux kernel, is called the GNU General Public License.
+And Linux is based on a philosophy that software and operating systems should be free. Both, free of cost and freely modifiable.
+The software license which allows this, in the case of the Linux kernel, is called the GNU General Public License.
 
-This emphasis of freedom, both, of cost and modification has helped Linux to become popular for many different applications and purposes. And Linux has popped up everywhere from the majority of the servers that run web services we all use, to super computers, to your wifi router, in cars, mobile phones, and everywhere in between.
+This emphasis of freedom, both, of cost and modification has helped Linux to become popular for many different applications and purposes.
+And Linux has popped up everywhere from the majority of the servers that run web services we all use, to super computers, to your wifi router, in cars, mobile phones, and everywhere in between.
 
 While the Linux kernel is more or less the same across nearly all of these installations of Linux, the software that surrounds the kernel that provides capabilities like software package management, control of services, and the location of configuration files differs between them.
 
-Different groups of software and configuration choices that are maintained by individuals or groups of people are called distributions, or distro's. Most major distributions of Linux fall into four categories based on the original distribution from which they were derived. There's Arch, Debian, Red Hat, and Slackware, and any number of other smaller distributions.
-
+Different groups of software and configuration choices that are maintained by individuals or groups of people are called distributions, or distro's. Most major distributions of Linux fall into four categories based on the original distribution from which they were derived.
+There's Arch, Debian, Red Hat, and Slackware, and any number of other smaller distributions.
 Linux Mint, Ubuntu, Elementary OS, and Kali Linux are all derived from Debian. CentOS, Fedora, and Red Hat Enterprise Linux are derived from Red Hat. 
 
 The command-line is a text-based interface where we type commands and direct text-based input and output to the screen, to files, and to other programs.
-The environment we use is called a shell, or command-line interpreter, and there are many shells out there. The command-line interpreter was one of the earliest ways of interacting with the general-purpose computer.
+The environment we use is called a shell, or command-line interpreter, and there are many shells out there.
+The command-line interpreter was one of the earliest ways of interacting with the general-purpose computer.
 
-Bash, or the Bourne-again shell is one of the most widely-used shells and it's the one you're likely to need to become familiar with as you begin your command-line journey. Bash is the shell that comes enabled by default with most of the popular Linux distributions. It's also available on macOS and in Windows with the Windows subsystem for Linux. 
+Bash, or the Bourne-again shell is one of the most widely-used shells.
+Bash is the shell that comes enabled by default with most of the popular Linux distributions.
+It's also available on macOS and in Windows with the Windows subsystem for Linux. 
 
 Basic structure of a script --> [command]  [options]  [arguments]
 
 ~ represents the home in the linux system.
+
 
 Basic Linux Commands
 ====================
@@ -130,6 +138,7 @@ By default, it does not remove directories.
 >>>find /<directory>/ -name <filename>.<extention>
 >>>find /opt/ -name ccsapp-8.1.0.1-SNAPSHOT.jar
 
+
 User Roles in Linux
 ===================
 Normal User --> can modify their own files but cannot make system changes. Also cannot see root user's HOME directory.
@@ -138,6 +147,7 @@ SuperUser(root) --> can modify any file and make system changes.
 >>>sudo ls /root --> then enter password.
 >>>sudo -k --> to giveup the root access.
 >>>sudo -s --> to take the root access for a while.
+
 
 File Permissions
 ================
@@ -218,6 +228,7 @@ Ctrl + x   ---> closes the editor.
 To change the ownership of the file we can use the following.
 >>>sudo chown root test.sh
 
+
 Links in Linux
 ==============
 Links are files that are references to other files, and they're used to avoid having multiple copies of the same file in different places.
@@ -249,6 +260,7 @@ UNIX Philosophy
 A tool or program should do one thing and should do it well.
 It recommends that programs use text interfaces, which means not that what you see when you're using the tool is a text-based environment, but that the tool should expect to take in text from a file or stream and output text once it's done processing.
 Many modular tools rather than one big tool.
+
 
 Pipes to connect commands
 =========================
@@ -289,6 +301,7 @@ this will print only those lines which donot have "the" pattern.
 >>>grep -E "\w{6,}" poems.txt
 this is for six or more of any character words.
 
+
 Manipulating Text
 =================
 The awk and sed commands can both be used to programmatically manipulate test in streams of files.
@@ -324,6 +337,7 @@ NANO editor is a lightweight text modification tool.
 
 Ctrl + a ---> brings the cursor at the start.
 Ctrl + e ---> brings the cursor at the end.
+
 
 Working with TAR and ZIP archives
 =================================
@@ -405,9 +419,11 @@ We can use two greater than signs to append or stick the data onto the end of th
 >>>ls > filelist5.txt
 >>>echo "some text message" >> filelist5.txt
 
+
 Environment Variables and PATH
 ==============================
-The shell environment that we're using has a few variables, or parameters, setting different information and options that often go unnoticed. We can take a look at these environment variables with the env command.
+The shell environment that we're using has a few variables, or parameters, setting different information and options that often go unnoticed.
+We can take a look at these environment variables with the env command.
 >>>env
 
 We can find out where a command is really located using the which command followed by a command name.
@@ -415,6 +431,7 @@ We can find out where a command is really located using the which command follow
 
 Gives all the system informations with the kernel version too.
 >>>uname -a
+
 
 Package Manager
 ===============
@@ -436,6 +453,7 @@ Hardware Informations
 
 We can find out how much available disk space a system has with >>>df -h
 
+
 Helpful Keyboard Shortcuts
 ==========================
 --> Tab Completion
@@ -456,6 +474,7 @@ Up Arrow --> recall previous commands.
 Down Arrow --> scroll previous commands.
 Ctrl + R --> search command history.
 Ctrl + C --> cancels the command.
+
 
 =================================================================================================================================
 Windows uses backslashes for paths, while everything else seems to use forward slashes.
@@ -483,10 +502,9 @@ A typical Windows user sees a forward slash when they type a web address and a b
 Even if you’re running a web server or FTP server on a Windows machine, they’ll use forward slashes because that’s what the protocol calls for.
 
 
-=================================================================================================================================
-[touch command in linux]
-------------------------
-The touch command is the easiest way to create new, empty files. It is also used to change the timestamps (i.e., dates and times of the most recent access and modification) on existing files and directories.
+touch command in linux
+======================
+The touch command is the easiest way to create new, empty files. It is also used to change the timestamps (dates and times of the most recent access and modification) on existing files and directories.
 
 >>>touch [option] file_name(s)
 
@@ -503,9 +521,10 @@ Several of touch's options are specifically designed to allow the user to change
 For example, the -a option changes only the access time, while the -m option changes only the modification time.
 The use of both of these options together changes both the access and modification times to the current time, for example:
 >>>touch -am file3
-=================================================================================================================================
-[wget command in linux]
------------------------
+
+
+wget command in linux
+=====================
 Wget command is a Linux command line utility that helps us to download the files from the web.
 We can download the files from web servers using HTTP, HTTPS and FTP protocols. We can use wget in scripts and cronjobs.
 Wget is a non-interactive program so that it will run in the background.
@@ -528,20 +547,13 @@ For a huge download, We can put the download in background using Wget option -b 
 
 Wget can be used to resume an interrupted download file using the -c option as below
 >>>wget -c http://example.com/samplefile.tar.gz
-=================================================================================================================================
-
-RedHat Credentials
-------------------
-username:   umang8496
-email   :   umang8496@gmail.com
-password:   7bz4c1r5e6@K
 
 >>>ifconfig -a
 >>>hostname -i  or hostname --ip-address
 
 
 How to change the linux machine name ?
---------------------------------------
+======================================
 >>>sudo vi /etc/hosts  		(then modify the file with the new name for the machine)
 >>>sudo vi /etc/hostname	(then modify the file with the new name for the machine)
 >>>hostnamectl
@@ -549,7 +561,7 @@ How to change the linux machine name ?
 
 
 Maven command for building projects
------------------------------------
+===================================
 self signed for non-release builds:
 >>>mvn -DskipTests -Dmaven.test.skip=true -T 2 -Dgwt-quick=true -Dselfsigned=true clean install
 
@@ -558,13 +570,13 @@ official sign for release builds:
 
 
 Creating SHA-256 for a file in Linux
-------------------------------------
+====================================
 >>>sha256sum <filename> > <sha256-filename>.sha256
 >>>sha256sum -c <sha256-filename>.sha256
 
 
 grep command and its uses
--------------------------
+=========================
 Stands for Global Regular Expression Print.
 >>>grep -Eo '[+-]?[0-9]+([.][0-9]+)?'
 
@@ -594,8 +606,8 @@ In Basic Regular Expressions (BRE), meta-characters like: '{','}','(',')','|','+
 >>>egrep --color 'Mem|Cace|Swap' /proc/meminfo
 
 
-rpm commands
-------------
+rpm command
+===========
 >>> rpm -qip <package_name>.rpm : to know information of RPM package without installing
 >>> rpm -ivh <package_name>.rpm : to install RPM package
 >>> rpm -q <package_name>.rpm : to check an installed RPM package
@@ -611,7 +623,7 @@ rpm commands
 
 
 cut command
------------
+===========
 When using the cut command you must use one and only one of the following options:
 
 -f (--fields=LIST):			Select by specifying a field, a set of fields, or a range of fields.
@@ -655,9 +667,30 @@ The following command will print all field except the 1st and 3rd:
 
 
 Boolean values with && operator
--------------------------------
+===============================
 >>> false && echo true : no output
 >>> true && echo true  : true
 >>> false || echo true : no output
 >>> false || echo true : true
+
+
+(Remote SYNC) rsync command
+===========================
+Rsync (Remote Sync) is a most commonly used command for copying and synchronizing files and directories remotely as well as locally in Linux/Unix systems. 
+With the help of rsync command we can copy and synchronize our data remotely and locally across directories, across disks and networks, perform data backups and mirroring between two Linux machines.
+
+It efficiently copies and sync files to or from a remote system.
+Supports copying links, devices, owners, groups and permissions.
+It’s faster than scp (Secure Copy) because rsync uses remote-update protocol which allows to transfer just the differences between two sets of files.
+First time, it copies the whole content of a file or a directory from source to destination but from next time, it copies only the changed blocks and bytes to the destination.
+Rsync consumes less bandwidth as it uses compression and decompression method while sending and receiving data both ends.
+
+# rsync options source destination
+
+-v : verbose
+-r : copies data recursively (but don’t preserve timestamps and permission while transferring data
+-a : archive mode, archive mode allows copying files recursively and it also preserves symbolic links, file permissions, user & group ownerships and timestamps
+-z : compress file data
+-h : human-readable, output numbers in a human-readable format
+
 

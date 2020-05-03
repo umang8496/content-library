@@ -1,12 +1,20 @@
+==================
+RedHat Credentials
+==================
+username:   umang8496
+email   :   umang8496@gmail.com or umang8april@gmail.com
+password:   **********@K
+
 
 ===============================
 Red Hat Enterprise Linux (RHEL)
 ===============================
 Red Hat is a leading software company in the business of assembling open source components for the Linux operating system and related programs into a distribution package that can easily be ordered and implemented.
-Red Hat Enterprise Linux (RHEL) is a distribution of the Linux operating system developed for the business market. RHEL was formerly known as Red Hat Linux Advanced Server.
+Red Hat Enterprise Linux (RHEL) is a distribution of the Linux operating system developed for the business market.
+RHEL was formerly known as Red Hat Linux Advanced Server.
 RHEL is based on free, open source code. Although Red Hat makes its source code available for download, verbatim copying of the distribution is forbidden.
-The RHEL operating system (OS) supports diverse workloads in physical, virtualized and cloud environments. RHEL editions are available for servers, mainframe, SAP applications, desktops and OpenStack.
-
+The RHEL OS supports diverse workloads in physical, virtualized and cloud environments.
+RHEL editions are available for servers, mainframe, SAP applications, desktops and OpenStack.
 
 Linux is a software that handles communication between the hardware elements of our device.
 Linus Torvalds, from University of Helsinki, created Linux based on Unix, and released it in the 1990s.
@@ -45,6 +53,7 @@ The Linux kernel and application program support their installation on any kind 
 Another reason developers like it is because most of the included software is free and open source, made available both as compiled binaries and in source code form allowing for changes to the original software.
 That means that multiple users can access system resources and multiple applications can run at the same time.
 
+
 =================
 RHEL Installation
 =================
@@ -62,6 +71,7 @@ In order to get updates, patches, and have access to the Red Hat Package Manager
 
 >>>subscription-manager register --username <username for the portal> --password <password>
 >>>subscription-manager list
+
 
 ===============
 RHEL Essentials
@@ -89,7 +99,6 @@ We can also refer to a command by how long ago it was run.
 
 >>!! --> [shows the recently issued commands]
 
-
 The command line interface also allows you to combine commands, to create super commands. These include input and output redirectors and pipes.
 The results of a command are usually executed to standard output, which by default is the display monitor.
 Let's try to redirect the standard input to a file instead of the monitor.
@@ -98,8 +107,6 @@ Let's try to redirect the standard input to a file instead of the monitor.
 >>>cat > sentence.txt This message goes to the output redirection.
 
 Much like the monitor is the default output, the default input is your keyboard. The default input can also be redirected.
-
-So why would you want to redirect the input from the keyboard to something else?
 We might want a file to be the input for a command that normally wouldn't accept a file as an option.
 This redirecting of input is done using the less symbol.
 Input redirection is not used as often as output redirection, but it's still valuable when we have some kind of file and we need to use some kind of command on that file. 
@@ -146,6 +153,7 @@ GREP (General Regular Expression Parser) searches for the specific patterns or e
 >>>grep -w message /home/sentence	--> [this will only show the lines that have message as a word not as a pattern]
 >>>grep -v "operator" /etc/passwd 	--> [this will not look for the specified pattern]
 
+
 =========================
 User and Group Management
 =========================
@@ -155,8 +163,7 @@ There's one line for each user account, and each line has seven fields delimited
 
 Each file and directory on linux system is assigned access rights. Permissions are written for the user, group, and for world.
 World is like a global permission. The syntax is in that order, first user, then group, then world, [user, group and world].
-
-Linux System is much secured than any of its counterpart. One of the way to implement security in Linux is the user management policy and user permission and normal users are not authorized to perform any system operations.
+One of the way to implement security in Linux is the user management policy and user permission and normal users are not authorized to perform any system operations.
 
 If a normal user needs to perform any system wide changes he needs to use either ‘su‘ or ‘sudo‘ command.
 
@@ -208,6 +215,7 @@ Then, assign people to the group when they need access to that project's files.
 
 To add user to the group, we need to run the following command. -a stands for append and -G stands for group.
 >>>usermod -a-G <group_name> <user_name>
+
 
 ====================
 RHEL File Management
@@ -276,7 +284,7 @@ MBR partitions are managed by the F disk command. These days, physical disks gro
 The two main issues are that MBR can't create more than four primary partitions from one disk. Even though you can extend the partitions up to 15. 
 Even more important than that, is that you can't partition the disk with more than two terabytes.
 
-GPT which stands for GUID partitioning table. The GPT is part of the unified extensible firmware interface, or UEFI specification.
+GPT which stands for GUID Partitioning Table. The GPT is part of the unified extensible firmware interface, or UEFI specification.
 Using GPT eliminates the limitations on number of partitions and it also ensures support for larger partitions, all the way up to nine zetabytes, which you can imagine is pretty valuable in an enterprise environment.
 Unlike MBR, it's a list of partitions with no boot loader logic. We're gonna use the parted utility to manipulate hard disk partitions. 
 
@@ -324,11 +332,13 @@ When an ACL has been set for a file, the file string is followed by a plus sign.
 >>>ls -l anotherfile.txt
 >>>setfacl -m g:users:rwx anotherfile.txt
 
+
 ========================
 RHEL Configuration Files
 ========================
 YUM is the primary tool for managing Red Hat Enterprise Linux RPM Software Packages.
-YUM (Yellowdog Updater Modified) is an open source command-line as well as graphical based package management tool for RPM (RedHat Package Manager) based Linux systems. It allows users and system administrator to easily install, update, remove or search software packages on a systems.
+YUM (Yellowdog Updater Modified) is an open source command-line as well as graphical based package management tool for RPM (RedHat Package Manager) based Linux systems.
+It allows users and system administrator to easily install, update, remove or search software packages on a systems.
 YUM uses numerous third party repositories to install packages automatically by resolving their dependencies issues.
 
 To install a package called Firefox 14, just run the below command it will automatically find and install all required dependencies for Firefox.
@@ -381,6 +391,7 @@ traceroute prints the route that packets take to a network host. The only mandat
 
 The traceroute command is used in Linux to map the journey that a packet of information undertakes from its source to its destination.
 One use for traceroute is to locate when data loss occurs throughout a network, which could signify a node that's down.
+
 
 ==================
 RHEL Configuration
@@ -445,6 +456,7 @@ ATD service
 >>>systemctl status atd.service
 >>>yum install atd
 >>>systemctl start atd.service
+
 
 ======================
 RHEL System Management
