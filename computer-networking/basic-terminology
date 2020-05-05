@@ -1,0 +1,489 @@
+
+================
+COMPUTER NETWORK
+================
+In IT, a computer network or data network, is a series of points, or nodes, interconnected by communication paths for the purpose of transmitting, receiving and exchanging data, voice and video traffic.
+
+Network devices including switches and routers use a variety of protocols and algorithms to exchange information and to transport data to its intended endpoint.
+Every endpoint or host in a network has a unique identifier, often an "IP Address" or a "MAC Addess", that is used to indicate the source or destination of the transmission.
+Endpoints can include servers, personal computers, phones and many types of network hardware.
+
+
+=======================================
+NIC (NETWORK INTERFACE CARD/CONTROLLER)
+=======================================
+It is the component that allows a computer or any system to be connected to the network.
+The circuit gets connected to the motherboard of the system and the outlet must be connected to the Ethernet.
+
+There is something called WiFi card as well, which does not have the outlet for the Ethernet rather a transmitter so that different devices could be connected to the network.
+
+A single system can have multiple NICs or a single NICs with multiple interfaces(outlets).
+Also, a single NIC with multiple interfaces can connect multiple systems together.
+Nowadays, NICs are built into the computer systems, but are detachable also, so that NICs can be upgraded.
+
+Each NIC is hardcoded with its own MAC address at the time of manufacturing.
+
+It is a hardware component, typically a circuit board or chip, which is installed on a computer so that it can connect to a network.
+Modern NICs provide functionality to computers such as support for I/O interrupt, direct memory access (DMA) interfaces, data transmission, network traffic engineering  and partitioning.
+
+A NIC provides a computer with a dedicated, full-time connection to a network by implementing the physical layer circuitry necessary for communicating with a data link layer standard, such as Ethernet or Wi-Fi.
+
+Each card represents a device and can prepare, transmit and control the flow of data on the network.
+NIC uses the OSI model to send signals at the physical layer, transmit data packets at the network layer and operate as an interface at the TCP/IP layer.
+
+
+========
+ETHERNET
+========
+For a network design to work and function correctly, following things are must have:
+	a type of media to use (wires, cables, infrared, fibre-optics)
+	a methodology for sending and receiving data across that media
+	how to know the systems that are participating in a transaction
+	when would a device use the media to send or to receive the data
+
+Ethernet(IEEE802.3) is a standard communication protocol.
+Ethernet is a communication standard that was developed in the early ’80s to network computers and other devices in a local environment such as a home or a building.
+This local environment is defined as a LAN (Local Area Network) and it connects multiple devices so that they can create, store and share information with others in the location.
+Ethernet is a wired system that started with using coaxial cable and has successfully progressed to now using twisted pair copper wiring and fiber optic wiring.
+
+Wireless NICs are used for connecting the computer instead of a cable and these wireless NICs make use of radio waves for communicating between the systems and furthers these NICs are connected with a wireless switch or hub
+
+In 1983, Ethernet was standardized into the standard IEEE 802.3.
+This standard defined the physical layer and the MAC (media access control) portion of the “data link” layer of wired Ethernet.
+Ethernet cables come as;
+	Coaxial cable (which is not very common except in older installations)
+	Twisted pair
+	Fiber optic
+
+The most common cable is twisted pair cables, with the latest being;
+	Category 6 with speeds up to 1 Gbps.
+	CAT6a and CAT 7 with speeds up to 10 Gbps.
+	Category 5 and 5e cables are both still used in many existing applications but handle the lower speeds between 10 Mbps to 100 Mbps but are more susceptible to noise.
+
+The Ethernet twisted pair utilizes RJ-45 eight-pin connectors at either end of the cable that is pinned for transmitting and receiving data in either half or full-duplex mode.
+Half-duplex transmits data in one direction at a time while full-duplex allows data to be transmitted in both directions at the same time.
+Full-duplex in Ethernet can be achieved by using two pairs of wires to allow data to travel both directions simultaneously.
+
+Fiber optic cable uses glass or plastic optical fiber as a conduit for light pulses to transmit data.
+It has allowed Ethernet to travel farther distances at higher speeds.
+
+In order to use fiber optic in an Ethernet network that utilizes twisted pair Ethernet cabling, we need to use an “Ethernet to Fiber Converter” that will allow our network to take advantage of the higher speeds of fiber optic and lengthen the distance that the Ethernet network can reach.
+
+Ethernet transmits data packets in the data link layer by using an algorithm called CSMA/CD.
+CSMA/CD is used as a standard for Ethernet to reduce data collisions and increase successful data transmission.
+The algorithm first checks to see if there is traffic on the network.
+If it does not find any, it will send out the first bit of information to see if a collision will occur.
+If this first bit is successful, then it will send out the other bits while still testing for collisions.
+If a collision occurs, the algorithm calculates a waiting time and then starts the process all over again until the full transmission is complete.
+
+When we use the faster Ethernet in full-duplex modes and incorporate switches, then we are utilizing a star topology between the switch ports and the devices.
+This allows for more direct transmission paths and fewer collisions as compared to a bus topology where all devices share the same paths.
+
+
+================
+NETWORK PROTOCOL
+================
+It is a set of established rules that dictates how to format, transmit and receive data so that computer network devices (from servers and routers to endpoints) can communicate regardless of the differences in their underlying infrastructures, designs or standards.
+
+Essentially, it allows connected devices to communicate with each other, regardless of any differences in their internal processes, structure or design.
+
+To successfully send and receive information, devices on both sides of a communication exchange must accept and follow protocol conventions. 
+Support for network protocols can be built into software, hardware or both.
+
+Network protocols break larger processes into discrete, narrowly defined functions and tasks across every level of the network.
+In the standard OSI model, one or more network protocols govern activities at each layer in the telecommunication exchange.
+
+Protocol is the set of rules or algorthims which define the way how two entities can communicate across the network and there exists different protocol defined at each layer of OSI model.
+
+A protocol stack is the complete set of protocol layers that work together to provide networking capabilities.
+
+Examples of Network Protocols:
+	Transmission Control Protocol (TCP)
+	Internet Protocol(IP)
+	Hypertext Transfer Protocol (HTTP)
+	File Transfer Protocol (FTP)
+	Secured Shell (SSH)
+	Telnet
+	Simple Mail Transfer Protocol (SMTP)
+	Domain Name System (DNS)
+	Dynamic Host Configuration Protocol (DHCP)
+	Post Office Protocol version 3 (POP 3)
+	Internet Message Access Protocol (IMAP)
+	Simple Network Management Protocol (SNMP)
+	Hypertext Transfer Protocol over SSL/TLS (HTTPS)
+
+There are thousands of different network protocols, but they all perform one of three primary actions:
+
+COMMUNICATION
+	Communication protocols allow different network devices to communicate with each other.
+	They are used in both analog and digital communications and can be used for important processes, ranging from transferring files between devices to accessing the internet.
+	
+NETWORK MANAGEMENT
+	Network management protocols define and describe the various procedures needed to effectively operate a computer network.
+	These protocols affect various devices on a single network — including computers, routers and servers — to ensure each one, and the network as a whole, perform optimally.
+
+SECURITY
+	Security protocols (cryptographic protocols) work to ensure that the network and the data sent over it are protected from unauthorized users.
+
+
+==========
+IP ADDRESS
+==========
+An Internet Protocol address (IP address) is a logical numeric address that is assigned to every single computer, printer, switch, router or any other device that is part of a TCP/IP-based network.
+
+The IP address is the core component on which the networking architecture is built; no network exists without it. An IP address is a logical address that is used to uniquely identify every node in the network. Because IP addresses are logical, they can change. 
+
+The numerals in an IP address are divided into 2 parts:
+--> The network part specifies which network this address belongs to and
+--> The host part further pinpoints the exact location.
+
+An IP address is the most significant and important component in the networking phenomena that binds the World Wide Web together. 
+The IP address is a numeric address assigned to every unique instance that is connected to any computer communication network using the TCP/IP communication protocols.
+
+Network nodes are assigned IP addresses by the DHCP server as soon as the nodes connect to a network.
+DHCP assigns IP addresses using a pool of available addresses which are part of the whole addressing scheme.
+Though DHCP only provides addresses that are not static, many machines reserve static IP addresses that are assigned to that entity forever and cannot be used again.
+
+Every machine on a network has a unique identifier.
+Just as we would address a letter to send in the mail, computers use the unique identifier to send data to specific computers on a network.
+Most networks today, including all computers on the Internet, use the TCP/IP protocol as the standard for how to communicate on the network.
+In the TCP/IP protocol, the unique identifier for a computer is called its IP address.
+
+
+===========
+MAC ADDRESS
+===========
+A Media Access Control Address is a hardware identification number that uniquely identifies each device on a network.
+The MAC address is manufactured into every network card, such as an Ethernet card or Wi-Fi card, and therefore cannot be changed.
+
+Because there are millions of networkable devices in existence, and each device needs to have a unique MAC address, there must be a very wide range of possible addresses.
+For this reason, MAC addresses are made up of six two-digit hexadecimal numbers, separated by colons.
+For example, an Ethernet card may have a MAC address of 00:0d:83:b1:c0:8e.
+Fortunately, we do not need to know this address, since it is automatically recognized by most networks.
+
+MAC or Physical Address, is the unique identifier of each host and is associated with the NIC (Network Interface Card).
+MAC address is assigned to the NIC at the time of manufacturing.
+Length of the MAC address is : 12-nibble/ 6 bytes/ 48 bits
+
+MAC addresses are generally assigned by the vendor/manufacturer of every network interface card (NIC) developed.
+They are implemented in most network types, but unlike IP address, MAC addresses are permanent and can’t be changed.
+A MAC address is created using the specifications provided by IEEE.
+
+Each MAC address consists of a 12-digit hexadecimal notation, which is embedded within the NIC firmware and is composed of a six-digit manufacturer’s organization unique identifier followed by a six-digit serialized or random unique identifier.
+
+It is a globally unique identifier assigned to network devices, and therefore it is often referred to as hardware or physical address.
+MAC addresses are 6-byte (48-bits) in length, and are written in MM:MM:MM:SS:SS:SS format.
+The first 3-bytes are ID number of the manufacturer, which is assigned by an Internet standards body.
+The second 3-bytes are serial number assigned by the manufacturer.
+
+In a local area network or other network, the MAC address is your computer's unique hardware number.
+On an Ethernet LAN, it's the same as your Ethernet address.
+When you're connected to the Internet from your computer a correspondence table relates your IP address to your computer's physical (MAC) address on the LAN.
+
+A MAC address is a hardware identification number that uniquely identifies each device on a network.
+The MAC address is manufactured into every network card, such as an Ethernet card or Wi-Fi card, and therefore cannot be changed.
+Because there are millions of networkable devices in existence, and each device needs to have a unique MAC address, there must be a very wide range of possible addresses.
+For this reason, MAC addresses are made up of six two-digit hexadecimal numbers, separated by colons.
+
+MAC Addresses are unique 48-bits hardware number of a computer, which is embedded into NIC during the time of manufacturing.
+MAC Address is also known as Physical Address of a network device.
+In IEEE 802 standard, Data Link Layer is divided into two sublayers –
+	Logical Link Control(LLC) Sublayer
+	Media Access Control(MAC) Sublayer
+
+A MAC address is given to a network adapter when it is manufactured.
+It is hardwired or hard-coded onto your computer's network interface card (NIC) and is unique to it.
+Something called the ARP (Address Resolution Protocol) translates an IP address into a MAC address.
+The ARP is like a passport that takes data from an IP address through an actual piece of computer hardware.
+
+Some well-known manufacturers of network adapters or NICs are Dell, Belkin, Nortel and Cisco.
+These manufacturers all place a special number sequence OUI (Organizationally Unique Identifier) in the MAC address that identifies them as the manufacturer.
+The OUI is typically right at the front of the address.
+
+For example, consider a network adapter with the MAC address "00-14-22-01-23-45." 
+The OUI for the manufacture of this router is the first three octets—"00-14-22."
+
+Here are the OUI for other some well-known manufacturers.
+	Dell: 00-14-22
+	Nortel: 00-04-DC
+	Cisco: 00-40-96
+	Belkin: 00-30-BD
+It's common for the larger manufacturers of networking equipment to have more than one set of OUIs.
+
+
+========
+SWITCHES
+========
+A switch, in the context of networking is a high-speed device that receives incoming data packets and redirects them to their destination on a LAN.
+A LAN switch operates at the data link layer or the network layer of the OSI Model and, as such it can support all types of packet protocols.
+
+Switches are similar to routers as well, but a router has the additional ability to forward packets between different networks, whereas a switch is limited to node-to-node communication on the same network.
+
+A network switch (switching hub, bridging hub, officially MAC bridge) is a computer networking device that connects devices together on a computer network by using packet switching to receive, process, and forward data to the destination device.
+
+In a network, a switch is a device that channels incoming data from any of multiple input ports to the specific output port that will take it toward its intended destination.
+
+
+=======
+ROUTERS
+=======
+A router is a physical or virtual appliance that passes information between two or more packet-switched computer networks -- analyzing a given data packet's destination IP address, calculating the best way for it to reach that destination and then forwarding it accordingly.
+
+A router is a common type of gateway -- positioned where two or more networks meet, including at each point of presence on the internet. Hundreds of routers might forward a single packet as it moves from one network to the next on the way to its final destination.
+
+In the OSI model, routers are associated with the network layer (Layer 3), as they connect separate networks via the Internet Protocol (IP).
+
+A router examines a packet header's destination IP address and compares it against a routing table to determine the packet's best next hop. Routing tables list directions for forwarding data to particular network destinations, sometimes in the context of other variables, like cost. They amount to an algorithmic set of rules that calculate the best way to transmit traffic toward any given IP address.
+
+A routing table often specifies a default route, which the router uses whenever it fails to find a better forwarding option for a given packet. It is a set of rules, often viewed in table format, that is used to determine where data packets traveling over an Internet Protocol (IP) network will be directed. All IP-enabled devices, including routers and switches, use routing tables.
+
+A router is a device that forwards data packets along networks. A router is connected to at least two networks, commonly two LANs or WANs or a LAN and its ISP's network. Routers are located at gateways, the places where two or more networks connect.
+
+Routers use headers and forwarding tables to determine the best path for forwarding the packets, and they use protocols such as ICMP to communicate with each other and configure the best route between any two hosts.
+
+A router is a device that analyzes the contents of data packets transmitted within a network or to another network. Routers determine whether the source and destination are on the same network or whether data must be transferred from one network type to another, which requires encapsulating the data packet with routing protocol header information for the new network type.
+
+A router can have multiple interfaces or IPs depending on the number of networks it is linked with.
+If a host on network (A) wants to send some message to another host but on network (B),
+	Then it sends the message to the default gateway, this is one of the interfaces of the router.
+	So for the local network, the default gateway is the IP of the router.
+	Now once the router receives the message from the host on network (A),
+		it then processes it and determines the location of destination host on network (B).
+		Here it uses another interface or IP, which is the default gateway for the network (B).
+		Now the messages gets transferred to the destination host.
+In this case the router can have three or atleast two IPs or interfaces. Third is for the Internet or some other network.
+
+
+=============================
+Routers v/s Switches v/s Hubs
+=============================
+Hubs, switches, and routers are all computer networking devices with varying capabilities. Unfortunately, the terms are often misused.
+They are all devices that let us connect one or more computers to other computers, networked devices, or even other networks.
+Each has two or more connectors called ports, into which we plug the cables to make the connection.
+
+A hub is the least expensive, least intelligent, and least complicated of the three.
+Its job is very simple: anything that comes in one port is sent out to the others. That’s it.
+If a message_01 comes in destined for computer “A”, that message is sent out to all the other ports, regardless of which computer “A” is.
+When computer “A” responds, its response also goes out to every other port on the hub.
+Every computer connected to the hub “sees” everything every other computer on the hub does.
+It’s up to the computers themselves to decide if a message is for them and whether or not it should be paid attention to.
+The hub itself is blissfully ignorant of the data being transmitted.
+For many years, hubs were quick and easy ways to connect computers in small networks.
+In recent years, hubs aren’t as common, and switches have come into greater use.
+
+A switch does what a hub does, but more efficiently.
+By paying attention to the traffic that comes across it, it learns which computers are connected to which port.
+Initially, a switch knows nothing, and simply sends on incoming messages to all ports.
+Just by accepting that first message, the switch has learned something: it knows on which connection the sender of the message is located.
+Thus, when machine “A” responds to the message, the switch only needs to send that message out to the one connection.
+By processing the response, the switch has learned something else: it now knows on which connection machine “A” is located.
+That means subsequent messages destined for machine “A” need only be sent to that one port.
+Switches learn the location of the devices they are connected to almost instantaneously.
+The result is, most network traffic only goes where it needs to, rather than to every port.
+On busy networks, this can make the network significantly faster.
+
+A router is the smartest and most complicated of the three.
+Routers come in all shapes and sizes, from small, four-port broadband routers to large industrial-strength devices that drive the internet itself.
+One way to think of a router is as a computer that can be programmed to understand, manipulate, and act on the data it handles.
+A router operates as a switch for basic routing:
+	it learns the location of the computers sending traffic, and routes information only to the necessary connections.
+Consumer-grade routers perform (at minimum) two additional and important tasks: DHCP and NAT.
+
+DHCP (Dynamic Host Configuration Protocol)
+	It is how the dynamic IP addresses are assigned.
+	When it first connects to the network, a device asks for an IP address to be assigned to it, and a DHCP server responds with an IP address assignment.
+	A router connected to ISP internet connection will ask the ISP’s server for an IP address; this will be the IP address on the internet.
+	The local computers, on the other hand, will ask the router for an IP address, and these addresses are local to the network.
+
+NAT (Network Address Translation)
+ 	It is the way the router translates the IP addresses of packets that cross the internet/local network boundary.
+ 	When computer “A” sends a packet, the IP address that it’s “from” is that of computer “A” (192.168.0.1).
+ 	When the router passes that on to the internet, it replaces the local IP address with the internet IP address assigned by the ISP (1.2.3.4)
+ 	It also keeps track, so if there’s a response the router knows to do the translation in reverse, replacing the internet IP address with the local IP address for machine “A”, and then sending that response packet on to machine “A”.
+
+A side effect of NAT is that machines on the internet cannot initiate communications to local machines;
+They can only respond to communications initiated by them. This means that the router also acts as an effective firewall.
+
+Malware that spreads by trying to independently connect to your computer over the network cannot do so.
+
+All routers include some kind of user interface for configuring how the router treats traffic.
+Really large routers include the equivalent of a full-blown programming language to describe how they should operate, as well as the ability to communicate with other routers to describe or determine the best way to get network traffic from point A to point B.
+
+
+===============
+Default Gateway
+===============
+It serves as an access point or IP router that a networked computer uses to send information to a computer in another network or the internet.
+Default simply means that this gateway is used by default, unless an application specifies another gateway.
+The default server does not even need to be a router; it may be a computer with two network adapters, where one is connected to the local subnet and the other is connected to an outside network.
+
+A default gateway allows computers on a network to communicate with computers on another network.
+Without it, the network is isolated from the outside.
+Basically, computers send data that is bound for other networks (one that does not belong to its local IP range) through the default gateway.
+
+Network administrators configure the computer’s routing capability with an IP range's starting address as the default gateway and point all clients to that IP address.
+
+A default gateway allows computers on a network to communicate with computers on another network. Without it, the network is isolated from the outside. Basically, computers send data that is bound for other networks (one that does not belong to its local IP range) through the default gateway.
+
+Network administrators configure the computer’s routing capability with an IP range's starting address as the default gateway and point all clients to that IP address.
+
+
+===============
+PORT and SOCKET
+===============
+Port can be referred as logical channel through which data can be sent/received to an application.
+Any host may have multiple applications running, and each of this application is identified using the port number on which they are running.
+Port number is a 16-bit integer, hence we have 2^16 ports available.
+
+Number of ports: 65536
+Range: 0 – 65535
+Type “netstat -a” in the command prompt and press ‘Enter’, this lists all the ports being used.
+
+The unique combination of IP address and Port number together are termed as Socket.
+
+ARP stands for Address Resolution Protocol.
+It is used to convert the IP address to its corresponding Physical Address (i.e.MAC Address).
+ARP is used by the Data Link Layer to identify the MAC address of the Receiver’s machine.
+
+RARP stands for Reverse Address Resolution Protocol.
+It provides the IP address of the a device given physical address as input.
+But RARP has become obsolete since the time DHCP has come into picture.
+
+
+=======================================
+Line Configuration in Computer Networks
+=======================================
+A network is two or more devices connected through a link.
+A link is a communication pathway that transfer data from one device to another.
+Devices can be a computer, printer or any other device that is capable to send and receive data. 
+
+For communication to occur, two devices must be connected in some way to the same link at the same time.
+There are two possible types of connections:
+	Point-to-Point Connection
+		A point-to-point connection provides a dedicated link between two devices.
+		The entire capacity of the link is reserved for transmission between those two devices.
+		It uses actual length of wire or cable to connect the two end, but other options such as microwave or satellite links are also possible.
+		Point to point network topology is considered to be one of the easiest and most conventional network topologies.
+		It is also the simplest to establish and understand.
+	
+	Multi-point Connection
+		It is also called Multidrop configuration. In this connection two or more devices share a single link.
+		More than two devices share the link that is the capacity of the channel is shared now.
+		With shared capacity, there can be two possibilities in a Multipoint Line configuration:
+			Spatial Sharing: If several devices can share the link simultaneously, its called Spatially shared line configuration.
+			Temporal (Time) Sharing: If users must take turns using the link , then its called Temporally shared or Time Shared Line configuration.
+
+
+=================
+Transmission Mode
+=================
+Transmission mode means transferring of data between two devices. It is also known as communication mode.
+Buses and networks are designed to allow communication to occur between individual devices that are interconnected.
+
+There are three types of transmission mode:-
+	Simplex Mode
+		In Simplex mode, the communication is unidirectional, as on a one-way street.
+		Only one of the two devices on a link can transmit, the other can only receive.
+		The simplex mode can use the entire capacity of the channel to send data in one direction.
+
+	Half-Duplex Mode
+		In half-duplex mode, each station can both transmit and receive, but not at the same time.
+		When one device is sending, the other can only receive, and vice versa.
+		The half-duplex mode is used in cases where there is no need for communication in both direction at the same time.
+		The entire capacity of the channel can be utilized for each direction.
+
+	Full-Duplex Mode
+		In full-duplex mode, both stations can transmit and receive simultaneously.
+		Here signals going in one direction share the capacity of the link with signals going in other direction;
+		This sharing can occur in two ways:
+			Either the link must contain two physically separate transmission paths, one for sending and other for receiving.
+			Or the capacity is divided between signals travelling in both directions.
+		Full-duplex mode is used when communication in both direction is required all the time.
+		The capacity of the channel, however must be divided between the two directions.
+
+
+===========================
+Types of Transmission Media
+===========================
+In data communication terminology, a transmission medium is a physical path between the transmitter and the receiver.
+
+Transmission Media
+	|--> Guided Media
+	|		|--> Twisted Pair Cable
+	|		|--> Coaxial Cable
+	|		|--> Optical Fibre Cable
+	|
+	|--> Unguided Media
+	|		|--> Radiowaves
+	|		|--> Microwaves
+	|		|--> Infrared
+	|
+
+Guided Media has high speed, is secure and is mainly used for comparatively short distances.
+
+
+UNICAST: 	This type of information transfer is useful when there is a participation of single sender and single recipient.
+			So, in short we can term it as a one-to-one transmission.
+
+BROADCAST:	Broadcasting transfer (one-to-all) techniques can be classified into two types.
+			Limited Broadcasting and Direct Broadcasting
+			This mode is mainly utilized by television networks for video and audio distribution.
+			One important protocol of this class in Computer Networks is Address Resolution Protocol (ARP) that is used for resolving IP address.
+
+MULTICAST:	In multicasting, one/more senders and one/more recipients participate in data transfer traffic.
+			In this method traffic recline between the boundaries of unicast (one-to-one) and broadcast (one-to-all).
+			Multicast lets server’s direct single copies of data streams that are then simulated and routed to hosts that request it.
+			IP multicast requires support of some other protocols like IGMP, Multicast routing for its working.
+			Also in Classful IP addressing Class D is reserved for multicast groups.
+
+
+======================================================================================================
+Carrier Sense Multiple Access/Collision Detection && Carrier Sense Multiple Access/Collision Avoidance
+======================================================================================================
+CSMA is a MAC protocol that is used to control the flow of data in a transmission media so that packets do not get lost and data integrity is maintained.
+There are two modifications to CSMA, the CSMA CD (Collision Detection) and CSMA CA (Collision Avoidance), each having its own strengths.
+
+CSMA operates by sensing the state of the medium in order to prevent or recover from a collision.
+A collision happens when two transmitters transmit at the same time.
+The data gets scrambled, and the receivers would not be able to discern one from the other thereby causing the information to get lost.
+The lost information needs to be resent so that the receiver will get it.
+
+CSMA/CD operates by detecting the occurrence of a collision.
+Once a collision is detected, CSMA CD immediately terminates the transmission so that the transmitter does not have to waste a lot of time in continuing.
+The last information can be retransmitted. In comparison, CSMA/CA does not deal with the recovery after a collision.
+What it does is to check whether the medium is in use. If it is busy, then the transmitter waits until it is idle before it starts transmitting. 
+This effectively minimizes the possibility of collisions and makes more efficient use of the medium.
+
+Another difference between CSMA/CD and CSMA/CA is where they are typically used.
+CSMA/CD is used mostly in wired installations because it is possible to detect whether a collision has occurred.
+With wireless installations, it is not possible for the transmitter to detect whether a collision has occurred or not.
+That is why wireless installations often use CSMA/CA instead of CSMA/CD.
+
+CSMA/CD is effective after a collision.	
+CSMA/CD is used in wired networks.
+CSMA/CD only reduces the recovery time.
+CSMA/CD resend the data frame whenever a conflict occurs.
+CSMA/CD is used in 802.3 standard.
+
+CSMA/CA is effective before a collision.
+CSMA/CA is commonly used in wireless networks.
+CSMA/CA minimizes the possibility of collision.
+CSMA/CA will first transmit the intent to send for data transmission.
+CSMA/CA is used in 802.11 standard.
+
+
+=================
+WiFi v/s Ethernet
+=================
+Wifi is a networking technology that allows mobile devices to make wireless connection.
+Wifi is defined under IEEE 802.11x standards where x stands for various WiFi versions.
+Wi-Fi means no wires and no wires mean no ports.
+Wifi offers mobility and flexibility but offers latency in speed and less efficient in comparison.
+Data encryption is required in Wifi.
+
+Ethernet is a standard communication protocol used in wired local area network.
+Ethernet is the second name given to thePrevalent Packet Switched LAN technology.
+Ethernet requires lots of cabling so there is no mobility.
+Ethernet offers faster data transfer speeds and more efficient
+Data flow is not require to be encrypted over Ethernet
+

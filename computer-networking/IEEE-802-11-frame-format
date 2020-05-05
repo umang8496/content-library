@@ -1,0 +1,82 @@
+
+============
+INTRODUCTION
+============
+IEEE 802.11 is part of the IEEE 802 set of LAN protocols, and specifies the set of MAC and PHY protocols for implementing WLAN Wi-Fi computer communication in various frequencies, including but not limited to 2.4 GHz, 5 GHz, and 60 GHz frequency bands.
+
+They are the world's most widely used wireless computer networking standards, used in most home and office networks to allow laptops, printers, and smartphones to talk to each other and access the Internet without connecting wires.
+They are created and maintained by the IEEE LAN/MAN Standards Committee (IEEE 802).
+The standard and amendments provide the basis for wireless network products using the Wi-Fi brand.
+While each amendment is officially revoked when it is incorporated in the latest version of the standard, the corporate world tends to market to the revisions because they concisely denote capabilities of their products.
+As a result, in the marketplace, each revision tends to become its own standard.
+
+The protocols are typically used in conjunction with IEEE 802.2, and are designed to interwork seamlessly with Ethernet, and are very often used to carry Internet Protocol traffic.
+
+The 802.11 family consists of a series of half-duplex over-the-air modulation techniques that use the same basic protocol.
+The 802.11 protocol family employs CSMA/CA whereby equipment listens to a channel for other users, including non 802.11 users before transmitting each packet.
+
+Although the IEEE 802.11 frame shares a lot with the Ethernet frame, which is one reason some packet sniffers can parse wireless frames as if they were Ethernet, there are a number of unique fields in 802.11.
+
+
+Overview of WLAN Frame
+----------------------
+WLAN doesn't use 802.3 Ethernet frames.
+There are three different types of WLAN frame named Control, Management and Data frame.
+Max Frame size is 2346 bytes and they are typically fragmented at 1516 bytes.
+Preamble is always sent at 1 Mbps.
+
+802.11 framing is much more involved because the wireless medium requires several management features and corresponding frame types not found in wired networks.
+
+FRAME:	organized collection of preponed and appended bits/bytes
+TRACE:	multiple frames/packets from a session
+
+WI-FI mainly works on layer 1 and layer 2 of the OSI model.
+
+The IEEE 802.11 MAC accepts MSDUs (MAC Service Data Unit) from higher layers in the protocol stack for the purpose of reliably sending those MSDUs to the equivalent layer of the protocol stack in another station.
+
+MAC adds information to the MSDU in the form of headers & trailers to create an MPDU (MAC Protocol Data Unit).
+
+
+802.11 Frame Format
+-------------------
+	Preamble
+	PLCP Header
+	MPDU (MAC PDU):	34 to 2346 bytes
+		Frame Control:	2 bytes
+			Protocol Version:	2 bits
+			Type:				2 bits
+			SubType:			4 bits
+			To DS:				1 bits
+			From DS:			1 bits
+			More Flag:			1 bits
+			Retry:				1 bits
+			PowerMgt:			1 bits
+			More Data:			1 bits
+			WEP:				1 bits
+			RSVD:				1 bits
+		Duration ID:	2 bytes
+		Addr1:			6 bytes
+		Addr2:			6 bytes
+		Addr3:			6 bytes
+		SequenceControl 2 bytes
+		Addr4:			6 bytes
+		Frame Body		0-2312 bytes
+		FCS				4 bytes
+
+Protocol Version is zero for 802.11 standard
+Type = Frame Type (Data, Mgmt or Control)
+ToDS:	When bit is set, it indicates that destination frame is for DS
+FromDS:	When bit is set, it indicates frame coming from DS
+WEP:	When set indicates that in the Frame Body field there are datas need to processed by WEP algorithm
+
+
+IEEE 802.3 Frame Format v/s IEEE 802.11 Frame Format
+----------------------------------------------------
+One of the differences between 802.3 Ethernet and 802.11 wireless frames is the frame size.
+802.3 frames have a maximum size of 1,518 bytes with a maximum data payload of 1,500 bytes
+802.11 frames are capable of transporting frames with an MSDU payload of 2,304 bytes of upper layer data.
+MAC addressing used by 802.11 frames is much more complex than Ethernet frames.
+802.3 frames have only a source address (SA) and destination address (DA) in the layer 2 header.
+802.11 frames have up to four address fields in the MAC header.
+802.11 frames typically use only three of the MAC address fields (4 in WDS environment).
+

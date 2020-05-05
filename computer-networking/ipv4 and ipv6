@@ -1,0 +1,659 @@
+
+=============
+IPv4 and IPv6
+=============
+There are two standards for IP addresses: IP Version 4 (IPv4) and IP Version 6 (IPv6).
+All computers with IP addresses have an IPv4 address, and many are starting to use the new IPv6 address system as well.
+
+Here's what these two address types mean:
+	IPv4 uses 32 binary bits to create a single unique address on the network.
+	An IPv4 address is expressed by four numbers separated by dots.
+	Each number is the decimal representation for an eight-digit binary number, also called an octet. For example: 216.27.61.137
+
+	IPv6 uses 128 binary bits to create a single unique address on the network.
+	An IPv6 address is expressed by eight groups of hexadecimal numbers separated by colons, as in 2001:cdba:0000:0000:0000:0000:3257:9652.
+	Groups of numbers that contain all zeros are often omitted to save space leaving a colon separator to mark the gap (2001:cdba::3257:9652).
+
+At the dawn of IPv4 addressing, the Internet was not the large commercial sensation as it is today, and most networks were private and closed off from other networks around the world.
+When the Internet exploded, having only 32 bits to identify a unique Internet address caused people to panic that we'd run out of IP addresses.
+Under IPv4, there are 232 possible combinations, which offers just under 4.3 billion unique addresses.
+IPv6 raised that to a panic-relieving 2128 possible addresses.
+
+How does our computers get its IP address ?
+-------------------------------------------
+An IP address can be either dynamic or static.
+A static address is one that we configure manually by editing our computer's network settings.
+This type of address is rare, and it can create network issues if we use it without a good understanding of TCP/IP.
+Dynamic addresses are the most common. They're assigned by the Dynamic Host Configuration Protocol (DHCP), a service running on the network.
+DHCP typically runs on network hardware such as routers or dedicated DHCP servers.
+
+Dynamic IP addresses are issued using a leasing system, meaning that the IP address is only active for a limited time.
+If the lease expires, the computer will automatically request a new lease.
+Sometimes, this means the computer will get a new IP address, too, especially if the computer was unplugged from the network between leases.
+This process is usually transparent to the user unless the computer warns about an IP address conflict on the network.
+An address conflict is rare, and today's technology typically fixes the problem automatically.
+
+We know that IPv4 addresses represent four eight-digit binary numbers.
+That means that each number could be 00000000 to 11111111 in binary, or 0 to 255 in decimal. In other words, 0.0.0.0 to 255.255.255.255.
+However, some numbers in that range are reserved for specific purposes on TCP/IP networks.
+These reservations are recognized by the authority on TCP/IP addressing, the Internet Assigned Numbers Authority (IANA).
+
+Four specific reservations include the following:
+0.0.0.0
+	This represents the default network, which is the abstract concept of just being connected to a TCP/IP network.
+255.255.255.255
+	This address is reserved for network local broadcasts, or messages that should go to all computers on the network.
+127.0.0.1
+	This is called the loopback address, meaning the computer's way of identifying itself, whether or not it has a signed IP address.
+169.254.0.1 to 169.254.255.254
+	This is the Automatic Private IP Addressing (APIPA) range of addresses assigned automatically when a computer is failed to get an address from a DHCP server. Also known as Link-Local Address.
+
+The other IP address reservations are for subnet classes.
+A subnet is a smaller network of computers connected to a larger network through a router.
+The subnet can have its own address system so computers on the same subnet can communicate quickly without sending data across the larger network.
+A router on a TCP/IP network, including the Internet, is configured to recognize one or more subnets and route network traffic appropriately.
+
+IPv4 is the fourth revision of the IP and a widely used protocol in data communication over different kinds of networks.
+IPv4 is a connectionless protocol used in packet-switched layer networks, such as Ethernet.
+It provides the logical connection between network devices by providing identification for each device.
+There are many ways to configure IPv4 with all kinds of devices – including manual and automatic configurations – depending on the network type.
+
+IPv6 is an IP used for carrying data in packets from a source to a destination over various networks.
+IPv6 is the enhanced version of IPv4 and can support very large numbers of nodes as compared to IPv4.
+It allows for 2128 possible node, or address, combinations.
+IPv6 is also known as Internet Protocol Next Generation (IPng).
+
+
+===============
+IPv4 SUBNETTING
+===============
+The process of taking an extensive network and splitting into smaller networks is known as subnetting.
+It’s freeing up more public IPv4 addresses.
+
+Subnet
+	A portion of a network that shares a particular subnet address.
+Subnet mask
+	A 32-bit combination used to describe which portion of an address refers to the subnet and which part refers to the host.
+Interface
+	A network connection.
+
+An IP address is an address used in order to uniquely identify a device on an IP network.
+The address is made up of 32 binary bits, which can be divisible into a network portion and host portion with the help of a subnet mask.
+The 32 binary bits are broken into four octets. Each octet is converted to decimal and separated by a period.
+These octets are broken down to provide an addressing scheme that can accommodate large and small networks.
+
+There are five different classes of networks, A to E (Classful Ranges).
+	class A 	0.0.0.0 – 127.255.255.255
+	class B 	128.0.0.0 – 191.255.255.255
+	class C 	192.0.0.0 – 223.255.255.255
+	class D 	224.0.0.0 – 239.255.255.255
+	class E 	240.0.0.0 – 255.255.255.255
+
+Reserved Ranges (not to be used by the hosts on internet)
+	RFC 1918	10.0.0.0 - 10.255.255.255
+	Localhost	127.0.0.0 - 127.255.255.255
+	RFC 1918	172.16.0.0 - 172.31.255.255
+	RFC 1918	192.168.0.0 - 192.168.255.255
+
+Classless Inter-Domain Routing (CIDR) was developed to provide more granularity than legacy classful addressing; CIDR notation is expressed as /XX.
+Variable-Length Subnet Masks (VLSM) are an arbitrary length between 0 and 32 bits; CIDR relies on VLSMs to define routes.
+
+Also note that the terms "Class A, Class B" and so on are used to help facilitate the understanding of IP addressing and subnetting.
+These terms are rarely used in the industry anymore because of the introduction of classless interdomain routing (CIDR).
+
+Any given IP address consists of two parts: Network-ID and Host-ID.
+Given an IP address, its class can be determined from the three high-order bits (the three left-most bits in the first octet).
+
+Class A address
+	here the first bit of the first octet is always 0.
+	we are left with 128 combinations only.
+	out of which 0 is the default network and 127 is the loopback address.
+	so the usable addresses are only 126.
+	here first octet is the network and next 3 octets are the hosts.
+	default broadcast address: 255.0.0.0
+
+Class B address
+	here the first and second bits of the first octet is always 1 and 0.
+	we are left with 128 to 191 (64 addresses).
+	here first 2 octets is the network and next 2 octets are the hosts.
+	default broadcast address: 255.255.0.0
+
+Class C address
+	it starts with 1 1 and 0 in the first octet.
+	with range from 192 to 223
+	first 3 octets are network and last octet is host.
+	default broadcast address: 255.255.255.0
+
+Class D address
+	it starts with 1110 in the first octet.
+	ranging from 224 to 239
+
+Class E address
+	it starts with 1111 in the first octet and this is reserved.
+	they are used in broadcast.
+	ranging from 240 to 255 in the first octet.
+
+Class A, Class B and Class C are used for unicast; whereas Class D is used for multicast and Class E is for Experimental Purposes.
+
+For getting the network subnet address:		fill the host portion of an address with 0's
+For getting the braodcast address:			fill the host portion of an address with 1's
+For getting the first host address:			fill the host portion of an address with 0's except for the last bit which is set to 1
+For getting the last host address:			fill the host portion of an address with 1's except for the last bit which is set to 0
+
+Number of Subnets using N bits:		2^N
+Number of Hosts   using N bits:		2^N - 2
+
+Example 01
+	For the IP 192.168.1.18/24 or 192.168.1.18 with mask 255.255.255.0
+	Here first three octets are network portion and last octet represents the host portion.
+	subnet address:		192.168.1.0
+	first host address:	192.168.1.1
+	last host address:	192.168.1.254
+	broadcast address:	192.168.1.255
+
+Example 02
+	For the IP 172.16.35.123/20 or 172.16.35.123 with mask 255.255.240.0
+	Here the network and host portions lie somewhere in the third octet
+	binary equivalent of given IP:	172.16.0010|0011.01111011 (partition for netwokID and hostID)
+	subnet address:		172.16.32.0		(172.16.00100000.00000000)
+	first host address:	172.16.32.1		(172.16.00100000.00000001)
+	last host address:	172.16.47.254	(172.16.00101111.11111110)
+	broadcast address:	172.16.47.255	(172.16.00101111.11111111)
+
+Example 03
+	For the IP 172.16.129.1/17 or 172.16.129.1 with mask 255.255.128.0
+	Here the network and host portions lie in the third octet
+	binary equivalent of given IP:	172.16.1|0000001.00000001 (partition for netwokID and hostID)
+	subnet address:		172.16.128.0		(172.16.10000000.00000000)
+	first host address:	172.16.128.1		(172.16.10000000.00000001)
+	last host address:	172.16.255.254		(172.16.11111111.11111110)
+	broadcast address:	172.16.255.255		(172.16.11111111.11111111)
+
+First Host = Subnet + 1
+Last Host  = Broadcast - 1
+
+Subnetting allows us to create multiple logical networks that exist within a single Class A, B, or C network.
+If we do not subnet, we are only able to use one network from your Class A, B, or C network, which is unrealistic.
+
+Each data link on a network must have a unique network ID, with every node on that link being a member of the same network.
+If we break a major network (Class A, B, or C) into smaller subnetworks, it allows us to create a network of interconnecting subnetworks.
+Each data link on this network would then have a unique network/subnetwork ID.
+Any device or gateway, that connects n networks/subnetworks has n distinct IP addresses, one for each network/subnetwork that it interconnects.
+
+For subnetting, extend the natural mask with some of the bits from the host ID portion of the address in order to create a subnetwork ID.
+For example, given a Class C network of 204.17.5.0 which has a natural mask of 255.255.255.0, we can create subnets in this manner:
+
+204.17.5.0 -      11001100.00010001.00000101.00000000
+255.255.255.224 - 11111111.11111111.11111111.11100000
+                  --------------------------|sub|----
+
+By extending the mask to be 255.255.255.224, we have taken three bits (indicated by "sub") from the original host portion of the address and used them to make subnets.
+With these three bits, it is possible to create eight subnets.
+With the remaining five host ID bits, each subnet can have up to 32 host addresses, 30 of which can actually be assigned to a device since host IDs of all zeros or all ones are not allowed.
+So, with this in mind, these subnets have been created.
+	204.17.5.0 255.255.255.224     host address range 1 to 30
+	204.17.5.32 255.255.255.224    host address range 33 to 62
+	204.17.5.64 255.255.255.224    host address range 65 to 94
+	204.17.5.96 255.255.255.224    host address range 97 to 126
+	204.17.5.128 255.255.255.224   host address range 129 to 158
+	204.17.5.160 255.255.255.224   host address range 161 to 190
+	204.17.5.192 255.255.255.224   host address range 193 to 222
+	204.17.5.224 255.255.255.224   host address range 225 to 254
+
+There are two ways to denote these masks.
+First, since we use three bits more than the "natural" Class C mask, we can denote these addresses as having a 3-bit subnet mask. Or,
+Secondly, the mask of 255.255.255.224 can also be denoted as /27 as there are 27 bits that are set in the mask.
+This second method is used with CIDR. With this method, one of these networks can be described with the notation prefix/length.
+For example, 204.17.5.32/27 denotes the network 204.17.5.32 255.255.255.224.
+
+This brings up an interesting point.
+The more host bits we use for a subnet mask, the more subnets we have available.
+However, the more subnets available, the less host addresses available per subnet.
+
+Take a look at how a Class B network might be subnetted.
+If we have network 172.16.0.0 then we know that its natural mask is 255.255.0.0 or 172.16.0.0/16.
+Extending the mask to anything beyond 255.255.0.0 means we are subnetting.
+We can quickly see that we have the ability to create a lot more subnets than with the Class C network.
+If we use a mask of 255.255.248.0 (/21), how many subnets and hosts per subnet does this allow for?
+
+172.16.0.0  -   10101100.00010000.00000000.00000000
+255.255.248.0 - 11111111.11111111.11111000.00000000
+                -----------------| sub |-----------
+
+We use five bits from the original host bits for subnets. This allows us to have 32 subnets (25).
+After using the five bits for subnetting, we are left with 11 bits for host addresses.
+This allows each subnet so have 2048 host addresses (211), 2046 of which could be assigned to devices.
+
+Example 01
+	Now that we have an understanding of subnetting, put this knowledge to use.
+	Here we are given two address/mask combinations, which have been assigned to two devices.
+	Our task is to determine if these devices are on the same subnet or different subnets.
+	We can use the address and mask of each device in order to determine to which subnet each address belongs.
+		DeviceA: 172.16.17.30/20
+		DeviceB: 172.16.28.15/20
+
+	Determine the Subnet for DeviceA:
+		172.16.17.30  -   10101100.00010000.00010001.00011110
+		255.255.240.0 -   11111111.11111111.11110000.00000000
+		                  -----------------| sub|------------
+		subnet =          10101100.00010000.00010000.00000000 = 172.16.16.0
+
+	Determine the Subnet for DeviceB:
+		172.16.28.15  -   10101100.00010000.00011100.00001111
+		255.255.240.0 -   11111111.11111111.11110000.00000000
+		                  -----------------| sub|------------
+		subnet =          10101100.00010000.00010000.00000000 = 172.16.16.0
+From these determinations, DeviceA and DeviceB have addresses that are part of the same subnet.
+
+Example 02
+	Given the Class C network of 204.15.5.0/24, create 5 different subnets having different number of hosts.
+	We can start by looking at the subnet requirement.
+	In order to create the five needed subnets we would need to use three bits from the Class C host bits.
+	Two bits would only allow we four subnets (22).
+	Since we need three subnet bits, that leaves we with five bits for the host portion of the address.
+	How many hosts does this support ? 25 = 32 (30 usable). This meets the requirement.
+
+	Therefore we have determined that it is possible to create this network with a Class C network.
+	An example of how you might assign the subnetworks is:
+		netA: 204.15.5.0/27      host address range 1 to 30
+		netB: 204.15.5.32/27     host address range 33 to 62
+		netC: 204.15.5.64/27     host address range 65 to 94
+		netD: 204.15.5.96/27     host address range 97 to 126
+		netE: 204.15.5.128/27    host address range 129 to 158
+
+Variable Length Subnet Masks (VLSM) allows us to use different masks for each subnet, thereby using address space efficiently.
+VLSM is a technique that allows administrators to divide an IP address space into subnets of different sizes, unlike simple same-size Subnetting.
+Variable Length Subnet Mask (VLSM) in a way, means subnetting a subnet.
+
+Example 03
+	Given the same network (204.15.5.0/24) and requirements as in last example, develop a subnetting scheme with the use of VLSM, given:
+		netA: must support 14 hosts
+		netB: must support 28 hosts
+		netC: must support 2 hosts
+		netD: must support 7 hosts
+		netE: must support 28 host
+	Determine what mask allows the required number of hosts.
+		netA: requires a /28 (255.255.255.240) mask to support 14 hosts
+		netB: requires a /27 (255.255.255.224) mask to support 28 hosts
+		netC: requires a /30 (255.255.255.252) mask to support 2 hosts
+		netD: requires a /28 (255.255.255.240) mask to support 7 hosts
+		netE: requires a /27 (255.255.255.224) mask to support 28 hosts
+
+CIDR was introduced in order to improve both address space utilization and routing scalability in the Internet.
+It was needed because of the rapid growth of the Internet and growth of the IP routing tables held in the Internet routers.
+
+
+===========================
+Requirements for Subnetting
+===========================
+In early network implementations, it was common for organizations to have all computers and other networked devices connected to a single IP network.
+All devices in the organization were assigned an IP address with a matching network ID.
+This type of configuration is known as a flat network design.
+In a small network, with a limited number of devices, a flat network design is not problematic.
+However, as the network grows, this type of configuration can create major issues.
+
+Consider how on an Ethernet LAN, devices use broadcasts to locate needed services and devices.
+Recall that a broadcast is sent to all hosts on an IP network.
+The DHCP is an example of a network service that depends on broadcasts.
+Devices send broadcasts across the network to locate the DHCP server.
+On a large network, this could create a significant amount of traffic slowing network operations.
+Additionally, because a broadcast is addressed to all devices, all devices must accept and process the traffic, resulting in increased device processing requirements.
+If a device must process a significant amount of broadcasts, it could even slow device operations.
+For such reasons, larger networks must be segmented into smaller sub-networks, keeping them localized to smaller groups of devices and services.
+
+The process of segmenting a network, by dividing it into multiple smaller network spaces, is called subnetting.
+These sub-networks are called subnets.
+Network Administrators can group devices and services into subnets that are determined by geographic location, by organizational unit, by device type, or any other division that makes sense for the network.
+Subnetting can reduce overall network traffic and improve network performance.
+
+Note: A subnet is equivalent to a network and these terms can be used interchangeably. Most networks are a subnet of some larger address block.
+
+A router is necessary for devices on different networks to communicate.
+Devices on a network use the router interface attached to their LAN as their default gateway.
+Traffic that is destined for a device on a remote network will be processed by the router and forwarded toward the destination.
+To determine if traffic is local or remote, the router uses the subnet mask.
+
+In a subnetted network space, this works exactly the same way.
+Subnetting creates multiple logical networks from a single address block or network address.
+Each subnet is treated as a separate network space.
+Devices on the same subnet must use an address, subnet mask, and default gateway that correlates to the subnet that they are a part of.
+
+Traffic cannot be forwarded between subnets without the use of a router.
+Every interface on the router must have an IPv4 host address that belongs to the network or subnet to which the router interface is connected.
+
+Planning network subnets requires examination of both the needs of an organization’s network usage, and how the subnets will be structured.
+Doing a network requirement study is the starting point.
+This means looking at the entire network and determining the main sections of the network and how they will be segmented.
+The address plan includes deciding the needs for each subnet in terms of size, how many hosts per subnet, how host addresses will be assigned, which hosts will require static IP addresses and which hosts can use DHCP for obtaining their addressing information.
+The size of the subnet involves planning the number of hosts that will require IP host addresses in each subnet of the subdivided private network.
+
+For example in a campus network design we might consider how many hosts are needed in the Administrative LAN, how many in the Faculty LAN and how many in the Student LAN.
+In a home network, a consideration might be done by the number of hosts in the Main House LAN and the number of hosts in the Home Office LAN.
+
+
+====================
+PRIVATE IP ADDRESSES
+====================
+All IPv4 IP addresses can be divided into two major groups:
+	global or public or external: this group can also be called 'WAN addresses', they that are used in the Internet;
+	private or local or internal: those that are used in the local network (LAN);
+
+According to standards set forth in IETF document RFC-1918, the following IPv4 address ranges are reserved by the IANA for private internets, and are not publicly routable on the global internet:
+
+	10.0.0.0/8 IP addresses: 		10.0.0.0 – 10.255.255.255
+	172.16.0.0/12 IP addresses: 	172.16.0.0 – 172.31.255.255
+	192.168.0.0/16 IP addresses: 	192.168.0.0 – 192.168.255.255
+
+Note that only a portion of the “172” and the “192” address ranges are designated for private use.
+The remaining addresses are considered “public,” and thus are routable on the global Internet.
+
+The original design of the Internet specified that every host on every network should have a real routable IP address.
+An organization that wanted to access the Internet would complete some paperwork, describing its internal network and the number of hosts on it.
+The organization would then receive a number of IP addresses, according to its needs.
+But there was one huge problem with this concept, if every host on every network in the world was required to have an unique IP address, we would have run out of IP addresses to hand out a long time ago;
+
+The concept of private IP addressing was developed to address the IP address exhaustion problem.
+The private IP addresses can be used on the private network of any organization in the world and are not globally unique.
+Routers are configured to discard any packets coming from the private IP address ranges, so these addresses are not routable on the Internet.
+
+Since private IP addresses are not globally unique, multiple organizations can use private IP addresses from the same range.
+To access the Internet, the organizations can use a technology called Network Address Translation (NAT).
+
+For home users, the provider can provide only one or more public IP addresses (as a rule, it is a paid service).
+
+The NAT-enabled IPv4 router allows that home network devices will be using one and the same public IP-address that the system has got from a provider on the WAN-interface of the device for the connection to the Internet.
+It is this external public IP address which can be used to access the home network computer from the Internet as well, but for this purpose it is necessary to set up Port forwarding on the router.
+
+Due to the limited number of public IP addresses and the increasing number of Internet users, ISPs are now more common to use private IP addresses assigned to subscribers.
+
+Private IP addresses are not routed on the Internet and no traffic can be sent to them from the Internet.
+They only supposed to work within the local network.
+These addresses are intended for use in closed local area networks and the allocation of such addresses is not globally controlled by anyone.
+Direct access to the Internet using a private IP address is not possible.
+In this case, the connection to the Internet is via NAT (network address translation replaces the private IP address with a public one).
+Private IP addresses within the same local network must be unique and cannot be repeated.
+
+As far as Internet security is concerned,
+	the use of a private IP address is more secure than the use of a public IP address, 
+	as private IP addresses are not directly visible on the Internet and are behind NAT, 
+	which also ensures the security of the home network;
+
+When using a public IP address, measures are required to provide additional security for the computer or server that are exposing their services to the Internet.
+
+
+=================================
+Network Address Translation (NAT)
+=================================
+For a computer to communicate with other computers and Web servers on the Internet, it must have an IP address.
+An IP address is a unique 32-bit number that identifies the location of your computer on a network.
+Basically, it works like the street address, as a way to find out exactly where somebody is and deliver information to that person.
+
+With the explosion of the Internet and the increase in home networks and business networks, the number of available IP addresses is simply not enough.
+The obvious solution is to redesign the address format to allow for more possible addresses.
+
+­This is where NAT (RFC 1631) comes to the rescue.
+NAT allows a single device, such as a router, to act as an agent between the Internet or public network and a local or private network.
+This means that only a single, unique IP address is required to represent an entire group of computers.
+But the shortage of IP addresses is only one reason to use NAT.
+NAT is like the receptionist in a large office.
+
+To access the Internet, one public IP address is needed, but we can use a private IP address in our private network.
+The idea of NAT is to allow multiple devices to access the Internet through a single public address.
+To achieve this, the translation of private IP address to a public IP address is required.
+NAT is a process whereby one or more local IP address is translated into one or more Global IP address and vice versa in order to provide Internet access to the local hosts.
+Also, it does the translation of port numbers, masks the port number of the host with another port number, in the packet that will be routed to the destination.
+It then makes the corresponding entries of IP address and port number in the NAT table. NAT generally operates on router or firewall.
+
+As part of this capability, NAT can be configured to advertise only one address for the entire network to the outside world.
+This provides additional security by effectively hiding the entire internal network behind that address.
+NAT offers the dual functions of security and address conservation and is typically implemented in remote-access environments.
+
+Basically, NAT allows a single device, such as a router, to act as an agent between the Internet and a local network, which means that only a single unique IP address is required to represent an entire group of computers to anything outside their network.
+
+In order to configure traditional NAT, we need to make at least one interface on a router (NAT outside) and another interface on the router (NAT inside) and a set of rules for translating the IP addresses in the packet headers (and payloads if desired) need to be configured.
+
+Common types of NAT include:
+	Static NAT:		Used by businesses to connect Web servers to the Internet.
+	Dynamic NAT:	Larger businesses use this type of NAT because it can operate with a pool of public addresses.
+	PAT:  			Most home networks using Digital Subscriber Line (DSL) or cable modems use this type of NAT; (Port Address Translation)
+
+NAT has several benefits, one of which is its ability to hide the IP address and network design of the internal network.
+The ability to hide the internal network from the Internet reduces the risk of intruders gleaning information about the network and exploiting that information to gain access.
+NAT enables internal clients to use nonroutable IP addresses, but still enables them to access Internet resources.
+
+The three ranges of IP addresses RFC 1918 reserved includes:
+	10.0.0.0/8 IP addresses: 		10.0.0.0 – 10.255.255.255
+	172.16.0.0/12 IP addresses: 	172.16.0.0 – 172.31.255.255
+	192.168.0.0/16 IP addresses: 	192.168.0.0 – 192.168.255.255
+
+The IP NAT protocol is a router protocol that allows nodes on a private network to transparently communicate with nodes on an external network and vice versa.
+Nodes on a private network have not been assigned a globally unique IP address; therefore, communication with the external network would otherwise be impossible.
+This transparent communication is accomplished by modifying the IP and protocol-specific headers of packets flowing to and from the private network.
+NAT solves three common problems with growing networks:
+	shortage of globally unique IP addresses
+	firewall-like protection for the private network, and 
+	flexibility of network administration
+
+There are a variety of flavors of NAT. Basic NAT maps an IP address on the private network to a globally unique IP address.
+It performs translation on only the IP address and requires the NAT router to have a pool of globally unique IP addresses, which can be mapped.
+Basic NAT also limits the number of nodes on the private network that can communicate with the external network to the number of globally unique IP addresses that are available.
+This means that in order for five nodes on the private network to communicate with the external network at the same time, there must be five globally unique IP addresses available for translation.
+While these five addresses are in use, no other nodes on the private network can communicate with the external network.
+
+NAPT (Network Address Port Translator) solves some of the problems with basic NAT and does a much better job of solving the problem of a shortage of globally unique IP addresses by allowing all nodes on a private network to communicate with the external network by sharing a single globally unique external IP address.
+This is advantageous for homes and businesses with limited globally unique IP addresses, because all users can access the external network simultaneously.
+NAPT accomplishes this by replacing, within the protocol headers, the IP address and TCP/UDP port number of the private node with the globally unique external IP address and TCP/UDP port number.
+In other words, NAPT performs translation on the UDP/TCP port numbers as well as on the IP address.
+With NAPT, the theoretical limit is up to 64,000 simultaneous sessions (address/port combinations) at a time.
+NAPT is also known as IP masquerading.
+
+Bidirectional NAT enables connections to be initiated from hosts on the external network as well as the private network.
+Specific ports on the NAT router are mapped to services on a private node or server via a portmap service.
+The NAT router relays all matching requests from the external network to the specific private server.
+This enables servers on the private network to be accessible to nodes on the external network.
+For example, an FTP client on the external network could establish a connection with an FTP server on the private network.
+Without bidirectional NAT support, all connections have to be initiated from nodes on the private network.
+
+
+===============
+DEFAULT GATEWAY
+===============
+A default gateway serves as an access point or IP router that a networked computer uses to send information to a computer in another network or the internet.
+Default simply means that this gateway is used by default, unless an application specifies another gateway.
+The default server does not even need to be a router;
+It may be a computer with two network adapters, where one is connected to the local subnet and the other is connected to an outside network.
+
+A default gateway allows computers on a network to communicate with computers on another network.
+Without it, the network is isolated from the outside.
+Basically, computers send data that is bound for other networks (one that does not belong to its local IP range) through the default gateway.
+
+A default gateway is a hardware node that facilitates smooth connections between networks.
+Its primary use is to serve as an access point for outbound connections to other networks, essentially allowing one computer to communicate with another computer on a different network.
+
+Default gateway simply refers to the fact that this particular node will be used by default unless a different route is specified in a request. 
+Perhaps the most common request is when a computer seeks to access a webpage, which is sent through the default gateway before being sent to the internet.
+However, it can also be used to connect devices on one subnet with devices on another - the gateway acting as an intermediary.
+
+Default gateways are essentially routing systems tasked with making sure the request is sent to the right destination, even if the sender and receiver use different network protocols.
+
+The device trying to send a request is known as the 'originating device'.
+As part of that process, the device will fire off an access request using a routing table, this calculates the most efficient route to send the request, and which router it should go through.
+If no specific router is identified, the request will instead go through the default gateway, ensuring data can still flow.
+
+In the case of smaller networks, such as one in a home, the default gateway will generally be the main router.
+However, as networks increase in size, or in those cases where multiple networks may be operating concurrently, a system of subnets will be used alongside a specific default gateway.
+
+When a host wants to reach a destination that is outside of its own network, it has to use a default gateway.
+We use a router or multilayer switch (that’s a switch that can do routing) as a default gateway.
+
+When one host wants to send something to another host then it will check if the destination is inside or outside its own network.
+When the destination is in the same network then it will use ARP to find the MAC address of the destination and it can send the IP packet
+
+
+==========================
+DIRECTED BROADCAST ADDRESS
+==========================
+A broadcast is a data packet destined for all hosts on a particular physical network. Network hosts recognize broadcasts by special addresses.
+
+Broadcasting in a computer network is transmitting a message which does not require a response to all users of the network.
+One computer in a network sends a data packet to all other users at the same time.
+The sender does not need to indicate recipient addresses, this is how the broadcast process differs from unicast, where only a single known recipient is addressed.
+The general advantage of broadcasting is that information can be distributed without having to be transmitted multiple times.
+
+A special address is required to carry out the procedure, which replaces the recipient addresses in question.
+This broadcast IP is of particular use if the addresses of the individual network users are not known.
+
+The sender initiates the broadcast connection and provides the address at which the recipients can contact them.
+A broadcast works in a similar way to a mailing list: the recipients are not visible to each other and the sender has no way of knowing the addresses of the network users.
+Only if the users contact the sender one-to-one do they disclose their own address.
+
+A broadcast is a multipoint connection in a computer network.
+A data packet is transmitted from one point to all users of a messaging network in this way.
+This occurs with the use of the broadcast address.
+
+Addressing is used to transmit data for communication in a network via the IP, from one system to another.
+The IP address enables the clear forwarding and sending of data packets from the source to the destination.
+The division occurs with the help of the subnet mask, which is placed over the IP address like a template.
+A subnet mask is the same length as an IPv4 address.
+It describes which bit positions work inside the IP address as the network part or host part.
+
+The IPv4 defines an IP address as a 32-bit number.
+Due to the increasing need for and using up of available IPv4 addresses, a new IPv6 with 128 bits for the IP address was developed in 1995.
+In July 2017, a final definition of the protocol was published. The IPv6 application has been running since the middle of the 2000s.
+
+A broadcast packet is sent to all users of a local network at once.
+They do not have to be explicitly named as recipients. The users of a network can open the data packets and then interpret the information, carry out the instructions or discard it.
+
+It is used by hosts to all the devices on a specific subnet.
+The entire host portion is populated with binary 1s.
+For example, for an IP 172.31.0.0 the broadcast address would be 172.31.255.255
+Routers can route directed broadcast but by default it is disabled.
+
+
+====================================================
+Denial of Service Attacks through Directed Broadcast
+====================================================
+A DOS or DDOS is an attack in which unauthorized users exhaust the computer system resources thereby preventing access by authorized users.
+Most common method of DOS attack involves overloading the target system with too many requests for resources, such that it cannot respond to legitimate requests.
+
+Following are the different types of DOS attacks and how to prevent them in your environment:
+Ping Flood Attack
+	It relies on ICMP echo ping command which is normally used for testing network connectivity.
+	In this attack ping is used to flood large amounts of data packets to the victim’s computer to try to overload the system.
+	Simply block the IP Address from accessing the network.
+
+Ping Of Death
+	If we send a packet larger than 65,535 bytes, which is the maximum size of a packet, this could crash our operating system.
+	All OS as of today are unaffected by this attack.
+	If we are running a network with outdated devices, consider upgrading these devices.
+
+Smurf Attack
+	Here the attacker spoofs the IP Address of the victim computer and sends a large amount of ICMP Ping broadcast traffic to the network address.
+	The ICMP echo reply’s coming back to the victim computer will overwhelm the system and make the system unavailable.
+	To prevent this type of attack configure the router to not respond to ping requests send to broadcast addresses and configure the router not to forward packets directed to broadcast addresses.
+
+Fraggle Attack
+	It is similar to Smurf attack except that it uses UDP protocol instead of TCP protocol.
+	This attack is not wildly used compared to Smurf attack.
+	To prevent this attack we might want to consider blocking echo port 7 and port 19 on the firewall.
+
+Syn Flood Attack
+	The SYN flood attack takes advantage of the TCP three-way handshake.
+	Here the attacker sends a TCP SYN packet to the server and when the server responds with a SYN-ACK packet, the attacker system ignores it.
+	Now the server has half-open connections consuming resources.
+	Operating systems of today are designed to fix this issue. If you are running older devices, consider upgrading to newer once.
+
+Denial of Service (DoS) is an attack designed to render a computer or network incapable of providing normal services.
+The most common DoS attacks will target the computer's network bandwidth or connectivity.
+Bandwidth attacks flood the network with such a high volume of traffic, that all available network resources are consumed and legitimate user requests can not get through.
+Connectivity attacks flood a computer with such a high volume of connection requests, that all available operating system resources are consumed, and the computer can no longer process legitimate user requests.
+
+A Distributed Denial of Service (DDoS) attack uses many computers to launch a coordinated DoS attack against one or more targets.
+Using client/server technology, the perpetrator is able to multiply the effectiveness of the Denial of Service significantly by harnessing the resources of multiple unwitting accomplice computers which serve as attack platforms.
+Typically a DDoS master program is installed on one computer using a stolen account.
+The master program, at a designated time, then communicates to any number of "agent" programs, installed on computers anywhere on the internet.
+The agents, when they receive the command, initiate the attack.
+Using client/server technology, the master program can initiate hundreds or even thousands of agent programs within seconds.
+
+A website DDoS is executed by flooding one or more of the site's web servers with so many requests that it becomes unavailable for normal use.
+If an innocent user makes normal page requests during a DDoS attack, the requests may fail completely, or the pages may download so slowly as to make the website unusable.
+DDoS attacks typically take advantage of several computers which simultaneously launch hundreds of thousands of requests at the target website.
+In order not to be traced, the perpetrators will break into unsecured computers on the internet, hide rogue DDoS programs on them, and then use them as unwitting accomplices to anonymously launch the attack.
+
+
+=======================
+LOCAL BROADCAST ADDRESS
+=======================
+This is used to communicate with all devices on the local network.
+The address is populated with all 1s. 255.255.255.255
+This address is used by the host while requesting an IP from the DHCP server.
+This address is always dropped by the layer-3 devices or the routers and switches.
+We can override this functionality by configuring DHCP forwarding or DHCP relay on the routers.
+
+A broadcast address is used by hosts to request IP addresses from the DHCP server.
+The host sends a broadcast to the broadcast address to request for an IP and in turn the DHCP server allocates an IP from the pool of IP addresses.
+By default, local broadcast address is always dropped by routers and layer 3 switches; but one can always override this by configuring the device with DHCP forwarding or DHCP relay.
+
+Local Broadcast Address (255.255.255.255) means that a router will not forward the packet.
+In some cases like DHCP the router will convert it to a unicast packet and forward it.
+Directed Broadcast Addresses have just the host part of the address as all 1s and routers will forward so.
+If We have a subnet 10.10.10.0/24 we can ping from elsewhere in the network 10.10.10.255 and I would get an answer from all hosts.
+However there are a number of attack that exploit and we can configure our routers to not forward directed broadcasts.
+
+
+======================
+LOCAL LOOPBACK ADDRESS
+======================
+The IP address range 127.0.0.0 – 127.255.255.255 is reserved for loopback
+So 127.127.127.127 and 127.1.2.3 are both the loopback addresses.
+And anyone of those addresses can be used to test the TCP/IP stack.
+::1 is the IPv6 loopback address.
+
+Local Loopback Address is used to let a system send a message to itself to make sure that TCP/IP stack is installed correctly on the machine.
+In IPv4, IP addresses that start with decimal 127 or that has 01111111 in the first octet are loopback addresses(127.X.X.X).
+Typically 127.0.0.1 is used as the local loopback address.
+This leads to the wastage of many potential IP addresses.
+But in IPv6 ::1 is used as local loopback address and therefore there isn’t any wastage of addresses.
+
+A loopback address is a type of IP address that is used to test the communication or transportation medium on a local network card and/or for testing network applications.
+Data packets sent on a loopback address are re-routed back to the orginating node without any alteration or modification.
+
+A loopback address is primarily used as a means to validate that the locally connected physical network card is working properly and the TCP/IP stack installed.
+Typically, a data packet sent on a loopback address, never leaves the host system and is sent back to the source application.
+When testing network/IP based applications, it is implemented on a virtual network interface card, which acts an addition to the physical network card.
+This enables users to test an application with an instance of server and client on the same machine, with the ability to transmit network data between, even without access to a physical network.
+In IPv4, 127.0.0.1 is the most commonly used loopback address, however, this can range be extended to 127.255.255.255.
+
+This loopback IP address is managed entirely by and within the operating system.
+Loopback addresses enable the Server and Client processes on a single system to communicate with each other.
+When a process creates a packet with destination address as loopback address the OS loops it back to itself without having any interference of NIC.
+
+Data sent on loopback is forwarded by the operating system to a virtual network interface within operating system.
+This address is mostly used for testing purposes like client-server architecture on a single machine.
+Other than that, if a host machine can successfully ping 127.0.0.1 or any IP from loopback range, implies that the TCP/IP software stack on the machine is successfully loaded and working.
+
+
+=================================================
+Difference between loopback address and localhost
+=================================================
+In computer networking, localhost is a hostname that means this computer.
+It is used to access the network services that are running on the host via the loopback network interface.
+Using the loopback interface bypasses any local network interface hardware.
+
+The local loopback mechanism may be used to run a network service on a host without requiring a physical network interface, or without making the service accessible from the networks the computer may be connected to.
+
+The name localhost normally resolves to the IPv4 loopback address 127.0.0.1, and to the IPv6 loopback address ::1.
+
+IPv4 network standards reserve the entire address block 127.0.0.0/8 (more than 16 million addresses) for loopback purposes.
+That means any packet sent to any of those addresses is looped back.
+The address 127.0.0.1 is the standard address for IPv4 loopback traffic; the rest are not supported by all operating systems.
+However they can be used to set up multiple server applications on the host, all listening on the same port number.
+The IPv6 standard assigns only a single address for loopback: ::1.
+
+
+====================
+LINK-LOCAL ADDRESSES
+====================
+IPv4 Link-Local Addresses RFC3927  169.254.X.X or 169.254.0.0/16
+
+Link local addresses allow machines to automatically have an IP address on a network if they haven't been manually configured or automatically configured by a special server on the network (DHCP).

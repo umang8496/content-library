@@ -1,0 +1,302 @@
+
+================
+OSI Architecture
+================
+OSI stands for Open Systems Interconnection.
+It has been developed by ISO – ‘International Organization of Standardization‘, in the year 1974.
+It is a 7 layer architecture with each layer having specific functionality to perform.
+All these 7 layers work collaboratively to transmit the data from one person to another across the globe.
+
+Layer 1 : Physical Layer
+Layer 2 : Data Link Layer
+Layer 3 : Network Layer
+Layer 4 : Transport Layer
+Layer 5 : Session Layer
+Layer 6 : Presentation Layer
+Layer 7 : Application Layer
+
+--> Physical Layer, Data Link Layer and Network Layer together constitute the Hardware Layer.
+--> Transport Layer is the Heart of the OSI.
+--> Session Layer, Presentation Layer and Application Layer together constitute the Software Layer.
+
+OSI (Open Systems Interconnection) is a reference model for how applications communicate over a network.
+
+A reference model is a conceptual framework for understanding relationships.
+The purpose of the OSI reference model is to guide vendors and developers so the digital communication products and software programs they create can interoperate, and to facilitate a clear framework that describes the functions of a networking or telecommunication system.
+
+Most vendors involved in telecommunications make an attempt to describe their products and services in relation to the OSI model. 
+And although it is useful for guiding discussion and evaluation, OSI is rarely actually implemented as-is.
+That's because few network products or standard tools keep related functions together in well-defined layers, as is the case in the OSI model.
+The TCP/IP protocol suite, which defines the internet, does not map cleanly to the OSI model.
+
+Developed by representatives of major computer and telecommunication companies beginning in 1983, OSI was originally intended to be a detailed specification of actual interfaces.
+Instead, the committee decided to establish a common reference model with which others could then develop detailed interfaces, which, in turn, could become standards governing the transmission of data packets. 
+The OSI architecture was officially adopted as an international standard by the International Organization for Standardization.
+
+The main concept of OSI is that the process of communication between two endpoints in a network can be divided into seven distinct groups of related functions, or layers. Each communicating user or program is on a device that can provide those seven layers of function.
+
+In this architecture, each layer serves the layer above it and, in turn, is served by the layer below it. So, in a given message between users, there will be a flow of data down through the layers in the source computer, across the network, and then up through the layers in the receiving computer.
+
+The main concept of OSI is that the process of communication between two endpoints in a network can be divided into seven distinct groups of related functions, or layers. Each communicating user or program is on a device that can provide those seven layers of function.
+
+In this architecture, each layer serves the layer above it and, in turn, is served by the layer below it. So, in a given message between users, there will be a flow of data down through the layers in the source computer, across the network, and then up through the layers in the receiving computer.
+
+1..	Physical Layer
+------------------
+The lowest layer of the OSI reference model is the physical layer. It contains information in the form of bits.
+It is responsible for the actual physical connection between the devices.
+When receiving data, this layer will get the signal received and convert it into 0s and 1s and send them to the Data Link layer, which will put the frame back together.
+This layer specifies the way in which the different, devices/nodes are arranged in a network i.e. bus, star or mesh topolgy.
+It also defines the way in which the data flows between the two connected devices. The various transmission modes possible are: Simplex, half-duplex and full-duplex.
+Data packets in Physical Layer is called bits.
+
+2.. Data Link Layer
+-------------------
+The data link layer is responsible for the node to node delivery of the message. The main function of this layer is to make sure data transfer is error free from one node to another, over the physical layer. When a packet arrives in a network, it is the responsibility of DLL to transmit it to the Host using its MAC address.
+
+Data Link Layer is divided into two sub layers :
+	Logical Link Control (LLC)
+	Media Access Control (MAC)
+
+Data packet in Data Link layer is referred as Frames.
+Data Link layer is handled by the NIC (Network Interface Card) and device drivers of host machines.
+
+The packet received from Network layer is further divided into frames depending on the frame size of NIC(Network Interface Card).
+DLL also encapsulates Sender and Receiver’s MAC address in the header.
+
+The Receiver’s MAC address is obtained by placing an ARP(Address Resolution Protocol) request onto the wire asking “Who has that IP address?” and the destination host will reply with its MAC address.
+
+The functions of the data Link layer are :
+	Framing
+		It provides a way for a sender to transmit a set of bits that are meaningful to the receiver.
+		This can be accomplished by attaching special bit patterns to the beginning and end of the frame.
+
+	Physical addressing
+		After creating frames, Data link layer adds physical addresses (MAC address) of sender and/or receiver in the header of each frame.
+
+	Error control
+		Data link layer provides the mechanism of error control in which it detects and retransmits damaged or lost frames.
+
+	Flow Control
+		The data rate must be constant on both sides else the data may get corrupted thus , flow control coordinates that amount of data that can be sent before receiving acknowledgement.
+
+	Access control
+		When a single communication channel is shared by multiple devices, MAC sub-layer of data link layer helps to determine which device has control over the channel at a given time.
+
+3.. Network Layer
+-----------------
+Network layer works for the transmission of data from one host to the other located in different networks.
+It also takes care of packet routing i.e. selection of the shortest path to transmit the packet, from the number of routes available.
+The sender & receiver’s IP address are placed in the header by network layer.
+
+The functions of the Network layer are :
+	Routing
+		The network layer protocols determine which route is suitable from source to destination.
+
+	Logical Addressing
+		In order to identify each device on internetwork uniquely, network layer defines an addressing scheme.
+		The sender & receiver’s IP address are placed in the header by network layer.
+		Such an address distinguishes each device uniquely and universally.
+
+Data packets in Network layer is referred as simply packets.
+Network layer is implemented by networking devices such as routers.
+
+4.. Transport Layer
+-------------------
+Transport layer provides services to application layer and takes services from network layer.
+The data in the transport layer is referred to as Segments. It is responsible for the End to End delivery of the complete message.
+Transport layer also provides the acknowledgment of the successful data transmission and re-transmits the data if an error is found.
+
+At sender’s side
+	Transport layer receives the formatted data from the upper layers, performs Segmentation and also implements Flow & Error control to ensure proper data transmission.
+	It also adds Source and Destination port number in its header and forwards the segmented data to the Network Layer.
+
+The sender need to know the port number associated with the receiver’s application.
+Generally, this destination port number is configured, either by default or manually.
+For example, when a web application makes a request to a web server, it typically uses port number 80, because this is the default port assigned to web applications. Many applications have default port assigned.
+
+At receiver’s side
+	Transport Layer reads the port number from its header and forwards the Data which it has received to the respective application.
+	It also performs sequencing and reassembling of the segmented data.
+
+The functions of the transport layer are :
+	Segmentation and Reassembly
+		This layer accepts the message from the (session) layer , breaks the message into smaller units.
+		Each of the segment produced has a header associated with it.
+		The transport layer at the destination station reassembles the message.
+
+	Service Point Addressing
+		In order to deliver the message to correct process, transport layer header includes a type of address called service point address or port address.
+		Thus by specifying this address, transport layer makes sure that the message is delivered to the correct process.
+
+The services provided by transport layer:
+Connection Oriented Service: It is a three-phase process which include
+– Connection Establishment
+– Data Transfer
+– Termination / disconnection
+
+In this type of transmission, the receiving device sends an acknowledgment, back to the source after a packet or group of packet is received.
+This type of transmission is reliable and secure.
+
+Connection less service is a one phase process and includes Data Transfer.
+In this type of transmission, the receiver does not acknowledge receipt of a packet.
+This approach allows for much faster communication between devices.
+Connection oriented Service is more reliable than connection less Service.
+
+Data in the Transport Layer is called as Segments.
+Transport layer is operated by the Operating System.
+It is a part of the OS and communicates with the Application Layer by making system calls.
+
+5.. Session Layer
+-----------------
+This layer is responsible for establishment of connection, maintenance of sessions, authentication and also ensures security.
+
+The functions of the session layer are :
+	Session establishment, maintenance and termination
+		The layer allows the two processes to establish, use and terminate a connection.
+	
+	Synchronization
+		This layer allows a process to add checkpoints which are considered as synchronization points into the data.
+		These synchronization point help to identify the error so that the data is re-synchronized properly, and ends of the messages are not cut prematurely and data loss is avoided.
+	
+	Dialog Controller
+		The session layer allows two systems to start communication with each other in half-duplex or full-duplex.
+
+All the top 3 layers(including Session Layer) are integrated as a single layer in TCP/IP model as “Application Layer”.
+
+6.. Presentation Layer
+----------------------
+Presentation layer is also called the Translation layer.
+The data from the application layer is extracted here and manipulated as per the required format to transmit over the network.
+
+The functions of the presentation layer are :
+	Translation
+		For example, ASCII to EBCDIC.
+	
+	Encryption/Decryption
+		Data encryption translates the data into another form or code.
+		The encrypted data is known as the cipher text and the decrypted data is known as plain text.
+		A key value is used for encrypting as well as decrypting data.
+
+	Compression
+		Reduces the number of bits that need to be transmitted on the network.
+
+7.. Application Layer
+---------------------
+At the very top of the OSI Reference Model stack of layers, we find Application layer which is implemented by the network applications.
+These applications produce the data, which has to be transferred over the network.
+This layer also serves as a window for the application services to access the network and for displaying the received information to the user.
+Ex: Application – Browsers, Skype Messenger etc.
+
+Application Layer is also called as Desktop Layer.
+
+The functions of the Application layer are :
+Network Virtual Terminal
+FTAM-File transfer access and management
+Mail Services
+Directory Services
+
+OSI model acts as a reference model and is not implemented in Internet because of its late invention.
+Current model being used is the TCP/IP model.
+
+
+=======================
+Internetwork Addressing
+=======================
+To enable communication, every individual network node or phase is designed with similar protocol or communication logic TCP/IP.
+Once a network communicates with another network having constant communication procedures, it’s called Internetworking.
+Internetworking was designed to resolve the matter of delivering a packet of information through many links.
+
+Three kinds of internetwork addresses area unit ordinarily used:
+	Data Link Layer Addresses
+		A data-link layer address unambiguously identifies every physical network association of a network device.
+		Data-link addresses typically area unit cited as physical or hardware addresses.
+		These sometimes exist among a flat address area and have a pre-established and usually fastened relationship to a selected device.
+		End systems usually have just one physical network association, and therefore have just one data-link address.
+		Routers and different internetworking devices usually have multiple physical network connections and so have multiple data-link addresses.
+	
+	MAC Addresses
+		Media Access management (MAC) addresses encompass a set of data-link layer addresses.
+		MAC addresses establish network entities in LANs that implement the IEEE MAC addresses of the data-link layer.
+		MAC addresses different area unit distinctively for every local area network interface.
+		MAC addresses are forty-eight bits long and are expressed in form of twelve hexadecimal digits.
+
+	Network-Layer Addresses
+		Network addresses sometimes exist among a gradable address area and typically area unit referred to as virtual or logical addresses.
+		The connection between a network address and a tool is logical and unfixed, it usually relies either on physical network characteristics or on groupings that don’t have any physical basis.
+		Finish systems need one network-layer address for every network-layer protocol they support.
+		Routers and different Internetworking devices need one network-layer address per physical network association for every network-layer protocol supported.
+
+
+==================
+OSI Model Overview
+==================
+
+Layer 7		Application			SMTP, HTTP, FTP, POP3, SNMP
+Layer 6		Presentation		MPEG, ASCH, SSL, TLS
+Layer 5		Session				NetBIOS, SAP
+Layer 4		Transport			TCP, UDP
+Layer 3		Network				IPV4, IPV6, ICMP, IPSEC, ARP, MPLS.
+Layer 2		Data Link			RAPA, PPP, Frame Relay, ATM, Fiber Cable, etc.
+Layer 1		Physical			RS232, 100BaseTX, ISDN, 11.
+
+
+==========================
+Framing in Data Link Layer
+==========================
+Frames are the units of digital transmission particularly in computer networks and telecommunications.
+Frames are comparable to the packets of energy called photons in case of light energy.
+Frame is continuously used in Time Division Multiplexing process.
+Framing is a point-to-point connection between two computers or devices consists of a wire in which data is transmitted as a stream of bits. 
+However, these bits must be framed into discernible blocks of information.
+
+Framing is a function of the data link layer. It provides a way for a sender to transmit a set of bits that are meaningful to the receiver. 
+Ethernet, token ring, frame relay, and other data link layer technologies have their own frame structures.
+Frames have headers that contain information such as error-checking codes.
+
+At data link layer, it extracts message from sender and provide it to receiver by providing sender’s and receiver’s address.
+The advantage of using frames is that data is broken up into recoverable chunks that can easily be checked for corruption.
+
+Problems in Framing
+	Detecting start of the frame
+		When a frame is transmitted, every station must be able to detect it.
+		Station detects frames by looking out for special sequence of bits that marks the beginning of the frame, SFD(Starting Frame Delimeter).
+
+	How does station detect a frame
+		Every station listen to link for SFD pattern through a sequential circuit.
+		If SFD is detected, sequential circuit alerts station. Station checks destination address to accept or reject frame.
+
+	Detecting end of frame
+		When to stop reading the frame.
+
+There are two types of framing: Fixed Size and Variable Size
+
+Fixed Size Framing
+	The frame is of fixed size and there is no need to provide boundaries to the frame, length of the frame itself acts as delimiter.
+	Drawback: It suffers from internal fragmentation if data size is less than frame size
+	Solution: Padding
+
+Variable Size Framing
+	Here, there is need to define end of frame as well as beginning of next frame to distinguish.
+	This can be done in two ways:
+		Length Field
+			We can introduce a length field in the frame to indicate the length of the frame.
+			The problem with this is that sometimes the length field might get corrupted.
+		End Delimeter
+			We can introduce an ED (pattern) to indicate the end of the frame.
+			The problem with this is that ED can occur in the data.
+			Solution: Character/Byte Stuffing or Bit Stuffing
+
+Character/Byte Stuffing
+	Used when frames consist of character.
+	If data contains ED then, byte is stuffed into data to diffentiate it from ED.
+	Let ED = “$” –> if data contains ‘$’ anywhere, it can be escaped using ‘\O’ character.
+	if data contains ‘\O$’ then, use ‘\O\O\O$' ($ is escaped using \O and \O is escaped using \O)
+	It is a costly method has become obsolete.
+
+Bit Stuffing
+	Let ED = 01111 and if data = 01111
+	Sender stuffs a bit to break the pattern i.e. here appends a 0 in data = 011101.
+	Receiver receives the frame.
+	If data contains 011101, receiver removes the 0 and reads the data.
+

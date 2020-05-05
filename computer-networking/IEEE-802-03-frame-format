@@ -1,0 +1,173 @@
+
+=====================
+Ethernet Frame Format
+=====================
+Basic frame format which is required for all MAC implementation is defined in IEEE 802.3 standard.
+Though several optional formats are being used to extend the protocol’s basic capability.
+
+Ethernet frame starts with Preamble and SFD, both works at the physical layer.
+Ethernet header contains both Source and Destination MAC address, after which the payload of the frame is present.
+The last field is CRC (Cycling Redundency Check) which is used to detect the error.
+
+Ethernet II (IEEE 802.3) Frame Format
+-------------------------------------
+	PREAMBLE				7 bytes
+	SFD						1 byte
+	DESTINATION ADDR		6 bytes
+	SOURCE ADDR				6 bytes
+	LENGTH					2 bytes
+	DATA/PAYLOAD			46-1500 bytes
+	CRC/FCS					4 bytes
+	IFG						9.6 micro-seconds
+
+Size of frame of Ethernet IEEE 802.3 varies 64 bytes to 1518 bytes including data length (46 to 1500 bytes).
+
+PREAMBLE
+	Ethernet frame starts with 7-Bytes Preamble.
+	Its a pattern of alternate 0s and 1s which indicates starting of the frame and allow sender and receiver to establish bit synchronization.
+	Initially, PRE was introduced to allow for the loss of a few bits due to signal delays.
+	But today’s high-speed Ethernet don’t need Preamble to protect the frame bits.
+	PRE indicates the receiver that frame is coming and allow the receiver to lock onto the data stream before the actual frame begins.
+
+Starting Frame Delimeter (SFD)
+	This is a 1-Byte field which is always set to 10101011.
+	SFD indicates that upcoming bits are starting of the frame, which is the destination address.
+	Sometimes SFD is considered the part of PRE, this is the reason Preamble is described as 8 Bytes in many places.
+	The SFD warns station or stations that this is the last chance for synchronization.
+
+Destination Address
+	This is 6-Byte field which contains the MAC address of machine for which data is destined.
+
+Source Address 
+	This is a 6-Byte field which contains the MAC address of source machine.
+	As Source Address is always an individual address (Unicast), the least significant bit of first byte is always 0.
+
+Length
+	It is a 2-Byte field, which indicates the length of entire Ethernet frame.
+	This field can hold the length value between 0 to 65534, but length cannot be larger than 1500 because of some own limitations of Ethernet.
+
+Data/Payload
+	This is the place where actual data is inserted, also known as Payload.
+	Both IP header and data will be inserted here if Internet Protocol is used over Ethernet.
+	The maximum data present may be as long as 1500 Bytes.
+	In case data length is less than minimum length (46 bytes), then padding 0s is added to meet the minimum possible length.
+
+Cyclic Redundancy Check (CRC)
+	CRC is 4 Byte field.
+	This field contains a 32-bits hash code of data, which is generated over the Destination Address, Source Address, Length, and Data field.
+	If the checksum computed by destination is not the same as sent checksum value, data received is corrupted.
+
+Inter Frame Gap (IFG)
+	Transmission break of 9.6 μs
+
+Depending on the Ethernet standard,
+Ethernet frames are structured differently and may contain more or fewer data fields, depending on the network protocol.
+
+FRAME:	organized collection of preponed and appended bits/bytes
+TRACE:	multiple frames/packets from a session
+
+
+==========================
+Definition: Ethernet Frame
+==========================
+When transmitting data over Ethernet, the Ethernet frame is primarily responsible for the correct rulemaking and successful transmission of data packets.
+Essentially, data sent over Ethernet is carried by the frame.
+An Ethernet frame is between 64 bytes and 1,518 bytes big, depending on the size of the data to be transported.
+
+In OSI model the frame is on the data link layer and is responsible for the error-free transmission and separation of the bit stream into blocks.
+The first version of Ethernet (Ethernet I) was still based on 16-bit data fields without defined bytes.
+Modern Ethernet frames were first used in the Ethernet II structure, before the IEEE developed the standard protocol IEEE 802.3 in 1983.
+
+Following technical advancements, the frame structure was adapted several times so that the frames could carry more defined data.
+With the IEEE 802.3 format, the basic MAC frame and the SNAP frame were created for the multiplexing process and for manufacturer-related identification data.
+For the development of the VLAN, the Ethernet II frame and the Ethernet IEEE 802.3 frame were developed as "tagged" variants.
+These tags contain control data that can assign the frame to a specific VLAN.
+
+An Ethernet frame must be at least 64 bytes for collision detection to work, and can be a maximum of 1,518 bytes.
+The packet starts with a preamble that controls the synchronization between sender and receiver and a SFD that defines the frame.
+Both values are bit sequences in the format “10101010 ...” in which the actual frame contains information about source and destination addresses, control information (in the case of Ethernet II the type field, later a length specification), followed by the transmitted data record.
+A frame check sequence (FCS) is an error-detecting code that closes the frame (except for the preamble and SFD).
+The packet is completed by an "InterFrame Gap," which defines a 9.6 μs transmission pause.
+
+Ethernet II uses the classic frame structure with a type field ("Type") which defines various protocols of the network layer.
+In the OSI model, the network layer is important for connecting and providing network addresses.
+The type field was replaced by a length specification in later frame formats.
+
+The Ethernet II frame was defined in 1982 and has formed the foundation of all subsequent frame developments.
+However, the format still enjoys great popularity, primarily because it gives the data field the most space (up to 1,500 bytes).
+
+Ethernet 802.3 raw
+------------------
+This rough version of the 802.3 packet, given the unfortunate name "Ethernet 802.3," was brought out by Novell before widespread establishment of IEEE 802.3 standards and the popular IPX/SPX protocol, unfortunately leading to frequent confusion with the IEEE standard.
+Consequently, Novell added "raw" to the name.
+In contrast to the classic Ethernet II model, this frame defines an exact end to the bit sequence for the SFD (10101011).
+This identifies the data packet as the 802.3 standard for the receiver.
+802.3 raw frames do not contain a protocol identifier, as they are only usable for Novell IPX.
+In addition, the data to be transmitted is always prefixed with 2 bytes, which always consist of ones.
+Ethernet 802.3 raw contains 2 bytes of block just before the paylod, all filled with 1s.
+This is the only way to distinguish a "raw" frame from other frames in the 802.3 family.
+
+The IEEE 802.3 raw frame can only be used for the IPX protocol, because the type field's protocol ID is missing.
+The name "IEEE 802.3 raw" is also slightly misleading, since Novell used the protocol name without involving the IEEE in the development of the frame.
+The use of this frame means extra work for the user, because compatibility issues can arise between devices.
+From 1993 onwards, Novell itself recommended the "Ethernet 802.2" standard, which used the IEEE 802.3 frame, to avoid the confusions.
+
+Ethernet 802.3 raw Format
+	PREAMBLE				7 bytes
+	SFD						1 byte
+	DESTINATION ADDR		6 bytes
+	SOURCE ADDR				6 bytes
+	LENGTH					2 bytes
+	0xFFFF					1 byte
+	DATA/PAYLOAD			46-1500 bytes
+	CRC/FCS					4 bytes
+	IFG						9.6 micro-seconds
+
+Ethernet IEEE 802.3
+-------------------
+This standardized version of the Ethernet 802.3 frame can define upto 256 compatible protocols, with protocol information integrated into the data field.
+In addition, the Destination Service Access Point (DSAP) and Source Service Access Point (SSAP) are included.
+The new control field defines the Logical Link Control (LLC) of the protocol.
+This point ensures the transparency of the media sharing procedures and can control the data flow.
+
+Ethernet IEEE 802.3 is by far the most popular and widely used LAN frame structure today.
+However, some networks and protocols require more space for specific information.
+Consequently, there are variants of the IEEE 802.3 frame that provide additional data blocks for specific information, among them the SNAP extension and the VLAN tag.
+
+Ethernet IEEE 802.3 Format
+	PREAMBLE				7 bytes
+	SFD						1 byte
+	DESTINATION ADDR		6 bytes
+	SOURCE ADDR				6 bytes
+	LENGTH					2 bytes
+	DSAP					1 byte
+	SSAP					1 byte
+	LLC						1 byte
+	DATA/PAYLOAD			46-1500 bytes
+	CRC/FCS					4 bytes
+	IFG						9.6 micro-seconds
+
+Ethernet IEEE 802.3 SNAP
+------------------------
+The SNAP field (Sub Network Access Protocol) is useful for defining more than 256 protocols.
+To do this, 2 bytes are made available for the protocol number. In addition to this the manufacturer can integrate a unique identifier of 3 bytes.
+Unlike its predecessors, SNAP also ensures backward compatibility with Ethernet II. DSAP, SSAP, and Control are firmly defined here.
+
+With the newly added space for protocol information,
+IEEE 802.3 SNAP is extremely versatile and makes compatibility between numerous different protocols in a network possible.
+However, the space for the actual data is slightly less.
+
+Ethernet IEEE 802.3 SNAP Format
+	PREAMBLE				7 bytes
+	SFD						1 byte
+	DESTINATION ADDR		6 bytes
+	SOURCE ADDR				6 bytes
+	LENGTH					2 bytes
+	DSAP					1 byte
+	SSAP					1 byte
+	LLC						1 byte
+	SNAP					5 bytes
+	DATA/PAYLOAD 			42-1496 bytes
+	CRC/FCS					4 bytes
+	IFG						9.6 micro-seconds
+
