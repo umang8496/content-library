@@ -688,9 +688,15 @@ Rsync consumes less bandwidth as it uses compression and decompression method wh
 # rsync options source destination
 
 -v : verbose
--r : copies data recursively (but don’t preserve timestamps and permission while transferring data
+-r : copies data recursively (but don’t preserve timestamps and permission while transferring data)
 -a : archive mode, archive mode allows copying files recursively and it also preserves symbolic links, file permissions, user & group ownerships and timestamps
 -z : compress file data
 -h : human-readable, output numbers in a human-readable format
+--delete : it deletes extraneous files from destination directory
+--dry-run : performs a trial run with no changes made
 
 
+How to count the number of files within a directory and sub-directory ?
+=======================================================================
+>>> find <directory> -type f | wc -l
+>>> ls -l | wc -l
