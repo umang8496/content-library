@@ -1,0 +1,867 @@
+======================
+What is Cryptography ?
+======================
+Cryptography or Cryptology is the practice and study of techniques for secure communication in the presence of third parties called adversaries.
+More generally, it is about constructing and analyzing protocols that prevent third parties or the public from reading private messages;
+
+Five pillars of Information Security or Information Assurance :
+--> Data Confidentiality : Confidentiality refers to protecting information from being accessed by unauthorized parties. In other words, only the people who are authorized to do so can gain access to sensitive data. 
+
+--> Data Integrity : Integrity refers to ensuring the authenticity of information—that information is not altered, and that the source of the information is genuine.
+
+--> Availability : It means that information is accessible by authorized users.
+
+--> Authentication : It is the process of determining whether someone or something is in fact who or what it declares itself to be. Its the process that ensures the identity of an entity.
+
+--> Nonrepudiation : It is the assurance that someone cannot deny something. It refers to the ability to ensure that a party to a contract or a communication cannot deny the authenticity of their signature on a document or the sending of a message that they originated.
+
+Information security is the practice of protecting information by mitigating information risks. 
+It typically involves preventing or at least reducing the probability of unauthorized/inappropriate access, use, disclosure, disruption, deletion/destruction, corruption, modification, inspection, recording or devaluation, although it may also involve reducing the adverse impacts of incidents.
+
+To standardize this discipline, academics and professionals collaborate to offer guidance, policies, and industry standards on password, antivirus software, firewall, encryption software, legal liability, security awareness and training, and so forth.
+
+Cryptography includes a set of techniques for scrambling or disguising data. The scrambled data is available only to someone who can restore the data to its original form. The purpose is to make data unintelligible to unauthorized persons, but readily decipherable to authorized persons.
+
+Cryptography deals with several processes:
+--> Enciphering is converting plaintext, which is intelligible, into ciphertext, which is not intelligible.
+--> Deciphering is converting ciphertext back into plaintext. Deciphering is also called decrypting.
+--> Hashing involves using a one-way calculation to condense a long message into a compact bit string, or message digest.
+--> Generating and verifying digital signatures involves encrypting a message digest with a private key to create the electronic equivalent of a handwritten signature.
+Digital signatures also serve to ensure that nothing has altered the signed document since it was signed.
+
+The growth of distributed systems and the increasing use of the Internet have resulted in the need for increased data security. 
+Cryptography provides a strong, economical basis for keeping data confidential and for verifying data integrity.
+
+There are two kinds of cryptosystems: symmetric and asymmetric.
+In symmetric systems the same key (the secret key) is used to encrypt and decrypt a message.
+Asymmetric systems use a public key to encrypt a message and a private key to decrypt it.
+Data manipulation in symmetric systems is faster than asymmetric systems as they generally use shorter key lengths.
+Use of asymmetric systems enhances the security of communication.
+
+Examples of Asymmetric Systems include RSA (Rivest–Shamir–Adleman), and ECC (Elliptic Curve Cryptography).
+Symmetric Systems include the commonly used AES (Advanced Encryption Standard) which replaced the DES (Data Encryption Standard).
+
+
+==========================
+Symmetric Key Cryptography
+==========================
+Symmetric-key algorithms are algorithms for cryptography that use the same cryptographic keys for both encryption of plaintext and decryption of ciphertext. The keys may be identical or there may be a simple transformation to go between the two keys.
+The requirement that both parties have access to the secret key is one of the main drawbacks of symmetric key encryption.
+
+Symmetric-key encryption can use either stream ciphers or block ciphers.
+Stream ciphers encrypt the digits (typically bytes), or letters (in substitution ciphers) of a message one at a time.
+Block ciphers take a number of bits and encrypt them as a single unit padding the plaintext.
+
+All modern cryptographic systems still use symmetric-key algorithms internally to encrypt the bulk of the messages.
+But they eliminate the need for a physically secure channel by using Diffie–Hellman key exchange or some other public-key protocol to securely come to agreement on a fresh new secret key for each message.
+
+Symmetric Key Cryptography makes use of two types of ciphers: BLOCK CIPHER and STREAM CIPHER.
+BLOCK CIPHERS are better for use in situations where the size of the message is fixed or known in advance; for encrypting a file or for messages in protocol headers.
+STREAM CIPHERS are better for use in situations where we have data of an unknown size or the data is in a continuous stream.
+
+Cryptographic Primitives
+------------------------
+They are well-established, low-level cryptographic algorithms that are frequently used to build cryptographic protocols for computer security systems.
+These routines include, but are not limited to, one-way hash functions and encryption functions.
+Symmetric ciphers are commonly used to achieve other cryptographic primitives than just encryption.
+
+Meassage Authentication Code
+----------------------------
+In cryptography, a "Message Authentication Code (MAC)" is a short piece of information used to authenticate a message, to confirm that the message came from the stated sender (its authenticity) and has not been changed.
+The MAC value protects both a message's data integrity as well as its authenticity, by allowing verifiers to detect any changes to the message content.
+
+Informally, a message authentication code consists of three algorithms:
+--> A key generation algorithm selects a key from the key space uniformly at random.
+--> A signing algorithm efficiently returns a tag given the key and the message.
+--> A verifying algorithm efficiently verifies the authenticity of the message given the key and the tag.
+That is, return accepted when the message and tag are not tampered with or forged, and otherwise return rejected.
+
+For a secure unforgeable message authentication code, it should be computationally infeasible to compute a valid tag of the given message without knowledge of the key, even if for the worst case, we assume the adversary can forge the tag of any message except the given one.
+
+A MAC differs from a simple message digest algorithm as it takes two inputs: a message and a secret key known only to the originator of the message and its intended recipient(s).
+By using a secret key, a MAC allows the recipient of the message to not only verify the integrity of the message, but also authenticate that the sender of the message has the shared secret key.
+If a sender doesn’t know the secret key, the hash value would then be different, thus allowing the recipient to see the message was not from the original sender.
+
+While MAC functions are similar to cryptographic hash functions, they possess different security requirements.
+To be considered secure, a MAC function must resist existential forgery under chosen-plaintext attacks.
+This means that even if an attacker has access to an oracle which possesses the secret key and generates MACs for messages of the attacker's choosing, the attacker cannot guess the MAC for other messages without performing infeasible amounts of computation.
+
+MACs differ from digital signatures as MAC values are both generated and verified using the same secret key.
+This implies that the sender and receiver of a message must agree on the same key before initiating communications, as is the case with symmetric encryption.
+For the same reason, MACs do not provide the property of non-repudiation offered by signatures specifically in the case of a network-wide shared secret key: any user who can verify a MAC is also capable of generating MACs for other messages.
+In contrast, a digital signature is generated using the private key of a key pair, which is public-key cryptography.
+Since this private key is only accessible to its holder, a digital signature proves that a document was signed by none other than that holder. Thus, digital signatures do offer non-repudiation. 
+
+In mathematics and computing, Universal Hashing refers to selecting a hash function at random from a family of hash functions with a certain mathematical property. This guarantees a low number of collisions in expectation, even if the data is chosen by an adversary.
+Many universal families are known (for hashing integers, vectors, strings), and their evaluation is often very efficient.
+
+MAC algorithms can be constructed from other cryptographic primitives, like cryptographic hash functions (HMAC) or from block cipher algorithms (OMAC, CBC-MAC and PMAC).
+However many of the fastest MAC algorithms like UMAC and VMAC are constructed based on universal hashing.
+
+HASH Meassage Authentication Code
+---------------------------------
+Hash-based Message Authentication Code (HMAC) is a message authentication code that uses a cryptographic key in conjunction with a hash function.
+HMAC provides the server and the client each with a private key that is known only to them.
+The client creates a unique HMAC, or hash, per request to the server by hashing the request data with the private keys and sending it as part of a request.
+Once the server receives the request and regenerates its own unique HMAC, it compares the two HMACs.
+If they're equal, the client is trusted and the request is executed. This process is often called a secret handshake.
+
+What makes HMAC more secure than Message Authentication Code (MAC) is that the key and the message are hashed in separate steps.
+A hashed message authentication code is considered to be more secure than other similar message authentication codes, as the data transmitted and key used in the process are hashed separately.
+
+The most common approach to creating a MAC has been to use block ciphers like DES, but hash function-based MACs, or HMACs which use a secret key in conjunction with a cryptographic hash function to produce a hash, have become more widely used.
+
+MAC and HMAC are both used to provide integrity and authentication when data is transferred over untrusted networks such as the Internet, but the type of hash used should always relate to the risks to the data.
+The HMAC specification was developed to combat attacks on more trivial mechanisms for combining a key with a hash function.
+A major difference between TLS and SSL is TLS ensures integrity by appending an HMAC to the packet header, whereas SSL only appends a MAC, which is why TLS and SSL do not interoperate.
+
+Block Cipher and Stream Cipher
+------------------------------
+They are the methods used for converting the plain text into cipher text directly and belong to the family of symmetric key ciphers.
+The major difference between them is that the block cipher encrypts and decrypts a block of the text at a time.
+On the other hand, stream cipher encrypts and decrypts the text by taking the one byte of the text at a time.
+
+The Data Encryption Standard (DES) and the Advanced Encryption Standard (AES) are block cipher designs that have been designated cryptography standards by the US government, though DES's designation was finally withdrawn after the AES was adopted.
+Despite its deprecation as an official standard, DES remains quite popular; it is used across a wide range of applications, from ATM encryption to e-mail privacy and secure remote access.
+
+
+===========================
+Asymmetric Key Cryptography
+===========================
+Public key cryptography (PKC) is an encryption technique that uses a paired public and private key or asymmetric key algorithm for secure data communication.
+A message sender uses a recipient's public key to encrypt a message.
+To decrypt the sender's message, only the recipient's private key may be used.
+
+Public-key cryptography is a cryptographic system that uses pairs of keys: public keys which may be disseminated widely, and private keys which are known only to the owner.
+The generation of such keys depends on cryptographic algorithms based on mathematical problems to produce one-way functions.
+Effective security only requires keeping the private key private; the public key can be openly distributed without compromising security.
+
+Public key algorithms are fundamental security ingredients in modern cryptosystems, applications and protocols assuring the confidentiality, authenticity and non-repudiability of electronic communications and data storage.
+
+Two of the best-known uses of public key cryptography are:
+--> Public Key Encryption
+Here a message is encrypted with a recipient's public key.
+The message cannot be decrypted by anyone who does not possess the matching private key, who is thus presumed to be the owner of that key and the person associated with the public key. This is used in an attempt to ensure confidentiality.
+
+--> Digital Signatures
+Here a message is signed with the sender's private key and can be verified by anyone who has access to the sender's public key.
+This verification proves that the sender had access to the private key, and therefore is likely to be the person associated with the public key.
+This also ensures that the message has not been tampered with, as a signature is mathematically bound to the message it originally was made with, and verification will fail for practically any other message, no matter how similar to the original message.
+
+Because asymmetric key algorithms are nearly always much more computationally intensive than symmetric ones, in many cases it is common to exchange a key using a key-exchange algorithm, then transmit data using that key and a symmetric key algorithm. PGP, SSH, and the SSL/TLS family of schemes use this procedure, and are thus called hybrid cryptosystems.
+
+Security Benefits of Digital Signatures : Authenticity, Non-repudiation and Integrity
+Security Benefits of Encryption : Confidentiality and Integrity
+
+To decode an encrypted message, a computer must use the public key, provided by the originating computer, and its own private key.
+
+Although a message sent from one computer to another won't be secure since the public key used for encryption is published and available to anyone, anyone who picks it up can't read it without the private key.
+The key pair is based on prime numbers (numbers that only have divisors of itself and one, such as 2, 3, 5, 7, 11 and so on) of long length. This makes the system extremely secure, because there is essentially an infinite number of prime numbers available, meaning there are nearly infinite possibilities for keys.
+
+IMPORTANT
+--> The sending computer encrypts the document with a symmetric key, then encrypts the symmetric key with the public key of the receiving computer.
+--> The receiving computer uses its private key to decode the symmetric key. It then uses the symmetric key to decode the document.
+
+
+===========================
+Cryptographic Hash Function
+===========================
+It is a special class of hash function that has certain properties which make it suitable for use in cryptography.
+It is a mathematical algorithm that maps data of arbitrary size to a bit string of a fixed size (a hash) and is designed to be a one-way function, that is, a function which is infeasible to invert.
+The only way to recreate the input data from an ideal cryptographic hash function's output is to attempt a brute-force search of possible inputs to see if they produce a match, or use a rainbow table of matched hashes.
+
+Properties of Cryptographic Hash Function
+-----------------------------------------
+h(x) should be deterministic
+h(x) should be fast and efiicient
+h(x) should be irreversible or pre-image resistance
+h(x) should be collision resistant and target collision resistant
+h(x) should have avalanche effect
+
+In computing, a hash table or hash map is a data structure that implements a structure that can map keys to values.
+A hash table uses a hash function to compute an index into an array of buckets or slots, from which the desired value can be found.
+
+A hash table is a data structure that allows for the very fast retrieval of the data, no matter how much data is there.
+It is used in database indexing, caching, error-checking, password authentication and much more.
+	
+The time-complexity for getting a value of an array if its index is known, is independent of the position and size of the array.
+
+For example, in order to fill an array of size n with different string values, we may follow the following pattern:
+1. get the ASCII value for each letter in the string
+2. add those ASCII value and get a number out of it.
+3. calculate the remainder by dividing that number with the array size.
+4. place that string into the index as calculated above.
+
+Mia --> 77  + 105 + 97  = 279 --> r = 9 for n = 10
+Tim --> 84  + 105 + 109 = 298 --> r = 8 for n = 10
+Baa --> 66  + 97  + 97  = 260 --> r = 0 for n = 10
+
+Hash Tables are often use to store key:value pairs. It is also known as Hash Map in such cases.
+Hash Tables are use to index large amount of data.
+
+HASHING ALGORITHM or HASH FUNCTION
+----------------------------------
+It is the calculation applied to a key which may be a very large number or a very long string to transform it into a relatively small index number that corresponds to a position in the hash table.
+
+This index number is effectively a memory address.
+There are lots of different hash function to choose from.
+
+It is any function that can be used to map data of arbitrary size onto data of a fixed size.
+The values returned by a hash function are called hash values, hash codes, digests, or simply hashes.
+They are often used in combination with a hash table, a common data structure used in computer software for rapid data lookup.
+
+COLLISIONS
+----------
+Sometimes if we apply hash function to two different keys, it may generate the same index number for both, this is known as collision.
+
+Que --> 81  + 117 + 101 = 199 --> r = 9 for n = 10
+Mia --> 77  + 105 + 97  = 279 --> r = 9 for n = 10
+
+In such cases, since the place has been occupied already, we go on to look for the next available empty place to store that object.
+Placing an object in some index other than the calculated one is called open-indexing or open-addressing.
+This particular open-indexing technique is called linear probing.
+
+While retrieving the object from the array, if it is not available at the expected position then we need to go for the linear search.
+
+The ratio of total number of items stored to the size of the array is called as the LOAD FACTOR.
+If the hash-table-array is designed as resizable dynamic data structure, it could be made to increase in size automatically, when the load factor reaches a certain threshold.
+
+In an ideal scenario, the time taken to find any particular item is always the same.
+But in worst scenarios, we need to carefully look into the nature of the data object being stored and the amount of those data object.
+
+As long as the load factor is reasonably low, open addressing with linear probing should work reasonably well.
+
+CHAINING
+--------
+Apart from the open-addressing, it is another way to deal with collision.
+It is also referred to as closed-addressing.
+Here the pointer to the data objects gets stored to the array and, on collisions, the pointer value gets stoed in the linked-list of the previous data object.
+Here retrieval is faster than linear probing.
+But travsering a linked-list also adds up to the cost of data object retrieval.
+
+If the LOAD FACTOR is low it would actually be more efficient to go for open-addressing.
+
+If we know all of the keys in advance then it is theoretically possible to come up with a perfect hash function, the one which provides unique index for every data object.
+In fact, if we know the keys in advance we could probably come with a hash function which could use the available space in the array.
+
+Objectives of Hash Function
+--> Minimize Colliosion
+--> Uniform Distribution of the Hash Values
+--> Easy to Calculate
+--> Resolve Collisions
+
+Encryption Algorithm : It is a set of mathematical procedure for performing encryption on data.
+
+CHECKSUM
+--------
+A checksum is the outcome of running an algorithm, called a cryptographic hash function, on a piece of data, usually a single file.
+Comparing the checksum that you generate from your version of the file, with the one provided by the source of the file, helps ensure that your copy of the file is genuine and error free.
+
+It is a digit representing the sum of the correct digits in a piece of stored or transmitted digital data, against which later comparisons can be made to detect errors in the data.
+
+A checksum is a value used to verify the integrity of a file or a data transfer.
+In other words, it is a sum that checks the validity of data.
+Checksums are typically used to compare two sets of data to make sure they are the same.
+
+Commonly used Cryptographic Hash Functions
+------------------------------------------
+01. SHA family
+	SHA-1(160 bits), SHA-2(256 bits) and SHA-3(512 bits)
+	SHA-2 has SHA-224, SHA-256, SHA-384, SHA-512, SHA-512/224 and SHA-512/256 functions
+02. RACE Integrity Primitives Evaluation MD (RIPEMD)
+03. MD4 and MD5 (128 bits)
+04. BLAKE-2
+
+Target Collision Resistant : It says that it is infeasible for a given X, to find X' = X, such that h(X) = h(X')
+
+Collision Resistant : It says that it is infeasible for all X, to find X and X', such that h(X) = h(X')
+
+One-Way Function : It says that for all X, "f(x) = Y" is easy to compute but it is virtually impossible to find a function g such that "g(y) = X"
+
+Non-Malleability : It says that it is infeasible, for a given h(X) to produce h(X') where X and X' are related
+
+Password Entropy is a measurement of how unpredictable a password is.
+It is based on the character set used as well as password length.
+
+
+============================
+SHA or Secure Hash Algorithm
+============================
+A secure hash algorithm is actually a set of algorithms developed by the National Institutes of Standards and Technology (NIST) and other government and private parties.
+These secure encryption or "file check" functions have arisen to meet some of the top cybersecurity challenges of the 21st century, as a number of public service groups work with federal government agencies to provide better online security standards for organizations and the public.
+
+Within the family of SHA, there are several instances of these tools that were set up to facilitate better digital security.
+The first one, SHA-0, was developed in 1993. Like its successor, SHA-1, SHA-0 features 160-bit hashing.
+
+The next SHA, SHA-2, involves a set of two functions with 256-bit and 512-bit technologies, respectively.
+There is also a top-level SHA known as SHA-3 or "Keccak" that developed from a crowd sourcing contest to see who could design another new algorithm for cybersecurity.
+
+All of these secure hash algorithms are part of new encryption standards to keep sensitive data safe and prevent different types of attacks.
+
+SHA-1 is most often used to verify that a file has been unaltered.
+This is done by producing a checksum before the file has been transmitted, and then again once it reaches its destination.
+The transmitted file can be considered genuine only if both checksums are identical.
+
+SHA-1 is only one of the four algorithms in the Secure Hash Algorithm (SHA) family.
+
+SHA-0 has a 160-bit message digest (hash value) size and was the first version of this algorithm. SHA-0 hash values are 40 digits long. It was published under the name "SHA" in 1993 but wasn't used in many applications because it was quickly replaced with SHA-1 in 1995 due to a security flaw.
+
+SHA-1 is the second iteration of this cryptographic hash function. SHA-1 also has a message digest of 160 bits and sought to increase security by fixing a weakness found in SHA-0. However, in 2005, SHA-1 was also found to be insecure.
+
+If the website uses the SHA-1 cryptographic hash function, it means your password is turned into a checksum after you enter it.
+That checksum is then compared with the checksum that's stored on the website that relates to your current password, whether you haven't changed your password since you signed up or if you just changed it moments ago.
+If the two match, you're granted access; if they don't, you're told the password is incorrect.
+
+Another example where the SHA-1 hash function may be used is for file verification.
+Some websites will provide the SHA-1 checksum of the file on the download page so that when you download the file, you can check the checksum for yourself to ensure that the downloaded file is the same as the one you intended to downloaded.
+
+You may also want to check that the two files are identical if you're installing a service pack or some other program or update because problems occur if some of the files are missing during installation.
+
+Asymmetric Key Encryption uses 2048 bit keys hence encryption is SLOW.
+Symmetric Key Encryption uses 256 bit keys hence encryption is FAST.
+
+
+=====================================
+Diffie-Hellman Key Exchange Algorithm
+=====================================
+Diffie Hellman (DH) key exchange algorithm is a method for securely exchanging cryptographic keys over a public communications channel. It is also known as Exponential Key Exchange.
+Keys are not actually exchanged – they are jointly derived. It is named after their inventors Whitefield Diffie and Martin Hellman.
+
+If Alice and Bob wish to communicate with each other, they first agree between them a large prime number p, and a generator g where 0 < g << p. (p should be very large and g should be a small number).
+
+Alice chooses a secret integer "a" (private key) and then calculates "g^a mod p" (public key).
+Bob chooses his private key "b", and calculates his public key in the same way.
+Alice's private key : a
+Alice's public key : g^a mod p
+Bob's private key : b
+Bob's public key : g^b mod p
+
+Alice and Bob then send each other their public keys.
+Alice now knows a and Bob’s public key g^b mod p. She is not able to calculate the value b from Bob’s public key as this is a hard mathematical problem (known as the discrete logarithm problem).
+She can however calculate (g^b)^a mod p = g^ab mod p.
+
+Bob knows b and g^a, so he can calculate (g^a)^b mod p = g^ab mod p.
+Therefore both Alice and Bob know a shared secret g^ab mod p.
+
+An eavesdropper Eve who was listening in on the communication knows p, g, Alice’s public key and Bob’s public key.
+She is unable to calculate the shared secret from these values.
+
+In static-static mode, both Alice and Bob retain their private/public keys over multiple communications.
+Therefore the resulting shared secret will be the same every time.
+In ephemeral-static mode one party will generate a new private/public key every time, thus a new shared secret will be generated.
+
+Ideally, DH should be used in conjunction with a recognized authentication method such as Digital Signatures.
+
+
+=============
+RSA Algorithm
+=============
+The guiding principle for Asymmetric Key Encryption is that the message intended for a specific person should be encrypted using their public in such a way that the message can only be decrypted through the use of the corresponding private key.
+
+RSA is an encryption algorithm based on the principle that is easy to multiply large numbers but factoring large numbers is very difficult.
+
+RSA = Rivest, Shamir and Adleman
+
+In RSA cryptography, both the public and the private keys can encrypt a message; the opposite key from the one used to encrypt a message is used to decrypt it.
+This attribute is one reason why RSA has become the most widely used asymmetric algorithm.
+It provides a method to assure the confidentiality, integrity, authenticity, and non-repudiation of electronic communications and data storage.
+
+It is computationally infeasible to compute the private key based on the public key.
+Since public keys need to be shared but are two big to be easily remembered, tery are stored on digital certificates for secure transport and sharing.
+
+Many protocols like Secure Shell, OpenPGP, S/MIME, and SSL/TLS rely on RSA for encryption and digital signature functions.
+It is also used in software programs -- browsers are an obvious example, as they need to establish a secure connection over an insecure network, like the internet, or validate a digital signature.
+RSA signature verification is one of the most commonly performed operations in network-connected systems.
+
+SSH and SSL/TLS are based on RSA.
+
+RSA derives its security from the difficulty of factoring large integers that are the product of two large prime numbers. 
+Multiplying these two numbers is easy, but determining the original prime numbers from the total -- or factoring -- is considered infeasible due to the time it would take using even today's supercomputers.
+
+The implementation of RSA makes heavy use of modular arithmetic, Euler's theorem, and Euler's totient function.
+--> Firstly, the receiver chooses two large prime numbers P and Q.
+	Their product, N = P*Q will be half of the public key.
+--> Then choose an encryption exponent e, which satisfies GCD(e,(P-1),(Q-1)) = 1
+	e can be 65537, though it can be as small as 3 in some cases. e is the other half of the public key.
+--> Now Public Key would be (N,e)
+--> Decryption exponent d can be e*d = 1 mod Z(N) where Z(N) = (P-1)(Q-1).
+--> Private Key would be (d, P, Q)
+	Storing P and Q is not necessary but it is done for efficiency.
+
+	Encryption C = M^e mod(N)
+	Decryption M = C^d mod(N)
+
+RSA is also used to ensure websites are legitimate since only the real website would have its private key.
+It therefore avoids man-in-the-middle attacks, in which an attacker intercepts a connection and shows the user a convincing fake, almost completely.
+All in all, a vulnerability in RSA would have catastrophic security consequences, so various attacks have been attempted.
+
+The strength of RSA is measured in key size, which is the number of bits in N = PQ.
+512-bit (155 digits) RSA is no longer considered secure, as modern brute force attacks can extract private keys in just hours, and a similar attack was able to extract a 768-bit (232 digits) private key in 2010.
+As of 2016, 1024-bit (309 digits) keys are considered risky, and most newly generated keys are 4096-bit (1234 digits).
+
+RSA security relies on the computational difficulty of factoring large integers.
+As computing power increases and more efficient factoring algorithms are discovered, the ability to factor larger and larger number also increases.
+
+
+===========================
+Digital Signature Algorithm
+===========================
+The Digital Signature Algorithm (DSA) can be used by the recipient of a message to verify that the message has not been altered during transit as well as ascertain the originator’s identity.
+A digital signature is an electronic version of a written signature in that the digital signature can be used in proving to the recipient or a third party that the message was, in fact, signed by the originator.
+Digital signatures may also be generated for stored data and programs so that the integrity of the data and programs may be verified at any later time.
+
+The Digital Signature Algorithm is a United States Federal Government standard for digital signatures.
+DSA was proposed by the National Institute of Standards and Technology (NIST) in August 1991 for use in their Digital Signature Standard (DSS), specified in FIPS 186.
+A minor revision was issued as FIPS 186-1, and the standard was expanded further as FIPS 186-2.
+DSA is attributed to David W. Kravitz, a former National Security Agency (NSA) employee.
+The NIST has made this patent available world-wide royalty-free.
+
+DSA serves three purposes : Authenticity, Non-repudiation and Integrity
+Only hash of the message is signed digitally. Confidentiality of the message is not the purpose of DSA.
+
+DSA does not encrypt the MD using the private key or decrypt using the public key.
+Instead it uses unique mathematical functions to create a digital signature consisting of two 160-bit numbers, which are originated from the MD and the private key.
+DSAs make use of the public key for authenticating the signature.
+
+DSA is faster than RSA for key generation.
+RSA is faster than DSA in terms of encryption. But for decryption DSA is faster than RSA.
+DSA is faster than RSA in generating Digital Signatures; But RSA is faster than DSA in verifying the Digital Signatures.
+
+Modular Division : "5 mod 3 = 2" => 2 is the remainder when we divide 5 by 3.
+
+DSA involves four operations: key generation, key distribution, signing and signature verification.
+First part of DSA is public key and private key
+--> Choose two very large prime numbers P and Q such that P > Q.
+--> They must satisfy (P-1)mod(Q) = 0 that is P is the prime modulus.
+--> Choose a generator G, such that 1 < G < P and 
+		G^Q mod(P) = 1  and  H^((P-1)/Q) mod(P) = G, where H is a random number or 2.
+--> Now choose X such that 0 < X < Q and compute Y=G^Xmod(P)
+--> Public Key = {P,Q,G,Y} and Private Key = {P,Q,G,X}
+
+Second part of the DSA is the signature generation and signature verification.
+To generate a message signature:
+--> Generate a message digest H using some hash function (SHA-1).
+--> Take a random k, such that 0 < k < Q
+--> Compute R = (G^kmod(P))mod(Q). If R==0 then take another k.
+--> Compute I such that KImod(Q)=1
+--> Compute S = I*(H + RX)mod(Q). If S==0 then take another k.
+
+To verify a message signature:
+--> Generate the message digest H with the same algorithm.
+--> Compute W such that SWmod(Q)=1
+--> Compute A = HWmod(Q) and B = RWmod(Q)
+--> Compute V = (G^A.Y^B)mod(P)mod(Q)
+	If V==R then verified.
+
+One weakness in DS is lack of authentication of the message.
+DS does not verify the true identity of sender and his public key.
+If a user changes his private key after every fixed interval of time, then the record of all these changes must be kept.
+Because if a dispute arises over a previously sent message then the old keys needs to be referred.
+
+Digital Certificates are electronic credentials issued by a trusted 3rd party.
+It not only verifies the identity of the owner but also verifies whether the owner owns the claimed public key.
+
+A digital certificate also known as public key certificate, is used to cryptographically link ownership of a public key with the entity that owns it.
+Digital Certificates include a public key being certified, identifying information about the entity that owns the public key, metadata relating to the digital certificate and a digital signature of the public key created by the issuer of the certificate.
+
+Digital Certificates are for sharing the public keys to be used for encryption and authentication.
+Digital Certificates are most commonly used for initializing secure SSL connections.
+
+Consider a scenario where ALICE ahs to digitally sign a file or an email and send to BOB.
+--> ALICE selects the file to be digitally signed and her computer calculates the hash value of the file content or the msg.
+--> This hash value is encrypted with her signing key which is a private key to create a Digital Signature.
+--> Now the original file or email along with the digital signature are sent to BOB.
+--> After BOB receives the signed message, the associated application identifies that the message has been signed.
+	BOB's computer then proceeds to-
+	decrypt the digital signature using ALICE's public key.
+	calculate the hash of the original message.
+	compares the two hash values.
+--> Any difference in the hash values would reveal tampering of the message.
+
+Asymmetric Key Encryption uses 2048 bit keys, hence encryption is slower.
+Symmetric Key Encryption uses 256 bit keys, hence encryption is faster.
+
+
+==============================
+Data Encryption Standard (DES)
+==============================
+DES is a symmetric-key block cipher published by NIST.
+Block Cipher Schemes --> DES  3-DES  AES  IDEA  Twofish  Serpent
+
+Block Ciphers process blocks of fixed sized (64 bits). The length of plaintext is mostly not a multiple of the block size.
+So usually in order to make the plaintext a multiple of block size, we need to add some redundant information. 
+This is referred to as PADDING.
+A preferred block size is a multiple of 8 as it is easy to implementation as most computer processor handle data in multiple of 8.
+
+DES is an implementation of a Feistel Cipher. It uses 16 round Feistel structure.
+The block size is 64-bit. Though, key length is 64-bit, DES has an effective key length of 56 bits, since 8 of the 64 bits of the key are not used by the encryption algorithm.
+
+Feistel Cipher
+--------------
+Feistel Cipher is not a specific scheme of block cipher.
+It is a design model from which many different block ciphers are derived. DES is just one example of a Feistel Cipher.
+A cryptographic system based on Feistel cipher structure uses the same algorithm for both encryption and decryption.
+
+The encryption process uses the Feistel structure consisting multiple rounds of processing of the plaintext, each round consisting of substitution and permutation.
+--> The input block to each round is divided into two halves L and R.
+--> In each round, R remains unchanged. But the L goes through an operation that depends on R and the encryption key.
+--> An Encryption function F takes two inputs K and R. Then output of F(R,K) is XoR with L.
+--> The permutation step at the end of each round swaps the modified L and R.
+--> In real implementation of FC, instead of using the whole encryption key during each round, uses a round-dependent subkey derived from the encryption key.
+--> Each substitution and permutation constitutes a round. The number of roundsare specified by the algorithm design.
+--> Once the last round is completed then the two sub blocks are concatenated together to form the ciphertext.
+
+While the decryption process, the only difference is that the subkeys used in encryption are used in reverse order.
+
+The number of rounds used in a Feistel Cipher depends on desired security from the system. More number of rounds provide more secure system. But at the same time, more rounds mean the inefficient slow encryption and decryption processes. Number of rounds in the systems thus depend upon efficiency–security tradeoff.
+
+DES was one of the most popular block symmetric ciphers.
+It was created in the early 1970s at IBM and adopted as a federal standard by NBS in 1976.
+In 1981 it was included in ANSI standards as Data Encryption Algorithm for private sector.
+
+Block cipher with symmetric secret key :
+	Block length = 64 bits
+	Key length = 56 bits
+
+DES uses the key which is 64-bit long, however only 56 bits are actually used by the algorithm.
+Every 8th bit of the key is a control one and it can be used for parity control.
+In the encryption process, the data is first divided into 64-bit long blocks.
+Then, each block undergoes the following operations:
+--> Initial permutation rearranges bits in a certain, predefined way.
+	This step does not enhance the security of algorithm.
+	It was introduced to make passing data into encryption machines easier, at the times when the cipher was invented.
+
+--> The input data is divided into two 32-bit parts: the left one and the right one.
+
+--> 56 bits are selected from the 64-bit key (Permutation PC-1). They are then divided into two 28-bit parts.
+
+--> Sixteen rounds of the so called Feistel functions are then performed.
+	Both halves of key are rotated left by one or two bits (specified for each round).
+	Then 48 bits subkey selected by Permutation PC-2.
+	The right half of data is expanded to 48 bits using the Expansion Permutation.
+	The expanded half of data is combined using XOR operation with the 48-bit subkey chosen earlier.
+	The combined data is divided into eight 6-bit pieces. Each part is then an input to one of the S-Boxes.
+	The first and the last bits stand for the row, and the rest of bits define the column of an S-Box table.
+	After determining the location in the table, the value is read and converted to binary format.
+	The output from each S-Box is 4-bit long, so the output from all S-Boxes is 32-bit long.
+	Each S-box has a different structure.
+	The output bits from S-Boxes are combined, and they undergo P-Box Permutation.
+	Then, the bits of the changed right side are added to the bits of the left side.
+	The modified left half of data becomes a new right half, and the previous right half becomes a new left side.
+
+--> After all sixteen rounds, the left and the right halves of data are combined using the XOR operation.
+	The Final Permutation is performed.
+
+--> During decryption, the same set of operations is performed but in reverse order.
+	The subkeys are also selected in reverse order.
+
+The Fiestel Function
+--------------------
+The F-function operates on half a block (32 bits) at a time and consists of four stages.
+--> Expansion
+	The 32-bit half-block is expanded to 48 bits using the expansion permutation by duplicating half of the bits.
+	The output consists of eight 6-bit (8 * 6 = 48 bits) pieces, each containing a copy of 4 corresponding input bits, plus a copy of the immediately adjacent bit from each of the input pieces to either side.
+
+--> Key mixing
+	The result is combined with a subkey using an XOR operation.
+	Sixteen 48-bit subkeys—one for each round—are derived from the main key using the key schedule.
+
+--> Substitution
+	After mixing in the subkey, the block is divided into eight 6-bit pieces before processing by the S-boxes, or substitution boxes.
+	Each of the eight S-boxes replaces its six input bits with four output bits according to a non-linear transformation, provided in the form of a lookup table.
+	The S-boxes provide the core of the security of DES, without them the cipher would be linear, and trivially breakable.
+
+--> Permutation
+	Finally, the 32 outputs from the S-boxes are rearranged according to a fixed permutation, the P-box.
+	This is designed so that, after permutation, the bits from the output of each S-box in this round are spread across four different S-boxes in the next round.
+
+KEY SCHEDULE for encryption — the algorithm which generates the subkeys
+-----------------------------------------------------------------------
+Initially, 56 bits of the key are selected from the initial 64 by Permuted Choice 1 (PC-1), the remaining eight bits are either discarded or used as parity check bits.
+The 56 bits are then divided into two 28-bit halves; each half is thereafter treated separately.
+In successive rounds, both halves are rotated left by one or two bits (specified for each round), and then 48 subkey bits are selected by Permuted Choice 2 (PC-2), 24 bits from the left half, and 24 from the right.
+The rotations mean that a different set of bits is used in each subkey; each bit is used in approximately 14 out of the 16 subkeys.
+
+The key schedule for decryption is similar, the subkeys are in reverse order compared to encryption.
+Apart from that change, the process is the same as for encryption. The same 28 bits are passed to all rotation boxes.
+
+For any cipher, the most basic method of attack is brute force—trying every possible key in turn.
+The length of the key determines the number of possible keys, and hence the feasibility of this approach.
+
+
+======================================
+Triple Data Encryption Standard (3DES)
+======================================
+3DES is a symmetric-key block cipher, which applies the DES cipher algorithm three times to each data block.
+
+The speed of exhaustive key searches against DES after 1990 began to cause discomfort amongst users of DES.
+However, users did not want to replace DES as it takes an enormous amount of time and money to change encryption algorithms that are widely adopted and embedded in large security architectures.
+
+Block cipher with symmetric secret key
+	Block length = 64 bits
+	Key length = 56, 112, or 168 bits
+
+The Data Encryption Standard encryption algorithm on which Triple DES is based was first published in 1975.
+Over the years, as computers grew faster, the block cipher with a simple 56-bit key proved vulnerable to brute force attacks. 
+Then, in 1999, the lifetime of DES was extended by tripling the key size of the cipher and encrypting data in three passes in the new Triple DES specification.
+
+Triple DES algorithm performs three iterations of a typical DES algorithm.
+In its strongest version, it uses a secret key which consists of 168 bits. The key is then divided into three 56-bit keys.
+
+3DES Encryption
+	encryption using the first secret key
+	decryption using the second secret key
+	encryption using the third secret key
+
+Encryption :    c = E3(D2(E1(m)))
+
+Decryption :    m = D1(E2(D3(c)))
+
+Using DES decryption operation in the second step of 3DES encryption provides backward compatibility with the original DES algorithm. In this case, the first and second secret keys, or the second and third secret keys should be identical, and their value is not important.
+
+    c = E3(D1(E1(m))) = E3(m)
+    c = E3(D3(E1(m))) = E1(m)
+    c = E1(D2(E1(m)))
+
+It is also possible to use the 3DES cipher with a secret key of size of 112 bits.
+In this case, the first and third secret keys should be identical.
+Such an approach is stronger than simple DES encryption used twice because it provides better protection against MITMA.
+
+3DES Encryption
+---------------
+PLAINTEXT  --> DES encryption (1st key) --> DES decryption (2nd key) --> DES encryption (3rd key) --> CIPHERTEXT
+
+3DES Encryption
+---------------
+CIPHERTEXT  --> DES decryption (3rd key) --> DES encryption (2nd key) --> DES decryption (1st key) --> PLAINTEXT
+
+The encryption-decryption process is as follows −
+--> Encrypt the plaintext blocks using single DES with key K1.
+--> Now decrypt the output of step 1 using single DES with key K2.
+--> Finally, encrypt the output of step 2 using single DES with key K3.
+--> The output of step 3 is the ciphertext.
+--> User first decrypt using K3, then encrypt with K2, and finally decrypt with K1.
+
+KEYING OPTIONS for 3DES
+-----------------------
+All three keys are independent.
+This is the strongest, with 3 × 56 = 168 independent key bits.
+It is still vulnerable to meet-in-the-middle attack, but the attack requires 2^(2×56) steps.
+
+K1 and K2 are independent, and K3 = K1.
+This provides a shorter key length of 112 bits and a reasonable compromise between DES and keying option 1, with the same caveat.
+This is an improvement over "double DES" which only requires 256 steps to attack.
+
+All three keys are identical, i.e. K1 = K2 = K3.
+This is backward compatible with DES, since two operations cancel out.
+
+
+==================
+BRUTE-FORCE ATTACK
+==================
+Brute-force attack is an attempt to guess a secret (password or encryption key) by systematically checking every possible option.
+
+A brute force attack against an encryption system attempts to decrypt encrypted data by exhaustively enumerating and trying encryption keys.
+Such an attack might be used when it is not possible to take advantage of other weaknesses in an encryption system (if any exist) that would make the task easier.
+Well designed and implemented cryptosystem make the brute force attack option infeasible, as they ensure that probability of success is negligibly small by using long encryption keys that are difficult to successfully guess.
+
+A brute force attack against a password system attempts to exhaustively enumerate and try all password combinations.
+The increasing computational power of computers makes it computationally practical to guess longer and longer password.
+To overcome this, password length and complexity requirements can be introduced, to make guessing impractical again.
+
+
+==================================
+Advanced Encryption Standard (AES)
+==================================
+AES is a modern block symmetric cipher, one of the most popular ciphers in the world.
+It was developed in 1997 by Vincent Rijmen and Joan Daemen and later approved as a federal encryption standard in the US in 2002.
+
+Block cipher with symmetric secret key
+--> Block length = 128 bits
+--> Key length = 128 or 192 or 256 bits
+--> #rounds = 10 or 12 or 14
+
+A secret key in AES, for both data encryption and decryption, may contain 128 or 192 or 256 bits.
+Based on the length of the key, a different number of encrypting cycles is performed.
+
+AES was designed by Joan Daemen and Vincent Rijmen.
+The algorithm is known as Rijndael.
+In AES number of rounds depends on the key length.
+AES is not Fiestel Cipher unlike DES.
+
+During encryption, the input data (plaintext) is divided into 128-bit blocks.
+The blocks of data are presented as column-major matrices of size 4 bytes × 4 bytes, called states. 
+
+--> one starting subkey is created first and later one more subkey for every subsequent cycle of encryption.
+--> all bytes of data block are added to corresponding bytes of the starting subkey using XOR operation.
+-->	Each round consists of 4 layers: ByteSub, ShiftRow, MixCol and Key-addition.
+	The following operations are performed during each encryption round:
+	--> Each byte of the state matrix is replaced with another byte, based on a lookup table, called Rijndael's S-Box.
+		The operation is called the SB (Substitute Bytes) Operation.
+		The construction of the lookup table guarantees that this substitution is non-linear.
+	--> The bytes stored in the last three rows of the state matrix are shifted to the left.
+		The bytes in the first row are not shifted at all.
+		The bytes in the second row are shifted by one position.
+		The third row by two positions, and the bytes in the fourth row are shifted by three positions to the left.
+		The leftmost bytes in each row moves to the right side of the same row.
+		This state is called SR (Shift Rows) Operation.
+	--> MC (Mix Columns) Operation, all columns are multiplied with a constant matrix of size 4 bytes × 4 bytes.
+	--> AR (Add Round Key) Operation, adding XOR all state bytes to the subkey bytes.
+		A new subkey is created for every encryption round. Subkeys, like states, are 16-byte long.
+--> Last round does not have Mix Columns Operation.
+
+AES uses a secret symmetric key which contains 128, 192, or 256 bits.
+In order to encrypt all data blocks, the key must be expanded.
+The new bytes are appended to the original bytes of the key:
+-->	A 128-bit key (16 bytes) is expanded to 176 bytes.
+-->	A 192-bit key (24 bytes) is expanded to 208 bytes.
+-->	A 256-bit key (32 bytes) is expanded to 240 bytes.
+
+AES is an iterative rather than Feistel cipher. It is based on ‘substitution–permutation network’.
+It comprises of a series of linked operations, some of which involve replacing inputs by specific outputs (substitutions) and others involve shuffling bits around (permutations).
+
+Interestingly, AES performs all its computations on bytes rather than bits.
+Hence, AES treats the 128 bits of a plaintext block as 16 bytes.
+These 16 bytes are arranged in four columns and four rows for processing as a matrix.
+
+Unlike DES, the number of rounds in AES is variable and depends on the length of the key.
+AES uses 10 rounds for 128-bit keys, 12 rounds for 192-bit keys and 14 rounds for 256-bit keys.
+Each of these rounds uses a different 128-bit round key, which is calculated from the original AES key.
+
+
+=====================
+RC4 and RC6 Standards
+=====================
+
+
+=====================
+END-TO-END ENCRYPTION
+=====================
+End-to-end encryption (E2EE) is a system of communication where only the communicating parties can read the messages.
+When implemented properly, E2EE prevents potential eavesdroppers – including telecom providers, Internet providers, and even the provider of the communication service – from being able to access and decrypt the messages exchanged or the cryptographic keys needed to decrypt the messages.
+
+End-to-end encryption is intended to prevent data being read or secretly modified, other than by the true sender and recipient.
+The messages are encrypted by the sender and any third party that may have access to the messages can access them only in their encrypted form. Only the recipient can decrypt the encrypted message.
+
+In places where encryption is implemented, but not end-to-end – i.e. email – messages between parties are typically encrypted while ‘in-transit’ but ultimately pass through trusted intermediaries that can access the plaintext messages.
+
+E2EE’s safety is highly dependent on its implementation, in particular its key exchange protocol.
+Other security problems on both ends of the communications channel can also undermine confidentiality and integrity.
+
+
+=================================
+Multi-Factor Authentication (MFA)
+=================================
+It is an identity verification process that requires the access-requesting party to produce to the authenticating party multiple identifiers – multi-factors – that are linked to its identity, instead of the typical single identifier – usually a password – required by default in many systems.
+
+MFA is used to improve security by requiring an attacker to gain possession of multiple identifiers in order to authenticate to the protected system.
+Identifiers used to authenticate users can include
+--> something the user knows (a password, knowledge-based authentication questions)
+--> something the user has (a physical one-time passwords (OTP) generator device, a registered mobile device or computer)
+--> something the user is (biometric data such as fingerprint, face, unique behavioral patterns)
+
+Typical MFA authentication would require a user to produce a password (first factor), an OTP code (second factor), and also submit the authentication request from a previously registered computer (third factor).
+
+
+==================
+SECURE SHELL (SSH)
+==================
+Secure Shell (SSH) is a cryptographic protocol that provides communications security over a computer network, connecting an SSH client application with an SSH server. It is typically used to access shell accounts on remote servers.
+Shell accounts are typically available on Linux systems and provide a user interface to the operating system’s services for the purpose of system management.
+
+It a secure protocol that connects a client to an administrative account (shell account) on a server system typically for the purpose of carrying out system management tasks.
+
+SSH is a secure version of Telnet that uses cryptography to secure the communications channel and authenticate users and devices.
+SSH key typically refers to the private key used to authenticate the SSH client instead of a password – also referred to as passwordless SSH.
+
+SSH supports communications over TCP/IP. TCP is the protocol that provides reliable, ordered, and error-checked delivery of data packets between applications running on hosts communicating via an IP network.
+
+SSH supports a host of asymmetric and symmetric encryption algorithms, including RSA, ECDSA, AES, 3DES, and more.
+
+SSH does not need to use TLS, it has its own transport protocol completely independent from SSL,.
+To compare the both from a security perspective both are equally secured.
+
+Secure Socket Shell is a protocol used to access remote resources and manage devices.
+The main difference between SSH and Telnet is that SSH uses encryption to prevent Man in the middle attacks.
+
+Passwordless SSH means the SSH client connecting to the SSH server does not need to present the account password in order to establish the connection.
+Instead, the client uses an asymmetric cryptographic key pair (private key on the client) to authenticate.
+
+Passwords are considered vulnerable because they are easy to steal and in many cases also easy to break.
+Passwordless authentication, when implemented properly using sound cryptography or other means, can provide a higher security for authentication.
+
+
+==========================
+Secure Sockets Layer (SSL)
+==========================
+It is a networking protocol designed for securing connections between web clients and web servers over an insecure network, such as the internet.
+SSL made it possible for a web server to securely enable online transactions between consumers and businesses.
+Due to numerous protocol and implementation flaws and vulnerabilities, SSL was deprecated for use on the internet in 2015 and has been replaced by the Transport Layer Security (TLS) protocol.
+
+SSL was the first widely used protocol for securing online transactions, and it eventually came to be used to secure authentication and encryption for other applications at the network transport layer.
+
+SSL uses a combination of public key encryption and private key encryption and other cryptographic functions to secure a connection between two machines, typically a web server or mail server and a client system, communicating over the internet or another TCP/IP network.
+
+SSL provides a mechanism for encrypting and authenticating data sent between processes running on a client and server, as well as mediating the secure exchange of private keys for session encryption through the use of an SSL certificate issued by a trusted certificate authority.
+
+SSL runs above the transport layer and the network layer, which are responsible for the transport of data between processes and the routing of network traffic over a network between client and server, respectively, and below application layer protocols, such as HTTP and the Simple Mail Transport Protocol (SMTP).
+
+The sockets part of the term refers to the sockets method of passing data between a client and a server program in a network or between processes in the same computer.
+
+In addition to supporting the transmission of web pages, SSL has been implemented for applications such as email, file transfer, instant messaging (IM) and voice over IP (VoIP).
+
+SSL and TLS are both cryptographic protocols that provide authentication and data encryption between servers, machines and applications operating over a network.
+Both SSL 2.0 and 3.0 have been deprecated by the IETF (in 2011 and 2015, respectively). Over the years vulnerabilities have been and continue to be discovered in the deprecated SSL protocols.
+Before anyone starts worrying that they need to replace their existing SSL Certificates with TLS Certificates, it’s important to note that certificates are not dependent on protocols.
+
+A popular implementation of public-key encryption is the Secure Sockets Layer (SSL). Originally developed by Netscape, SSL is an Internet security protocol used by Internet browsers and Web servers to transmit sensitive information. SSL has become part of an overall security protocol known as Transport Layer Security (TLS).
+TLS and its predecessor SSL make significant use of certificate authorities.
+Once your browser requests a secure page and adds the "s" onto "http," the browser sends out the public key and the certificate, checking three things:
+(1) that the certificate comes from a trusted party;
+(2) that the certificate is currently valid; and 
+(3) that the certificate has a relationship with the site from which it's coming.
+
+
+==============================
+Difference between SSL and SSH
+==============================
+SSL works on 443 port, whereas, SSH works on 22 port.
+SSL is used to encrypt browser and server, whereas, SSH is used encrypt communication between two computers.
+SSL uses public-private key pairs whereas SSH uses public-private key pairs with ID-PWD pair.
+SSL is based on certificate, whereas, SSH is based on network tunnels.
+SSL provides a secure link between the two computer servers; SSH is how the connecting computer can verify itself and gain access.
+
+From a strict cryptographic point of view, they both provide authenticated encryption, but in two different ways.
+	SSH uses the so-called Encrypt-and-MAC, that is the ciphered message is juxtaposed to a MAC of the clear message to add integrity. This is not proven to be always fully secure even if in practical cases it should be enough.
+
+	SSL uses MAC-then-Encrypt, a MAC is juxtaposed to the clear text, then they are both encrypted.
+	This is not the best approach either, as with some block cipher modes parts of the MAC can be guessable and reveal something on the cipher.
+
+So they have both potential theoretical weaknesses.
+The strongest method is Encrypt-then-MAC, which is implemented in IPsec ESP.
+
+
+==============================
+Transport Layer Security (TLS)
+==============================
+TLS is a protocol that provides privacy and data integrity between two communicating applications.
+It's the most widely deployed security protocol used today, and is used for Web browsers and other applications that require data to be securely exchanged over a network, such as file transfers, VPN connections, instant messaging and voice over IP.
+
+TLS evolved from Netscape's Secure Sockets Layer (SSL) protocol and has largely superseded it, although the terms SSL or SSL/TLS are still sometimes used.
+Key differences between SSL and TLS that make TLS a more secure and efficient protocol are message authentication, key material generation and the supported cipher suites, with TLS supporting newer and more secure algorithms.
+
+According to the protocol specification, TLS is composed of two layers: the TLS Record Protocol and the TLS Handshake Protocol. 
+The Record Protocol provides connection security, while the Handshake Protocol allows the server and client to authenticate each other and to negotiate encryption algorithms and cryptographic keys before any data is exchanged.
+
+
+==================================================
+Elliptic Curve Digital Signature Algorithm (ECDSA)
+==================================================
+
+
+
+
+
+
+
+
